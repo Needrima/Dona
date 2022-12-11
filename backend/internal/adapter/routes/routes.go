@@ -20,12 +20,9 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 
 	//router.Use(middleware.SetHeaders)
 
-	router.Group("/notification")
+	router.Group("/product")
 	{
-		router.POST("/notification", handler.CreateNotification)
-		router.GET("/notification/:reference/status", handler.GetNotificationStatus)
-		router.GET("/notification/page/:page", handler.GetNotificationList)
-		router.GET("/notification/:reference", handler.GetNotificationByRef)
+		router.GET("/product/getproduct", handler.GetProduct)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {
