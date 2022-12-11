@@ -12,7 +12,7 @@ import (
 func InitializeLog() {
 	logDir := Config.LogDir
 	_ = os.Mkdir(logDir, os.ModePerm)
-	log.Println("config:", Config)
+	
 	f, err := os.OpenFile(logDir+Config.LogFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		LogEvent("ERROR", "creating log file"+err.Error())

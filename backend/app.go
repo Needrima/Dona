@@ -19,7 +19,7 @@ func main() {
 	// helper.LogEvent("INFO", "Redis Initialized!")
 
 	//Set up routes
-	router := routes.SetupRouter(mongoRepo.Notification)
+	router := routes.SetupRouter(mongoRepo.Repository)
 	//Print custom message for server start
 
 	helper.LogEvent("INFO", "server started")

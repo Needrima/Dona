@@ -12,10 +12,10 @@ import (
 )
 
 type notificationService struct {
-	notificationRepository ports.NotificationRepository
+	notificationRepository ports.Repository
 }
 
-func NewNotification(notificationRepository ports.NotificationRepository) *notificationService {
+func NewNotification(notificationRepository ports.Repository) *notificationService {
 	return &notificationService{
 		notificationRepository: notificationRepository,
 	}

@@ -14,21 +14,21 @@ import (
 	"reflect"
 )
 
-type NotificationInfra struct {
-	Collection *mongo.Collection
+type DatabaseInfra struct {
+	ProductCollection *mongo.Collection
 }
 
-func NewNotification(Collection *mongo.Collection) *NotificationInfra {
-	return &NotificationInfra{Collection}
+func NewNotification(ProductCollection *mongo.Collection) *DatabaseInfra {
+	return &DatabaseInfra{ProductCollection}
 }
 
 //UserRepo implements the repository.UserRepository interface
-var _ ports.NotificationRepository = &NotificationInfra{}
+var _ ports.Repository = &DatabaseInfra{}
 
-func (r *NotificationInfra) CreateNotification(notification entity.Notification) (interface{}, error) {
+func (r *DatabaseInfra) CreateNotification(notification entity.Notification) (interface{}, error) {
 	helper.LogEvent("INFO", "Persisting notification configurations with reference: "+notification.Reference)
 	// insert notification to database
-	_, err := r.Collection.InsertOne(context.TODO(), notification)
+	_, err := r.ProductCollection.InsertOne(context.TODO(), notification)
 	if err != nil {
 		helper.LogEvent("INFO", "error inserting document into mogodb "+err.Error())
 		return nil, err
@@ -37,11 +37,11 @@ func (r *NotificationInfra) CreateNotification(notification entity.Notification)
 	return notification.Reference, nil
 }
 
-func (r *NotificationInfra) GetNotificationStatus(reference string) (interface{}, error) {
+func (r *DatabaseInfra) GetNotificationStatus(reference string) (interface{}, error) {
 	helper.LogEvent("INFO", "Retrieving notification configurations with reference: "+reference)
 	notification := entity.Notification{}
 	filter := bson.M{"reference": reference}
-	err := r.Collection.FindOne(context.TODO(), filter).Decode(&notification)
+	err := r.ProductCollection.FindOne(context.TODO(), filter).Decode(&notification)
 	if err != nil || notification == (entity.Notification{}) {
 		return nil, err
 	}
@@ -49,11 +49,11 @@ func (r *NotificationInfra) GetNotificationStatus(reference string) (interface{}
 	return notification.Status, nil
 }
 
-func (r *NotificationInfra) GetNotificationByRef(reference string) (interface{}, error) {
+func (r *DatabaseInfra) GetNotificationByRef(reference string) (interface{}, error) {
 	helper.LogEvent("INFO", "Retrieving notification configurations with reference: "+reference)
 	notification := entity.Notification{}
 	filter := bson.M{"reference": reference}
-	err := r.Collection.FindOne(context.TODO(), filter).Decode(&notification)
+	err := r.ProductCollection.FindOne(context.TODO(), filter).Decode(&notification)
 	if err != nil || notification == (entity.Notification{}) {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func (r *NotificationInfra) GetNotificationByRef(reference string) (interface{},
 	return notification, nil
 }
 
-func (r *NotificationInfra) GetNotificationList(page string) (interface{}, error) {
+func (r *DatabaseInfra) GetNotificationList(page string) (interface{}, error) {
 	helper.LogEvent("INFO", "Retrieving all notification configuration entries...")
 	var notifications []entity.Notification
 	var notification entity.Notification
@@ -69,7 +69,7 @@ func (r *NotificationInfra) GetNotificationList(page string) (interface{}, error
 	if err != nil {
 		return nil, err
 	}
-	cursor, err := r.Collection.Find(context.TODO(), bson.M{}, findOptions)
+	cursor, err := r.ProductCollection.Find(context.TODO(), bson.M{}, findOptions)
 	if err != nil {
 		return nil, err
 	}
@@ -89,8 +89,8 @@ func (r *NotificationInfra) GetNotificationList(page string) (interface{}, error
 	return notifications, nil
 }
 
-func (r *NotificationInfra) UpdateNotification(notification entity.Notification) (interface{}, error) {
-	_, err := r.Collection.UpdateOne(context.TODO(), bson.M{"reference": notification.Reference}, bson.M{"$set": notification})
+func (r *DatabaseInfra) UpdateNotification(notification entity.Notification) (interface{}, error) {
+	_, err := r.ProductCollection.UpdateOne(context.TODO(), bson.M{"reference": notification.Reference}, bson.M{"$set": notification})
 	if err != nil {
 		helper.LogEvent("INFO", "error updating document in mogodb "+err.Error())
 		return nil, err

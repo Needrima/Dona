@@ -10,7 +10,7 @@ import (
 )
 
 func (hdl *HTTPHandler) GetNotificationByRef(c *gin.Context) {
-	notification, err := hdl.notificationService.GetNotificationByRef(c.Param("reference"))
+	notification, err := hdl.Service.GetNotificationByRef(c.Param("reference"))
 
 	if err != nil {
 		c.AbortWithStatusJSON(404, err)
@@ -21,7 +21,7 @@ func (hdl *HTTPHandler) GetNotificationByRef(c *gin.Context) {
 }
 
 func (hdl *HTTPHandler) GetNotificationList(c *gin.Context) {
-	notifications, err := hdl.notificationService.GetNotificationList(c.Param("page"))
+	notifications, err := hdl.Service.GetNotificationList(c.Param("page"))
 
 	if err != nil {
 		c.AbortWithStatusJSON(404, err)
@@ -40,7 +40,7 @@ func (hdl *HTTPHandler) CreateNotification(c *gin.Context) {
 		return
 	}
 
-	reference, err := hdl.notificationService.CreateNotification(body)
+	reference, err := hdl.Service.CreateNotification(body)
 	if err != nil {
 		c.AbortWithStatusJSON(400, err)
 		return
@@ -50,7 +50,7 @@ func (hdl *HTTPHandler) CreateNotification(c *gin.Context) {
 
 func (hdl *HTTPHandler) GetNotificationStatus(c *gin.Context) {
 	log.Println(c.Param("reference"))
-	status, err := hdl.notificationService.GetNotificationStatus(c.Param("reference"))
+	status, err := hdl.Service.GetNotificationStatus(c.Param("reference"))
 
 	if err != nil {
 		c.AbortWithStatusJSON(404, err)

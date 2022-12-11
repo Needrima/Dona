@@ -5,11 +5,11 @@ import (
 )
 
 type HTTPHandler struct {
-	notificationService ports.NotificationService
+	Service ports.Service
 }
 
-func NewHTTPHandler(countryService ports.NotificationService) *HTTPHandler {
+func NewHTTPHandler(service ports.Service) *HTTPHandler {
 	return &HTTPHandler{
-		notificationService: countryService,
+		Service: service,
 	}
 }

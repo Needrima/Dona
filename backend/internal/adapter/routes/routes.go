@@ -9,9 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter(notificationRepository ports.NotificationRepository) *gin.Engine {
+func SetupRouter(repository ports.Repository) *gin.Engine {
 	router := gin.Default()
-	notificationService := services.NewNotification(notificationRepository)
+	notificationService := services.NewNotification(repository)
 
 	handler := api.NewHTTPHandler(notificationService)
 

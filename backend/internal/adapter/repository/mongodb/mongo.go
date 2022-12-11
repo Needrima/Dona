@@ -13,7 +13,7 @@ import (
 )
 
 type MongoRepositories struct {
-	Notification ports.NotificationRepository
+	Repository ports.Repository
 }
 
 func ConnectToMongo(dbType string, dbUsername string, dbPassword string, dbHost string,
@@ -53,7 +53,7 @@ func ConnectToMongo(dbType string, dbUsername string, dbPassword string, dbHost 
 	notificationCollection := conn.Collection("products")
 
 	repo := MongoRepositories{
-		Notification: NewNotification(notificationCollection),
+		Repository: NewNotification(notificationCollection),
 	}
 	return repo, nil
 }
