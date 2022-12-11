@@ -16,6 +16,7 @@
         color: #fff;
         font-size: 14px;
         font-weight: 600;
+        margin-bottom: 7px;
 
         span {
             color: #ffbd27;
@@ -56,4 +57,20 @@
             color: #000;
         }
     }    
+}
+
+@media(max-width: 799px) {
+    #newsletter {
+        .form {
+            width: 70%;
+        }
+    }
+}
+
+@media(max-width: 477px) {
+    #newsletter {
+        .form {
+            width: 100%;
+        }
+    }
 }

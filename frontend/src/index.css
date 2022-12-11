@@ -45,3 +45,9 @@ body {
     width: 100%;
 }
 
+@media(max-width:477px) {
+    .section-p1 {
+        padding: 40px 30px;
+    }
+}
+

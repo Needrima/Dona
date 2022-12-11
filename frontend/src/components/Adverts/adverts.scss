@@ -18,7 +18,7 @@
 
         button {
             background-color: transparent;
-            padding: 20px 20px;
+            padding: 15px 20px;
             color: #fff;
             border-radius: 10px;               
             border: 1px solid #fff;
@@ -36,6 +36,15 @@
         button {
             color: #fff;
             background-color: #000;
+        }
+    }
+}
+
+@media(max-width: 477px) {
+    #adverts {
+        .adverts {
+            width: 100%;
+            padding: 50px 10px 50px 170px;
         }
     }
 }

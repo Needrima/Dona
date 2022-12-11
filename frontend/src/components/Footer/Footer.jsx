@@ -10,7 +10,7 @@ const Footer = () => {
         const date = new Date()
         return date.getFullYear()
     }
-    
+        
   return (
     <footer className='section-p1'>
         <div className="col">
@@ -23,10 +23,10 @@ const Footer = () => {
             <div className='follow'>
                 <h4>Follow us</h4>
                 <div className='icon'>
-                    <i className="fab fa-facebook-f"></i>
-                    <i className="fab fa-twitter"></i>
-                    <i className="fab fa-instagram"></i>
-                    <i className="fab fa-youtube"></i>
+                    <a href='https://facebook.com'><i className="fab fa-facebook-f"></i></a>
+                    <a href='https://twitter.com'><i className="fab fa-twitter"></i></a>
+                    <a href='https://instagram.com'><i className="fab fa-instagram"></i></a>
+                    <a href='https://youtube.com'><i className="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
