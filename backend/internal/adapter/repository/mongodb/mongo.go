@@ -50,10 +50,11 @@ func ConnectToMongo(dbType string, dbUsername string, dbPassword string, dbHost 
 	helper.LogEvent("INFO", "Establishing Database collections and indexes...")
 	conn := db.Database(dbname)
 
-	notificationCollection := conn.Collection("products")
+	productCollection := conn.Collection("products")
+	newsletterCollection := conn.Collection("newsletter")
 
 	repo := MongoRepositories{
-		Repository: NewNotification(notificationCollection),
+		Repository: NewInfra(productCollection, newsletterCollection),
 	}
 	return repo, nil
 }

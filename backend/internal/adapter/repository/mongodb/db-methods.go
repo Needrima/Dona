@@ -16,10 +16,14 @@ import (
 
 type DatabaseInfra struct {
 	ProductCollection *mongo.Collection
+	NewsletterCollection *mongo.Collection
 }
 
-func NewNotification(ProductCollection *mongo.Collection) *DatabaseInfra {
-	return &DatabaseInfra{ProductCollection}
+func NewInfra(ProductCollection, NewsletterCollection *mongo.Collection) *DatabaseInfra {
+	return &DatabaseInfra{
+		ProductCollection: ProductCollection,
+		NewsletterCollection: NewsletterCollection,
+	}
 }
 
 //UserRepo implements the repository.UserRepository interface
