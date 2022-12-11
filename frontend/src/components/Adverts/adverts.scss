@@ -1,0 +1,41 @@
+#adverts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .adverts {
+        background-image: url(../../assets/images/static/advertise-here.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border-radius: 10px;
+        height: 150px;
+        width: 23%;        
+        min-width: 250px;
+        cursor: pointer;
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);        
+        margin: 15px 0;
+        padding: 50px 0 50px 140px;
+
+        button {
+            background-color: transparent;
+            padding: 20px 20px;
+            color: #fff;
+            border-radius: 10px;               
+            border: 1px solid #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;       
+            border: 1px solid #000;
+            color: #000;            
+            transition: 0.4s ease;
+        }
+    }
+
+    .adverts:hover {
+        button {
+            color: #fff;
+            background-color: #000;
+        }
+    }
+}
