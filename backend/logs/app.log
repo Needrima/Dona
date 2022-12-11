@@ -1,0 +1,15 @@
+{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-11T21:56:28+01:00","level":"ERROR","app_name":"dona-backend","message":"pinging mongodb"}
+{"@timestamp":"2022-12-11T21:56:28+01:00","level":"ERROR","app_name":"dona-backend","message":"MongoDB database Connection Error: server selection error: server selection timeout, current topology: { Type: Single, Servers: [{ Addr: localhost:27010, Type: Unknown }, ] }"}
+
+{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
