@@ -1,7 +1,11 @@
 package services
 
 import (
+	"Dona/backend/internal/core/domain/entity"
 	ports "Dona/backend/internal/port"
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type backendService struct {
@@ -14,6 +18,13 @@ func NewNotification(repository ports.Repository) *backendService {
 	}
 }
 
-func (r *backendService) GetProduct() (interface{}, error) {
-	return r.Repository.GetProduct()
+func (r *backendService) GetProduct(amount int) (interface{}, error) {
+	return r.Repository.GetProduct(amount)
+}
+
+func (r *backendService) CreateProduct(product entity.Product) (interface{}, error) {
+	product.ProductID = primitive.NewObjectID()
+	product.CreatedAt = time.Now().Format(time.RFC3339)
+
+	return r.Repository.CreateProduct(product)
 }

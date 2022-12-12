@@ -1,9 +1,9 @@
 package helper
 
 import (
-	"bytes"
+	// "bytes"
 	"encoding/json"
-	"github.com/gin-gonic/gin"
+	// "github.com/gin-gonic/gin"
 	"log"
 	"os"
 	"time"
@@ -12,7 +12,7 @@ import (
 func InitializeLog() {
 	logDir := Config.LogDir
 	_ = os.Mkdir(logDir, os.ModePerm)
-	
+
 	f, err := os.OpenFile(logDir+Config.LogFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		LogEvent("ERROR", "creating log file"+err.Error())
@@ -22,15 +22,15 @@ func InitializeLog() {
 	log.SetOutput(f)
 }
 
-type BodyLogWriter struct {
-	gin.ResponseWriter
-	Body *bytes.Buffer
-}
+// type BodyLogWriter struct {
+// 	gin.ResponseWriter
+// 	Body *bytes.Buffer
+// }
 
-func (w BodyLogWriter) Write(b []byte) (int, error) {
-	w.Body.Write(b)
-	return w.ResponseWriter.Write(b)
-}
+// func (w BodyLogWriter) Write(b []byte) (int, error) {
+// 	w.Body.Write(b)
+// 	return w.ResponseWriter.Write(b)
+// }
 
 func LogEvent(level string, message interface{}) {
 

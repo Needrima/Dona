@@ -10,7 +10,7 @@ const HomeLayout = () => {
   return (
     <>
       <Hero />
-      <Products />
+      <Products number="4" />
       <Adverts />
       <Newsletter />
       <Footer />

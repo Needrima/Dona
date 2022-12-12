@@ -1,14 +1,25 @@
 import React from 'react'
+import { useContext } from 'react';
+import { useNavigate } from 'react-router'
+import { AppContext } from '../../App';
 
-const Product = () => {
+const Product = ({data}) => {
+  const navigate = useNavigate();
+
+  const {AddToCart} = useContext(AppContext);
+
   return (    
-    <div className="pro">
-        <img src={require('../../assets/images/products/white-t-shirt.jpg')} alt="product-img" />
+    <>
+    {data !== null ? <div className="pro">
+        <img 
+        src={require(`../../assets/images/products/${data.img_names[0]}`)} 
+        alt="product-img" 
+        onClick={() => navigate(`/shop/single/${data.id}`)} />
 
         <div className="des">
-            <span>Dona</span>
-            <h5>Plain Roundneck T-shirt</h5>
-            <h5>White</h5>
+            <span>{data.brand}</span>
+            <h5 onClick={() => navigate(`/shop/single/${data.id}`)}>{data.name}</h5>
+            <h5 className='colour'>{data.colour}</h5>
             <div className="star">
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
@@ -16,11 +27,12 @@ const Product = () => {
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
             </div>
-            <h4>NGN 3500</h4>
+            <h4>NGN {data.price}</h4>
         </div>
 
-        <span><i className="fal fa-shopping-cart cart"></i></span>
-    </div>
+        <span onClick={() => AddToCart(data.id, 1, "M")}><i className="fal fa-shopping-cart cart"></i></span>
+    </div> : "loading"}
+    </>
   )
 }
 

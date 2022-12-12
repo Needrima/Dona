@@ -1,47 +1,24 @@
-{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2022-12-11T21:56:26+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2022-12-11T21:56:28+01:00","level":"ERROR","app_name":"dona-backend","message":"pinging mongodb"}
-{"@timestamp":"2022-12-11T21:56:28+01:00","level":"ERROR","app_name":"dona-backend","message":"MongoDB database Connection Error: server selection error: server selection timeout, current topology: { Type: Single, Servers: [{ Addr: localhost:27010, Type: Unknown }, ] }"}
+{"@timestamp":"2022-12-12T20:10:44+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-12T20:10:44+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-12T20:10:44+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-12T20:10:44+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-12T20:10:45+01:00","level":"ERROR","app_name":"dona-backend","message":"pinging mongodb"}
+{"@timestamp":"2022-12-12T20:10:45+01:00","level":"ERROR","app_name":"dona-backend","message":"MongoDB database Connection Error: connection() error occurred during connection handshake: auth error: sasl conversation error: unable to authenticate using mechanism \"SCRAM-SHA-1\": (AuthenticationFailed) Authentication failed."}
 
-{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2022-12-11T22:31:21+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2022-12-11T22:31:22+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
-{"@timestamp":"2022-12-11T22:49:59+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2022-12-11T22:49:59+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2022-12-11T22:49:59+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2022-12-11T22:49:59+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2022-12-11T22:50:00+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2022-12-11T22:50:00+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2022-12-11T22:50:00+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2022-12-11T22:50:00+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2022-12-11T22:52:59+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
-{"@timestamp":"2022-12-11T22:03:41+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2022-12-11T22:03:41+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2022-12-11T22:03:41+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2022-12-11T22:03:41+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2022-12-11T22:03:42+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2022-12-11T22:03:42+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2022-12-11T22:03:42+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2022-12-11T22:03:42+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
-{"@timestamp":"2022-12-11T22:18:56+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2022-12-11T22:18:56+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2022-12-11T22:18:56+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2022-12-11T22:18:56+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2022-12-11T22:18:57+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2022-12-11T22:18:57+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2022-12-11T22:18:57+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2022-12-11T22:18:57+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2022-12-12T20:13:08+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-12T20:13:08+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-12T20:13:08+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-12T20:13:08+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-12T20:13:09+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2022-12-12T20:13:09+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2022-12-12T20:13:09+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2022-12-12T20:13:09+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2022-12-12T20:13:28+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:13:37+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:13:41+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:13:41+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:13:46+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:14:49+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:14:50+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:14:52+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-12T20:14:54+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}

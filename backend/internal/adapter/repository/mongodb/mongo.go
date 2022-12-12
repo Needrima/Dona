@@ -5,7 +5,7 @@ import (
 	ports "Dona/backend/internal/port"
 	"context"
 	"errors"
-	"fmt"
+	// "fmt"
 	"strconv"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -19,14 +19,14 @@ type MongoRepositories struct {
 func ConnectToMongo(dbType string, dbUsername string, dbPassword string, dbHost string,
 	dbPort string, authdb string, dbname string) (MongoRepositories, error) {
 	helper.LogEvent("INFO", "Establishing mongoDB connection with given credentials...")
-	var mongoCredentials, authSource string
-	if dbUsername != "" && dbPassword != "" {
-		mongoCredentials = fmt.Sprint(dbUsername, ":", dbPassword, "@")
-		authSource = fmt.Sprint("authSource=", authdb, "&")
-	}
-	mongoUrl := fmt.Sprint(dbType, "://", mongoCredentials, dbHost, ":", dbPort, "/?", authSource,
-		"directConnection=true&serverSelectionTimeoutMS=2000")
-	clientOptions := options.Client().ApplyURI(mongoUrl) // Connect to
+	// var mongoCredentials, authSource string
+	// if dbUsername != "" && dbPassword != "" {
+	// 	mongoCredentials = fmt.Sprint(dbUsername, ":", dbPassword, "@")
+	// 	authSource = fmt.Sprint("authSource=", authdb, "&")
+	// }
+	// mongoUrl := fmt.Sprint(dbType, "://", mongoCredentials, dbHost, ":", dbPort, "/?", authSource,
+	// 	"directConnection=true&serverSelectionTimeoutMS=2000")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017") // Connect to
 	helper.LogEvent("INFO", "Connecting to MongoDB...")
 	db, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {

@@ -22,7 +22,8 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 
 	router.Group("/product")
 	{
-		router.GET("/product/getproduct", handler.GetProduct)
+		router.GET("/product/:amount", handler.GetProduct)
+		router.POST("/product", handler.CreateProduct)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {

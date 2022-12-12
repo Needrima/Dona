@@ -1,5 +1,8 @@
 package ports
 
+import "Dona/backend/internal/core/domain/entity"
+
 type Repository interface {
-	GetProduct() (interface{}, error)
+	CreateProduct(product entity.Product) (interface{}, error)
+	GetProduct(amount int) (interface{}, error)
 }

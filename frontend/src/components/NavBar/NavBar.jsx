@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './Navbar.scss'
 import {Link, NavLink} from 'react-router-dom'
+import { AppContext } from '../../App'
 
 const NavBar = () => {
   const showMenu = () => {
@@ -12,6 +13,8 @@ const NavBar = () => {
     const navbar = document.querySelector("#navbar");
     navbar.classList.remove('active')
   }
+
+  const {cartItems} = useContext(AppContext);
   
   return (
     <section id='header'>
@@ -24,13 +27,13 @@ const NavBar = () => {
           <li><NavLink to='/blog'>Blog</NavLink></li>
           <li><NavLink to='/about'>About</NavLink></li>
           <li><NavLink to='/contact'>Contact</NavLink></li>
-          <li id='lg-bag'><NavLink to='/cart'><i class="far fa-shopping-cart"></i></NavLink></li>
+          <li id='lg-bag'><NavLink to='/cart'><i className="far fa-shopping-cart"></i> {cartItems ? cartItems.length : 0}</NavLink></li>
           <a href="#" id='close'><i className="far fa-times" onClick={hideMenu}></i></a>
         </ul>
       </div>
 
       <div id='mobile'>
-        <NavLink to='/cart'><i class="far fa-shopping-cart"></i></NavLink>
+        <NavLink to='/cart'><i className="far fa-shopping-cart"></i>{cartItems ? cartItems.length : 0}</NavLink>
         <i id="bar" className='fas fa-outdent' onClick={showMenu}></i>
       </div>
     </section>

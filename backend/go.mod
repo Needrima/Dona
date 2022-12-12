@@ -5,7 +5,6 @@ go 1.18
 require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-playground/validator/v10 v10.11.1
-	github.com/google/uuid v1.3.0
 	github.com/spf13/viper v1.14.0
 	go.mongodb.org/mongo-driver v1.11.1
 )
