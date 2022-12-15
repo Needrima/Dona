@@ -11,12 +11,13 @@ import (
 
 func SetupRouter(repository ports.Repository) *gin.Engine {
 	router := gin.Default()
+	router.Use(middleware.CORSMiddleware)
+
 	notificationService := services.NewNotification(repository)
 
 	handler := api.NewHTTPHandler(notificationService)
 
 	helper.LogEvent("INFO", "Configuring Routes!")
-	router.Use(middleware.CORSMiddleware)
 
 	//router.Use(middleware.SetHeaders)
 
@@ -24,6 +25,11 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 	{
 		router.GET("/product/:amount", handler.GetProduct)
 		router.POST("/product", handler.CreateProduct)
+	}
+
+	router.Group("/customer")
+	{
+		router.POST("/customer/subscribe", handler.SubscribeToNewLetter)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {

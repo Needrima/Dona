@@ -6,7 +6,7 @@ import (
 )
 
 // SendMail sends notification name from "from" to "to" using google smtp API
-func SendMail(to, message string) error {
+func SendMail(to string) error {
 
 	smtpHost := Config.SMTPHost
 	smtpPort := Config.SMTPPort
@@ -28,7 +28,7 @@ func SendMail(to, message string) error {
 		headerMessage += fmt.Sprintf("%s: %s\r\n", header, value)
 	}
 
-	body := headerMessage + "\r\n" + message
+	body := headerMessage + "\r\n" + "welcome to DONA, we sell plain t-shirts of all colours for campaigns, company merch, e.t.c"
 
 	auth := smtp.PlainAuth("", from, password, smtpHost)
 

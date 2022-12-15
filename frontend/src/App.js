@@ -13,49 +13,56 @@ function App() {
   const [state, setState] = useState({
     cartItems: [],
   })
-  const {cartItems} = state;
 
   useEffect(() => {
     const cart_items = JSON.parse(window.localStorage.getItem('cart-items'))
     if (cart_items !== null) setState(state => ({...state, cartItems: cart_items}))
   }, [])
 
+  const {cartItems} = state;
+
+  const setCartItems = (data) => {
+    setState(state => ({
+        ...state,
+        cartItems: [...state.cartItems, data]
+    }))
+  }
+
   const AddToCart = (itemReference, quantity, size) => {
     const cart_items = JSON.parse(window.localStorage.getItem('cart-items'))
 
-    if (cart_items === null || cart_items.length === 0) { // cart-items has not been set in local storage   
+    if (cart_items === null || cart_items.length === 0) { // cart-items has not been set in local storage or has been set with no data
       window.localStorage.setItem('cart-items', JSON.stringify([{itemReference, quantity, size}]))
-      
-      setState(state => ({
-        ...state,
-        cartItems: [...state.cartItems, itemReference]
-      }))
+      setCartItems({itemReference, quantity, size})
     }else {
       let exist = false;
       cart_items.forEach(item => {
         if (item.itemReference === itemReference) {
           alert('item already in cart')
           exist = true
+          return
         }
       })
 
       if (!exist) {
         cart_items.push({itemReference, quantity, size})
         window.localStorage.setItem('cart-items', JSON.stringify(cart_items))
-
-        setState(state => ({
-          ...state,
-          cartItems: [...state.cartItems, itemReference]
-        }))
+        setCartItems({itemReference, quantity, size})
       }      
     }
+  }
 
+  const RemoveFromCart = (reference) => {
+    const remainingItems = cartItems.filter( item => item.itemReference !== reference)
+    window.localStorage.setItem('cart-items', JSON.stringify(remainingItems))
+    setCartItems(remainingItems)
   }
 
   return (
     <AppContext.Provider value={{
       cartItems,
-      AddToCart
+      AddToCart,
+      RemoveFromCart,
     }}>
       <Routes>
         <Route path='/' exact element={<Home />} />

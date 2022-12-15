@@ -6,6 +6,7 @@ import (
 	ports "Dona/backend/internal/port"
 	"context"
 	"errors"
+	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -60,4 +61,29 @@ func (r *DatabaseInfra) CreateProduct(product entity.Product) (interface{}, erro
 	helper.LogEvent("INFO", "succesfully added new product to database")
 
 	return product.ProductID.Hex(), nil
+}
+
+func (r *DatabaseInfra) SubscribeToNewsLetter(body entity.Subscriber) error {
+	if singleResult := r.NewsletterCollection.FindOne(context.TODO(), bson.M{"email": body.Email}); singleResult.Err() == nil {
+		log.Println("email found")
+		helper.LogEvent("ERROR", "user already subscribed")
+		return errors.New("email already exist")
+	}
+
+	_, err := r.NewsletterCollection.InsertOne(context.TODO(), body)
+	if err != nil {
+		helper.LogEvent("ERROR", "inserting subscription email into database:"+err.Error())
+		return err
+	}
+
+	helper.LogEvent("INFO", "successfully inserted subscriber's email into database")
+
+	if err := helper.SendMail(body.Email); err != nil {
+		helper.LogEvent("ERROR", "sending newsletter confirmation mail to client:"+err.Error())
+		return err
+	}
+
+	helper.LogEvent("INFO", "successfully sent confirmation email to new subscriber")
+
+	return nil
 }

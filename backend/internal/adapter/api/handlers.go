@@ -48,3 +48,19 @@ func (hdl *HTTPHandler) CreateProduct(c *gin.Context) {
 
 	c.JSON(200, gin.H{"id": productId})
 }
+
+func (hdl *HTTPHandler) SubscribeToNewLetter(c *gin.Context) {
+	body := entity.Subscriber{}
+
+	if err := c.BindJSON(&body); err != nil {
+		c.AbortWithStatusJSON(400, gin.H{"error": "invalid request, check request body or url"})
+		return
+	}
+
+	if err := hdl.Service.SubscribeToNewsLetter(body); err != nil {
+		c.AbortWithStatusJSON(500, gin.H{"error": "something went wrong"})
+		return
+	}
+
+	c.JSON(200, gin.H{"message": "success!"})
+}

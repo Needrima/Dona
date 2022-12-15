@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {customerAxiosInstance} from '../../axios/axios'
 import './newsletter.scss'
 
 const Newsletter = () => {
+  const [email, setEmail] = useState({
+    email: ''
+  })
+
+  const subscribe = () => {
+    customerAxiosInstance.post('/subscribe', email)
+    .then(res => {if (res.status === 200) alert('subscription successful')})
+    .catch(err => {
+      alert('something went wrong try later')
+      console.info(err)
+    })
+  }
+  
   return (
     <section id="newsletter" className='section-p1 section-m1 '>
       <div className="newstext">
@@ -10,8 +24,8 @@ const Newsletter = () => {
       </div>
 
       <div className="form">
-        <input type="text" placeholder='Enter your email address' />
-        <button>Sign Up</button>
+        <input type="text" placeholder='Enter your email address' onChange={(e) => setEmail({email: e.target.value})} />
+        <button onClick={subscribe}>Sign Up</button>
       </div>
     </section>
   )

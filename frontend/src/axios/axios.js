@@ -1,10 +1,17 @@
 import axios from 'axios'
 
-const axiosInstance = axios.create({
+const productAxiosInstance = axios.create({
     baseURL: 'http://localhost:2022/product',
     headers: {
       Accept: 'application/json'
     }
 })
 
-export default axiosInstance
+const customerAxiosInstance = axios.create({
+  baseURL: 'http://localhost:2022/customer',
+  headers: {
+    Accept: 'application/json'
+  }
+})
+
+export {productAxiosInstance, customerAxiosInstance}

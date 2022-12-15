@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Product from './Product'
 import './product.scss'
-import axiosInstance from '../../axios/axios'
+import {productAxiosInstance} from '../../axios/axios'
 
 const Products = ({number}) => {
   const [state, setState] = useState({
@@ -11,10 +11,10 @@ const Products = ({number}) => {
   const {products} = state;
 
   useEffect(() => {
-    axiosInstance.get(`/${number}`)
+    productAxiosInstance.get(`/${number}`)
     .then((res)=> res.status === 200 ? setState(state => ({...state, products: res.data})) : [])
     .catch((error)=> console.log(error))
-  }, [])
+  }, [number])
 
   return (
     <section id='product1' className='section-p1'>
