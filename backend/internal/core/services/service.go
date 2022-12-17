@@ -12,7 +12,7 @@ type backendService struct {
 	Repository ports.Repository
 }
 
-func NewNotification(repository ports.Repository) *backendService {
+func NewService(repository ports.Repository) *backendService {
 	return &backendService{
 		Repository: repository,
 	}

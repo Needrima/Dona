@@ -12,10 +12,9 @@ import (
 func SetupRouter(repository ports.Repository) *gin.Engine {
 	router := gin.Default()
 	router.Use(middleware.CORSMiddleware)
+	backendService := services.NewService(repository)
 
-	notificationService := services.NewNotification(repository)
-
-	handler := api.NewHTTPHandler(notificationService)
+	handler := api.NewHTTPHandler(backendService)
 
 	helper.LogEvent("INFO", "Configuring Routes!")
 
