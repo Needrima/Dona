@@ -11,8 +11,7 @@ const Newsletter = () => {
     customerAxiosInstance.post('/subscribe', email)
     .then(res => {if (res.status === 200) alert('subscription successful')})
     .catch(err => {
-      alert('something went wrong try later')
-      console.info(err)
+      alert(err.response.data['error'])
     })
   }
   
