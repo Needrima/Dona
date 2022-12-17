@@ -22,16 +22,7 @@ func InitializeLog() {
 	log.SetOutput(f)
 }
 
-// type BodyLogWriter struct {
-// 	gin.ResponseWriter
-// 	Body *bytes.Buffer
-// }
-
-// func (w BodyLogWriter) Write(b []byte) (int, error) {
-// 	w.Body.Write(b)
-// 	return w.ResponseWriter.Write(b)
-// }
-
+//level can be INFO or ERROR
 func LogEvent(level string, message interface{}) {
 
 	data, err := json.Marshal(struct {

@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import Adverts from '../Adverts/Adverts'
 import Footer from '../Footer/Footer'
 import Newsletter from '../NewsLetter/Newsletter'
 import Products from '../Product/Products'
 import Hero from './Hero'
-import './home.scss'
+import './shop.scss'
 import {productAxiosInstance} from '../../axios/axios'
 
-const HomeLayout = () => {
+const ShopLayout = () => {
   const [state, setState] = useState({
     products: []
   });
@@ -15,7 +14,7 @@ const HomeLayout = () => {
   const {products} = state;
 
   useEffect(() => {
-    getProducts('4')
+    getProducts('8')
   }, [])
 
   const getProducts = (number) => {
@@ -27,12 +26,11 @@ const HomeLayout = () => {
   return (
     <>
       <Hero />
-      <Products products={products} h2="Check these out" />
-      <Adverts />
+      <Products products={products} h2="Checkout our cool collection" />
       <Newsletter />
       <Footer />
     </>
   )
 }
 
-export default HomeLayout
+export default ShopLayout

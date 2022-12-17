@@ -2,6 +2,7 @@ package services
 
 import (
 	"Dona/backend/internal/core/domain/entity"
+	"Dona/backend/internal/core/helper"
 	ports "Dona/backend/internal/port"
 	"time"
 
@@ -24,7 +25,7 @@ func (r *backendService) GetProduct(amount int) (interface{}, error) {
 
 func (r *backendService) CreateProduct(product entity.Product) (interface{}, error) {
 	product.ProductID = primitive.NewObjectID()
-	product.CreatedAt = time.Now().Format(time.RFC3339)
+	product.CreatedAt = helper.ParseTimeToString(time.Now())
 
 	return r.Repository.CreateProduct(product)
 }

@@ -8,6 +8,15 @@ const Product = ({data}) => {
 
   const {AddToCart} = useContext(AppContext);
 
+  const getRating = (rating) => {
+    const stars = []
+    for (let i = 0; i < rating; i++) {
+      const star = React.createElement('i', {className: 'fas fa-star'})
+      stars.push(star);
+    };
+    return React.createElement('div', {className:'star'}, stars);
+  }
+
   return (    
     <>
     {data !== null ? <div className="pro">
@@ -19,14 +28,15 @@ const Product = ({data}) => {
         <div className="des">
             <span>{data.brand}</span>
             <h5 onClick={() => navigate(`/shop/single/${data.id}`)}>{data.name}</h5>
-            <h5 className='colour'>{data.colour}</h5>
-            <div className="star">
+            <h5 className='colour'>{data.category}</h5>
+            {/* <div className="star">
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
-            </div>
+            </div> */}
+            {getRating(data.rating)}
             <h4>NGN {data.price}</h4>
         </div>
 
