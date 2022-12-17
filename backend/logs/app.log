@@ -57,3 +57,24 @@ email found
 {"@timestamp":"2022-12-17T19:13:40+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
 {"@timestamp":"2022-12-17T19:13:41+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
 {"@timestamp":"2022-12-17T19:13:42+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:17:11+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-17T19:17:11+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-17T19:17:11+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-17T19:17:11+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-17T19:17:12+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2022-12-17T19:17:12+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2022-12-17T19:17:12+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2022-12-17T19:17:12+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2022-12-17T19:17:18+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:17:29+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:17:42+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:17:48+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:02+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:05+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:47+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:49+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:50+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:51+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:52+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:53+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-17T19:18:54+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
