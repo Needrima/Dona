@@ -11,6 +11,7 @@ type Product struct {
 	Sizes       []string           `json:"sizes" bson:"sizes" binding:"required"` //S,M,L,XL,XXL
 	Rating      int                `json:"rating" bson:"rating" binding:"required"`
 	Brand       string             `json:"brand" bson:"brand" binding:"required"` // default is DONA
-	Colour      string             `json:"colour" bson:"colour" binding:"required"`
+	Colours     []string           `json:"colours" bson:"colours" binding:"required"`
+	Category    string			   `json:"category" bson:"category" binding:"required"`
 	CreatedAt   string             `json:"created_at" bson:"created_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
 }

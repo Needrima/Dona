@@ -1,24 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Product from './Product'
 import './product.scss'
-import {productAxiosInstance} from '../../axios/axios'
 
-const Products = ({number}) => {
-  const [state, setState] = useState({
-    products: []
-  });
-
-  const {products} = state;
-
-  useEffect(() => {
-    productAxiosInstance.get(`/${number}`)
-    .then((res)=> res.status === 200 ? setState(state => ({...state, products: res.data})) : [])
-    .catch((error)=> console.log(error))
-  }, [number])
+const Products = ({products, h2}) => {
 
   return (
     <section id='product1' className='section-p1'>
-        <h2>Check these out</h2>
+        <h2>{h2}</h2>
         <div className="pro-container">
           {products.length !== 0 ? products.map((pro, index) => <Product key={index} data={pro} />) : null}       
         </div>
