@@ -3,6 +3,7 @@ package api
 import (
 	"Dona/backend/internal/core/domain/entity"
 	"Dona/backend/internal/core/helper"
+	"errors"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -20,7 +21,9 @@ func (hdl *HTTPHandler) GetProduct(c *gin.Context) {
 	products, err := hdl.Service.GetProduct(amount)
 
 	if err != nil {
-		c.AbortWithStatusJSON(404, err)
+		c.AbortWithStatusJSON(404, gin.H{
+			"error": err.Error(),
+		})
 		return
 	}
 
@@ -33,7 +36,7 @@ func (hdl *HTTPHandler) CreateProduct(c *gin.Context) {
 	if err := c.BindJSON(&product); err != nil {
 		helper.LogEvent("ERROR", err.Error())
 		c.JSON(400, gin.H{
-			"error": "invald payload body",
+			"error": "invalid payload body",
 		})
 
 		return
@@ -58,8 +61,10 @@ func (hdl *HTTPHandler) SubscribeToNewLetter(c *gin.Context) {
 	}
 
 	if err := hdl.Service.SubscribeToNewsLetter(body); err != nil {
-		c.AbortWithStatusJSON(500, gin.H{"error": "something went wrong"})
-		return
+		if !errors.Is(err, helper.NEWSLETTER_MAIL_ERROR) {
+			c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
+			return
+		}		
 	}
 
 	c.JSON(200, gin.H{"message": "success!"})
