@@ -1,32 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import Footer from '../Footer/Footer'
 import Newsletter from '../NewsLetter/Newsletter'
 import Products from '../Product/Products'
 import Hero from './Hero'
 import './shop.scss'
-import {productAxiosInstance} from '../../axios/axios'
+import Pagination from '../Pagination/Pagination'
+import { useContext } from 'react'
+import { ShopContext } from '../../pages/Shop'
 
 const ShopLayout = () => {
-  const [state, setState] = useState({
-    products: []
-  });
-
-  const {products} = state;
+  const {products, getProducts} = useContext(ShopContext)
 
   useEffect(() => {
     getProducts('8')
   }, [])
 
-  const getProducts = (number) => {
-    productAxiosInstance.get(`/${number}`)
-    .then((res)=> res.status === 200 ? setState(state => ({...state, products: res.data})) : [])
-    .catch((error)=> console.log(error))
-  }
-
   return (
     <>
       <Hero />
       <Products products={products} h2="Checkout our cool collection" />
+      <Pagination clickFunc={getProducts}/>
       <Newsletter />
       <Footer />
     </>

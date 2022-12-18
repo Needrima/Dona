@@ -3,7 +3,6 @@ import Product from './Product'
 import './product.scss'
 
 const Products = ({products, h2}) => {
-
   return (
     <section id='product1' className='section-p1'>
         <h2>{h2}</h2>
