@@ -3,6 +3,8 @@ package repository
 import (
 	"Dona/backend/internal/core/domain/entity"
 	"Dona/backend/internal/core/helper"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+
 	// ports "Dona/backend/internal/port"
 	"context"
 	"errors"
@@ -86,4 +88,36 @@ func (r *DatabaseInfra) SubscribeToNewsLetter(body entity.Subscriber) error {
 	helper.LogEvent("INFO", "successfully sent confirmation email to new subscriber")
 
 	return nil
+}
+
+func (r *DatabaseInfra) GetProductByRef(ref string) (interface{}, error) {
+	id, err := primitive.ObjectIDFromHex(ref)
+	if err != nil {
+		helper.LogEvent("ERROR", "invalid product reference:"+err.Error())
+		return nil, errors.New("invalid product reference")
+	}
+
+	filter := bson.M{"_id": id}
+
+	singleResult := r.ProductCollection.FindOne(context.TODO(), filter)
+	if singleResult.Err() != nil {
+		switch singleResult.Err() {
+		case mongo.ErrNoDocuments:
+			helper.LogEvent("ERROR", "no product found:"+err.Error())
+			return nil, errors.New("no product found")
+
+		default:
+			helper.LogEvent("ERROR", "finding product by ref:"+err.Error())
+			return nil, errors.New("something went wrong")
+		}
+	}
+
+	product := entity.Product{}
+
+	if err := singleResult.Decode(&product); err != nil {
+		helper.LogEvent("ERROR", "decoding product from singleresult:"+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+
+	return product, nil
 }

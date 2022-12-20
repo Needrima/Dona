@@ -12,7 +12,7 @@ const Shop = () => {
   const {products} = state;
 
   const getProducts = (number) => {
-    productAxiosInstance.get(`/${number}`)
+    productAxiosInstance.get(`/amount/${number}`)
     .then((res)=> res.status === 200 ? setState(state => ({...state, products: res.data})) : [])
     .catch((error)=> console.log(error))
   }

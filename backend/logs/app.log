@@ -16,3 +16,19 @@
 {"@timestamp":"2022-12-18T05:56:00+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
 {"@timestamp":"2022-12-18T05:56:01+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
 {"@timestamp":"2022-12-18T05:56:02+01:00","level":"INFO","app_name":"dona-backend","message":"succesfully added new product to database"}
+{"@timestamp":"2022-12-18T06:04:57+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-18T06:04:57+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-18T06:04:57+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-18T06:04:57+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-18T06:04:59+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2022-12-18T06:04:59+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2022-12-18T06:04:59+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2022-12-18T06:04:59+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2022-12-18T06:39:31+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-18T06:39:31+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-18T06:39:31+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-18T06:39:31+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-18T06:39:32+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2022-12-18T06:39:32+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2022-12-18T06:39:32+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2022-12-18T06:39:32+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}

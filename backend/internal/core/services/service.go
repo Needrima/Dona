@@ -34,3 +34,7 @@ func (r *backendService) SubscribeToNewsLetter(body entity.Subscriber) error {
 	body.ID = primitive.NewObjectID()
 	return r.Repository.SubscribeToNewsLetter(body)
 }
+
+func (r *backendService) GetProductByRef(ref string) (interface{}, error) {
+	return r.Repository.GetProductByRef(ref)
+}

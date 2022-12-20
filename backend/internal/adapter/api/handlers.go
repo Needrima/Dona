@@ -64,8 +64,20 @@ func (hdl *HTTPHandler) SubscribeToNewLetter(c *gin.Context) {
 		if !errors.Is(err, helper.NEWSLETTER_MAIL_ERROR) {
 			c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
 			return
-		}		
+		}
 	}
 
 	c.JSON(200, gin.H{"message": "success!"})
+}
+
+func (hdl *HTTPHandler) GetProductByRef(c *gin.Context) {
+	ref := c.Param("ref")
+
+	product, err := hdl.Service.GetProductByRef(ref)
+	if err != nil {
+		c.JSON(404, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(200, product)
 }

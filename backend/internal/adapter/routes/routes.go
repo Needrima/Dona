@@ -22,8 +22,9 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 
 	router.Group("/product")
 	{
-		router.GET("/product/:amount", handler.GetProduct)
+		router.GET("/product/amount/:amount", handler.GetProduct)
 		router.POST("/product", handler.CreateProduct)
+		router.GET("/product/ref/:ref", handler.GetProductByRef)
 	}
 
 	router.Group("/customer")

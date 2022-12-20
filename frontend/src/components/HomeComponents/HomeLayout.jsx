@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { useContext } from 'react'
 import { HomeContext } from '../../pages/Home'
 import Adverts from '../Adverts/Adverts'

@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
 import Footer from '../Footer/Footer'
 import Newsletter from '../NewsLetter/Newsletter'
 import Products from '../Product/Products'
 import Hero from './Hero'
 import './shop.scss'
-import Pagination from '../Pagination/Pagination'
-import { useContext } from 'react'
+import Pagination from './Pagination/Pagination'
 import { ShopContext } from '../../pages/Shop'
 
 const ShopLayout = () => {
@@ -19,7 +18,7 @@ const ShopLayout = () => {
     <>
       <Hero />
       <Products products={products} h2="Checkout our cool collection" />
-      <Pagination clickFunc={getProducts}/>
+      <Pagination />
       <Newsletter />
       <Footer />
     </>
