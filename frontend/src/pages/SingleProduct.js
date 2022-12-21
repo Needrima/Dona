@@ -5,7 +5,10 @@ import {productAxiosInstance} from '../axios/axios'
 import { useParams } from 'react-router';
 
 export const SingleProductContext = React.createContext();
-const SingleProduct = () => {
+const SingleProduct = () => {  
+    document.body.scrollTop = 40; // FOR SAFARI
+    document.documentElement.scrollTop = 40; // FOR CHROME, FIREFOZ, IE, OPERA
+
     const [state, setState] = useState({
         products: [],
         singleProduct: null,
