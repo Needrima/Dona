@@ -1,14 +1,22 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
+import { AppContext } from '../../../App';
 import { SingleProductContext } from '../../../pages/SingleProduct';
 import './productdetails.scss'
 
 const ProductDetails = () => {
     const {singleProduct} = useContext(SingleProductContext)
+    const {AddToCart} = useContext(AppContext);
 
     const mainImgRef = useRef();
     const changeImg = (e) => {
         mainImgRef.current.src = e.target.src
     }
+
+    const [state, setState] = useState({
+        qty: 1,
+        size: 'S'
+    })
+    const {qty, size} = state;
 
   return (
     <>
@@ -48,13 +56,19 @@ const ProductDetails = () => {
                 <h4>{singleProduct.name}</h4>
                 <h2>NGN {singleProduct.price}</h2>
 
-                <select>
-                    <option>Select size</option>
-                    {singleProduct.sizes.map((size, index) => <option key={index}>{size}</option>)}
+                <span>Select Size:</span>
+                <select value={size} onChange={(e) => setState(state => ({
+                    ...state,
+                    size: e.target.value !== 'select size' ? e.target.value : 'S' 
+                }))}>
+                    {singleProduct.sizes.map((size, index) => <option key={index} value={size}>{size}</option>)}
                 </select>
 
-                <input type="number" value='1' />
-                <button>Add To Cart</button>
+                <input type="number" value={qty} onChange={(e) => setState(state => ({
+                    ...state,
+                    qty: e.target.value > 0 ? parseInt(e.target.value) : 1
+                }))} />
+                <button onClick={() => AddToCart(singleProduct.id, qty, size)}>Add To Cart</button>
                 <h4>Product Details</h4>
                 <span>{singleProduct.desc}</span>
             </div>
