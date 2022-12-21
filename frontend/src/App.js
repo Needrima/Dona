@@ -16,7 +16,7 @@ function App() {
   })
 
   useEffect(() => {
-    const cart_items = JSON.parse(window.localStorage.getItem('cart-items'))
+    const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
     if (cart_items !== null) setState(state => ({...state, cartItems: cart_items}))
   }, [])
 
@@ -29,16 +29,16 @@ function App() {
     }))
   }
 
-  const AddToCart = (itemReference, quantity, size) => {
-    const cart_items = JSON.parse(window.localStorage.getItem('cart-items'))
+  const AddToCart = (id, quantity, size) => {
+    const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
 
-    if (cart_items === null || cart_items.length === 0) { // cart-items has not been set in local storage or has been set with no data
-      window.localStorage.setItem('cart-items', JSON.stringify([{itemReference, quantity, size}]))
-      setCartItems({itemReference, quantity, size})
+    if (cart_items === null || cart_items.length === 0) { // dona-cart-items has not been set in local storage or has been set with no data
+      window.localStorage.setItem('dona-cart-items', JSON.stringify([{id, quantity, size}]))
+      setCartItems({id, quantity, size})
     }else {
       let exist = false;
       cart_items.forEach(item => {
-        if (item.itemReference === itemReference) {
+        if (item.id === id) {
           alert('item already in cart')
           exist = true
           return
@@ -46,16 +46,16 @@ function App() {
       })
 
       if (!exist) {
-        cart_items.push({itemReference, quantity, size})
-        window.localStorage.setItem('cart-items', JSON.stringify(cart_items))
-        setCartItems({itemReference, quantity, size})
+        cart_items.push({id, quantity, size})
+        window.localStorage.setItem('dona-cart-items', JSON.stringify(cart_items))
+        setCartItems({id, quantity, size})
       }      
     }
   }
 
   const RemoveFromCart = (reference) => {
-    const remainingItems = cartItems.filter( item => item.itemReference !== reference)
-    window.localStorage.setItem('cart-items', JSON.stringify(remainingItems))
+    const remainingItems = cartItems.filter( item => item.id !== reference)
+    window.localStorage.setItem('dona-cart-items', JSON.stringify(remainingItems))
     setCartItems(remainingItems)
   }
 

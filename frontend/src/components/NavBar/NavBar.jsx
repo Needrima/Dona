@@ -27,13 +27,13 @@ const NavBar = () => {
           <li><NavLink to='/blog'>Blog</NavLink></li>
           <li><NavLink to='/about'>About</NavLink></li>
           <li><NavLink to='/contact'>Contact</NavLink></li>
-          <li id='lg-bag'><NavLink to='/cart'><i className="far fa-shopping-cart"></i> {cartItems ? cartItems.length : 0}</NavLink></li>
+          <li id='lg-bag'><NavLink to='/cart'><i className="far fa-shopping-cart"></i> {cartItems.length !== 0 ? cartItems.length : ''}</NavLink></li>
           <a href="#" id='close'><i className="far fa-times" onClick={hideMenu}></i></a>
         </ul>
       </div>
 
       <div id='mobile'>
-        <NavLink to='/cart'><i className="far fa-shopping-cart"></i>{cartItems ? cartItems.length : 0}</NavLink>
+        <NavLink to='/cart'><i className="far fa-shopping-cart"></i>{cartItems.length !== 0 ? cartItems.length : ''}</NavLink>
         <i id="bar" className='fas fa-outdent' onClick={showMenu}></i>
       </div>
     </section>
