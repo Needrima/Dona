@@ -69,7 +69,7 @@ function App() {
         <Route path='/' exact element={<Home />} />
         <Route path='/shop' exact element={<Shop />} />
         <Route path='/single/:id' exact element={<SingleProduct />} />
-        <Route path='/blog' exact element={<Blog />} />
+        {/* <Route path='/blog' exact element={<Blog />} /> */}
         <Route path='/about' exact element={<About />} />
         <Route path='/contact' exact element={<Contact />} />
         <Route path='/cart' exact element={<Cart />} />
