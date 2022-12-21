@@ -23,11 +23,11 @@ const Product = ({data}) => {
         <img 
         src={require(`../../assets/images/products/${data.img_names[0]}`)} 
         alt="product-img" 
-        onClick={() => navigate(`/shop/single/${data.id}`)} />
+        onClick={() => navigate(`/single/${data.id}`)} />
 
         <div className="des">
             <span>{data.brand}</span>
-            <h5 onClick={() => navigate(`/shop/single/${data.id}`)}>{data.name}</h5>
+            <h5 onClick={() => navigate(`/single/${data.id}`)}>{data.name}</h5>
             <h5 className='colour'>{data.category}</h5>
             {/* <div className="star">
                 <i className="fas fa-star"></i>

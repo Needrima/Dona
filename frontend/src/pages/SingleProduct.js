@@ -5,7 +5,10 @@ import {productAxiosInstance} from '../axios/axios'
 import { useParams } from 'react-router';
 
 export const SingleProductContext = React.createContext();
-const SingleProduct = () => {
+const SingleProduct = () => {  
+    document.body.scrollTop = 40; // FOR SAFARI
+    document.documentElement.scrollTop = 40; // FOR CHROME, FIREFOZ, IE, OPERA
+
     const [state, setState] = useState({
         products: [],
         singleProduct: null,
@@ -24,7 +27,7 @@ const SingleProduct = () => {
       productAxiosInstance.get(`/ref/${id}`)
         .then((res)=> res.status === 200 ? setState(state => ({...state, singleProduct: res.data})) : null)
         .catch((error)=> console.log(error))
-    }, [])
+    }, [id])
 
 
   return (

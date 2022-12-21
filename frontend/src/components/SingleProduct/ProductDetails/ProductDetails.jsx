@@ -4,7 +4,6 @@ import './productdetails.scss'
 
 const ProductDetails = () => {
     const {singleProduct} = useContext(SingleProductContext)
-    console.log(singleProduct['img_names'])
 
     const mainImgRef = useRef();
     const changeImg = (e) => {
@@ -13,7 +12,7 @@ const ProductDetails = () => {
 
   return (
     <>
-        {singleProduct && <section id="prodetails" className="section-p1">
+        {singleProduct !== null ? <section id="prodetails" className="section-p1">
             <div className="single-pro-image">
                 <img 
                 src={require(`../../../assets/images/products/${singleProduct['img_names'][0]}`)}
@@ -59,7 +58,7 @@ const ProductDetails = () => {
                 <h4>Product Details</h4>
                 <span>{singleProduct.desc}</span>
             </div>
-        </section>}
+        </section> : null}
     </>
   )
 }
