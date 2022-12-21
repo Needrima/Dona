@@ -24,7 +24,7 @@ const SingleProduct = () => {
       productAxiosInstance.get(`/ref/${id}`)
         .then((res)=> res.status === 200 ? setState(state => ({...state, singleProduct: res.data})) : null)
         .catch((error)=> console.log(error))
-    }, [])
+    }, [id])
 
 
   return (
