@@ -24,7 +24,7 @@ const NavBar = () => {
         <ul id="navbar">
           <li><NavLink to='/'>Home</NavLink></li>
           <li><NavLink to='/shop'>Shop</NavLink></li>
-          <li><NavLink to='/blog'>Blog</NavLink></li>
+          {/* <li><NavLink to='/blog'>Blog</NavLink></li> */}
           <li><NavLink to='/about'>About</NavLink></li>
           <li><NavLink to='/contact'>Contact</NavLink></li>
           <li id='lg-bag'><NavLink to='/cart'><i className="far fa-shopping-cart"></i> {cartItems.length !== 0 ? cartItems.length : ''}</NavLink></li>
