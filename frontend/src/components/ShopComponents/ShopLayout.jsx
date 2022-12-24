@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer'
 import Newsletter from '../NewsLetter/Newsletter'
 import Products from '../Product/Products'
 import Hero from './Hero'
-import './shop.scss'
+// import './shop.scss'
 import Pagination from './Pagination/Pagination'
 import { ShopContext } from '../../pages/Shop'
 

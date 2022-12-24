@@ -45,6 +45,38 @@ body {
     width: 100%;
 }
 
+#hero {
+    background: #000;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero h2, h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+#hero button {
+    background-color: transparent;
+    padding: 20px 30px;
+    color: #fff;
+    border-radius: 10px;               
+    border: 1px solid #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#hero  button:hover {        
+    background-color: #fff;        
+    border: 1px solid #fff;
+    color: #000;
+}
+
 @media(max-width:477px) {
     .section-p1 {
         padding: 40px 30px;

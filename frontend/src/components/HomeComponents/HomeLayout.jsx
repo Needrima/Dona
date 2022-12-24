@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer'
 import Newsletter from '../NewsLetter/Newsletter'
 import Products from '../Product/Products'
 import Hero from './Hero'
-import './home.scss'
+// import './home.scss'
 
 const HomeLayout = () => {
   const {products, getProducts} = useContext(HomeContext)
