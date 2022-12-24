@@ -3,8 +3,8 @@ import React from 'react'
 const Hero = () => {
   return (
     <section id='hero'>
-        <h2>#KnowUs</h2>
-        <h4>Read More</h4>
+        <h2>#TalkToUs</h2>
+        <h4>Reach Out To Us</h4>
     </section>
   )
 }

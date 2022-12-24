@@ -39,8 +39,8 @@ const Footer = () => {
         <div className="col">
             <Link to='#' className='logo'>Dona</Link>
             <h4>Contact</h4>
-            <p><strong>Address:</strong> 25, Wellington Avenue, Ikeja GRA, Lagos</p>
-            <p><strong>Phone:</strong> +234 81 234 567 89</p>
+            <p><strong>Email:</strong> customerservice@dona.com</p>
+            <p><strong>Phone:</strong> +234 81 056 582 03</p>
             <p><strong>Hours:</strong> 9:00 - 19:00 MON - SAT</p>
 
             <div className='follow'>
