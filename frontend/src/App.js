@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Routes, Route} from 'react-router'
 import About from "./pages/About";
-import Blog from "./pages/Blog";
+// import Blog from "./pages/Blog";
 import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";

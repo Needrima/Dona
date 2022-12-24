@@ -14,7 +14,7 @@ const Footer = () => {
     }
 
     const [state, setState] = useState({
-        showDelInfo: false,
+        showDelInfo: true,
         showTandC: false,
     })
 

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 const DeliveryInfo = ({setDelInfo}) => {
   return (
     <div id='delivery-info'>
-        <div className='header'>
-            <span>Delivery Info</span>
-            <span onClick={() => setDelInfo(false)}>X</span>
+        <div className='modal-header'>
+            <div>Delivery Info</div>
+            <div onClick={() => setDelInfo(false)}>X</div>
         </div>
 
         <ul>

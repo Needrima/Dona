@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 
 const TermsAndConditions = ({setShowTandC}) => {
   return (
-    <div id='delivery-info'>
-        <div className='header'>
-            <span>Terms And Conditions</span>
-            <span onClick={() => setShowTandC(false)}>X</span>
+    <div id='t-c-info'>
+        <div className='modal-header'>
+            <div>Terms and Conditions</div>
+            <div onClick={() => setShowTandC(false)}>X</div>
         </div>
 
         <ul>
