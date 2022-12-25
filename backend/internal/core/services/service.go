@@ -40,13 +40,9 @@ func (r *backendService) GetProductByRef(ref string) (interface{}, error) {
 }
 
 func (r *backendService) SendContactMail(body entity.ContactMessage) error {
-
-	if err := helper.SendMail("contactmail.html", entity.EmailData{
-		Name:    body.Name,
-		From: 	 body.Email,
-		To:      helper.Config.SMTPUsername,
-		Message: body.Message,
-	}); err != nil {
+	body.To = helper.Config.SMTPUsername
+	body.From = body.Email
+	if err := helper.SendMail("contactmail.html", body); err != nil {
 		helper.LogEvent("ERROR", err.Error())
 		return helper.CONTACT_MAIL_ERROR
 	}

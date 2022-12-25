@@ -69,7 +69,7 @@ func (r *DatabaseInfra) SubscribeToNewsLetter(body entity.Subscriber) error {
 	if singleResult := r.NewsletterCollection.FindOne(context.TODO(), bson.M{"email": body.Email}); singleResult.Err() == nil {
 		log.Println("email found")
 		helper.LogEvent("ERROR", "user already subscribed")
-		return errors.New("already subscribed to newsletter")
+		return helper.USER_ALREADY_A_SUBSCRIBER
 	}
 
 	_, err := r.NewsletterCollection.InsertOne(context.TODO(), body)
@@ -80,9 +80,7 @@ func (r *DatabaseInfra) SubscribeToNewsLetter(body entity.Subscriber) error {
 
 	helper.LogEvent("INFO", "successfully inserted subscriber's email into database")
 
-	if err := helper.SendMail("newsletter.html", entity.EmailData{
-		To: body.Email,
-	}); err != nil {
+	if err := helper.SendMail("newsletter.html", entity.ContactMessage{To: body.Email}); err != nil {
 		helper.LogEvent("ERROR", "sending newsletter confirmation mail to client:"+err.Error())
 		return helper.NEWSLETTER_MAIL_ERROR
 	}

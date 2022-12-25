@@ -57,3 +57,58 @@ email found
 {"@timestamp":"2022-12-25T12:51:07+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
 {"@timestamp":"2022-12-25T12:51:07+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
 {"@timestamp":"2022-12-25T12:51:41+01:00","level":"ERROR","app_name":"dona-backend","message":"dial tcp: lookup smtp.gmail.com: no such host"}
+{"@timestamp":"2022-12-25T16:46:33+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-25T16:46:33+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-25T16:46:33+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-25T16:46:33+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-25T16:47:03+01:00","level":"ERROR","app_name":"dona-backend","message":"pinging mongodb"}
+{"@timestamp":"2022-12-25T16:47:03+01:00","level":"ERROR","app_name":"dona-backend","message":"MongoDB database Connection Error: server selection error: server selection timeout, current topology: { Type: Unknown, Servers: [{ Addr: localhost:27017, Type: Unknown, Last error: dial tcp [::1]:27017: connectex: No connection could be made because the target machine actively refused it. }, ] }"}
+
+{"@timestamp":"2022-12-25T16:47:26+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2022-12-25T16:47:26+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2022-12-25T16:47:26+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2022-12-25T16:47:26+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2022-12-25T16:47:27+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2022-12-25T16:47:27+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2022-12-25T16:47:27+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2022-12-25T16:47:27+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2022-12-25T15:55:20+01:00","level":"INFO","app_name":"dona-backend","message":"successfully inserted subscriber's email into database"}
+{"@timestamp":"2022-12-25T15:55:20+01:00","level":"ERROR","app_name":"dona-backend","message":"sending newsletter confirmation mail to client:dial tcp: lookup smtp.gmail.com: no such host"}
+email found
+{"@timestamp":"2022-12-25T15:57:47+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:57:53+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:34+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:52+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:53+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:53+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:53+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:53+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:58:53+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T15:59:30+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:00:44+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:00:46+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:00:46+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:00:46+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+{"@timestamp":"2022-12-25T16:01:28+01:00","level":"INFO","app_name":"dona-backend","message":"successfully inserted subscriber's email into database"}
+{"@timestamp":"2022-12-25T16:01:31+01:00","level":"INFO","app_name":"dona-backend","message":"successfully sent confirmation email to new subscriber"}
+email found
+{"@timestamp":"2022-12-25T16:02:32+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:02:59+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:03:59+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}
+email found
+{"@timestamp":"2022-12-25T16:04:23+01:00","level":"ERROR","app_name":"dona-backend","message":"user already subscribed"}

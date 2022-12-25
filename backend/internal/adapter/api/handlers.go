@@ -61,10 +61,13 @@ func (hdl *HTTPHandler) SubscribeToNewLetter(c *gin.Context) {
 	}
 
 	if err := hdl.Service.SubscribeToNewsLetter(body); err != nil {
-		if !errors.Is(err, helper.NEWSLETTER_MAIL_ERROR) {
-			c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
+		if errors.Is(err, helper.USER_ALREADY_A_SUBSCRIBER) {
+			c.AbortWithStatusJSON(400, gin.H{"error": err.Error()})
 			return
 		}
+
+		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
+		return
 	}
 
 	c.JSON(200, gin.H{"message": "success!"})

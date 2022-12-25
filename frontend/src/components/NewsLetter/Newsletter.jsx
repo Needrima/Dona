@@ -3,16 +3,29 @@ import {customerAxiosInstance} from '../../axios/axios'
 import './newsletter.scss'
 
 const Newsletter = () => {
-  const [email, setEmail] = useState({
+  const [emailAddr, setEmailAddr] = useState({
     email: ''
   })
+  const {email} = emailAddr;
 
-  const subscribe = () => {
-    customerAxiosInstance.post('/subscribe', email)
-    .then(res => {if (res.status === 200) alert('subscription successful')})
-    .catch(err => {
-      console.log(err.response.data)
+  const [btnDisabled, setBtnDisabled] = useState(false)
+
+  const subscribe = (e) => {
+    e.preventDefault();
+    setBtnDisabled(true);
+    customerAxiosInstance.post('/subscribe', emailAddr)
+    .then(res => {
+      if (res.status === 200) {
+        alert('subscription successful')
+      }      
+      setBtnDisabled(false);
     })
+    .catch(err => {
+      alert(err.response.data.error)
+      setBtnDisabled(false);
+    })
+
+    setEmailAddr({email: ''})
   }
   
   return (
@@ -23,8 +36,8 @@ const Newsletter = () => {
       </div>
 
       <div className="form">
-        <input type="text" placeholder='Enter your email address' onChange={(e) => setEmail({email: e.target.value})} />
-        <button onClick={subscribe}>Sign Up</button>
+        <input type="text" value={email} placeholder='Enter your email address' onChange={(e) => setEmailAddr({email: e.target.value})} />
+        <button disabled={btnDisabled} onClick={subscribe}>Sign Up</button>
       </div>
     </section>
   )
