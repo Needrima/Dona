@@ -7,4 +7,5 @@ type Service interface {
 	GetProduct(amount int) (interface{}, error)
 	SubscribeToNewsLetter(body entity.Subscriber) error
 	GetProductByRef(ref string) (interface{}, error)
+	SendContactMail(body entity.ContactMessage) error
 }

@@ -30,6 +30,7 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 	router.Group("/customer")
 	{
 		router.POST("/customer/subscribe", handler.SubscribeToNewLetter)
+		router.POST("/customer/send-contact-mail", handler.SendContactMail)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {
