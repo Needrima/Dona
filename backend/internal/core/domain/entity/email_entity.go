@@ -9,7 +9,7 @@ type Subscriber struct {
 
 type ContactMessage struct {
 	Name    string `json:"name" binding:"required"`
-	Email   string `json:"email" binding:"email"` //
+	Email   string `json:"email" binding:"email"` // email from contact message
 	Message string `json:"message" binding:"required"`
 	To      string // Receiver's email address
 	From    string // Sender's email address

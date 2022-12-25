@@ -10,8 +10,7 @@ const Newsletter = () => {
 
   const [btnDisabled, setBtnDisabled] = useState(false)
 
-  const subscribe = (e) => {
-    e.preventDefault();
+  const subscribe = () => {
     setBtnDisabled(true);
     customerAxiosInstance.post('/subscribe', emailAddr)
     .then(res => {
