@@ -8,4 +8,5 @@ type Service interface {
 	SubscribeToNewsLetter(body entity.Subscriber) error
 	GetProductByRef(ref string) (interface{}, error)
 	SendContactMail(body entity.ContactMessage) error
+	GetCartItems(ids []string) (interface{}, error)
 }

@@ -49,3 +49,14 @@ func (r *backendService) SendContactMail(body entity.ContactMessage) error {
 
 	return nil
 }
+
+func (r *backendService) GetCartItems(ids []string) (interface{}, error) {
+	idHexes := []primitive.ObjectID{}
+
+	for _, id := range ids {
+		idHex, _ := primitive.ObjectIDFromHex(id)
+		idHexes = append(idHexes, idHex)
+	}
+
+	return r.Repository.GetCartItems(idHexes)
+}

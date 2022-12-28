@@ -38,18 +38,16 @@ func (r *DatabaseInfra) GetProduct(amount int) (interface{}, error) {
 		helper.LogEvent("ERROR", err.Error())
 		return nil, errors.New("something went wrong")
 	}
+	defer cursor.Close(context.TODO())
 
-	var data []entity.Product
+	var products []entity.Product
 
-	for cursor.Next(context.TODO()) {
-		var d entity.Product
-
-		cursor.Decode(&d)
-
-		data = append(data, d)
+	if err := cursor.All(context.TODO(), &products); err != nil {
+		helper.LogEvent("ERROR", "decoding products in method getproduct: "+err.Error())
+		return nil, errors.New("something went wrong")
 	}
 
-	return data, nil
+	return products, nil
 }
 
 func (r *DatabaseInfra) CreateProduct(product entity.Product) (interface{}, error) {
@@ -120,4 +118,45 @@ func (r *DatabaseInfra) GetProductByRef(ref string) (interface{}, error) {
 	}
 
 	return product, nil
+}
+
+func (r *DatabaseInfra) GetCartItems(ids []primitive.ObjectID) (interface{}, error) {
+	matchStage := bson.M{
+		"$match": bson.M{
+			"_id": bson.M{
+				"$in": ids,
+			},
+		},
+	}
+
+	// unwindStage := bson.M{
+	// 	"$unwind": "$img_names",
+	// }
+
+	projectStage := bson.M{
+		"$project": bson.M{
+			"brand":      0,
+			"category":   0,
+			"colours":    0,
+			"created_at": 0,
+			"desc":       0,
+			"rating":     0,
+		},
+	}
+
+	cursor, err := r.ProductCollection.Aggregate(context.TODO(), []bson.M{matchStage, projectStage})
+	if err != nil {
+		helper.LogEvent("ERROR", "getting cart items: "+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	defer cursor.Close(context.TODO())
+
+	var products []entity.Product
+
+	if err := cursor.All(context.TODO(), &products); err != nil {
+		helper.LogEvent("ERROR", "decoding products in method getcartitems: "+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+
+	return products, nil
 }

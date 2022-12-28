@@ -100,3 +100,20 @@ func (hdl *HTTPHandler) SendContactMail(c *gin.Context) {
 
 	c.JSON(200, gin.H{"message": "success!"})
 }
+
+func (hdl *HTTPHandler) GetCartItems(c *gin.Context) {
+	ids := []string{}
+
+	if err := c.BindJSON(&ids); err != nil {
+		c.AbortWithStatusJSON(400, gin.H{"error": "invalid payload body"})
+		return
+	}
+
+	products, err := hdl.Service.GetCartItems(ids)
+	if err != nil {
+		c.AbortWithStatusJSON(500, gin.H{"error": "something went wrong"})
+		return
+	}
+
+	c.JSON(200, products)
+}
