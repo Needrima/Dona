@@ -31,7 +31,7 @@ const CartAdd = () => {
             </tr>
 
           </table>
-          <button>Procees to Checkout</button>
+          <button>Proceed to checkout</button>
         </div>
     </section>
   )

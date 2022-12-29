@@ -1,10 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect} from 'react'
 import Layout from '../components/Layout/Layout'
 import CartLayout from '../components/CartComponents/CartLayout'
 import { productAxiosInstance } from '../axios/axios'
 import { AppContext } from '../App'
 
-// export const CartContext = React.createContext()
 const Cart = () => {
   const {cartItems, changeCartItems} = useContext(AppContext);
 

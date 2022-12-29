@@ -7,7 +7,7 @@ const DeliveryInfo = ({setDelInfo}) => {
     <div id='delivery-info'>
         <div className='modal-header'>
             <div>Delivery Info</div>
-            <div onClick={() => setDelInfo(false)}>X</div>
+            <div onClick={() => setDelInfo(false)} id='close'>X</div>
         </div>
 
         <ul>
