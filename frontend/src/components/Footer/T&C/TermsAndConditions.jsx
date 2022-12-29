@@ -7,7 +7,7 @@ const TermsAndConditions = ({setShowTandC}) => {
     <div id='t-c-info'>
         <div className='modal-header'>
             <div>Terms and Conditions</div>
-            <div onClick={() => setShowTandC(false)}>X</div>
+            <div onClick={() => setShowTandC(false)} id='close'>X</div>
         </div>
 
         <ul>

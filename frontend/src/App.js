@@ -55,8 +55,10 @@ function App() {
     })
 
     changeCartItems(cartItems)
+    window.localStorage.setItem('dona-cart-items', JSON.stringify(cartItems))
   }
 
+  // adds a new item(item id, quantity and size) to cart items
   const AddToCart = (id, quantity, size) => {
     const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
 
