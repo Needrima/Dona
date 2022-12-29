@@ -1,8 +1,12 @@
 import React from 'react'
 import './cartitem.scss'
 import CartItem from './CartItem'
+import { useContext } from 'react'
+import { AppContext } from '../../../App'
 
 const CartItems = () => {
+  const {cartItems} = useContext(AppContext);
+
   return (
     <section id="cart" className="section-p1">
      <table width='100%'>
@@ -19,10 +23,7 @@ const CartItems = () => {
         </thead>
 
         <tbody>
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {cartItems.length !== 0 ? cartItems.map((item, index) => <CartItem key={index} data={item} />) : null}
         </tbody>
      </table>
     </section>

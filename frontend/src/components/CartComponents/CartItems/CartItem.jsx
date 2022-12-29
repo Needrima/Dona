@@ -1,19 +1,23 @@
 import React from 'react'
+import { useContext } from 'react'
+import { AppContext } from '../../../App'
 
-const CartItem = () => {
+const CartItem = ({data}) => {
+  const {RemoveFromCart, setItemProp} = useContext(AppContext)
+
   return (
     <tr>
-        <td><span><i className='far fa-times-cicle'></i></span></td>
-        <td><img src={require('../../../assets/images/products/white-t-shirt.jpg')} alt="" /></td>
-        <td>Plain Roundneck T-shirt</td>
-        <td>NGN 3000</td>
+        <td onClick={() => RemoveFromCart(data['id'])}><span><i className="fa fa-times-circle" aria-hidden="true"></i></span></td>
+        <td>{data['img_names'] && <img src={require(`../../../assets/images/products/${data['img_names'][0]}`)} alt="product image" />}</td>
+        <td>{data['name']}</td>
+        <td>NGN {data['price']}</td>
         <td>
-            <select name="" id="">
-                <option value="S">S</option>
+            <select value={data['size']} onChange={(e) => setItemProp(data['id'], 'size', e.target.value)}>
+                {data['sizes'] && data['sizes'].map(size => <option value={size}>{size}</option>)}
             </select>
         </td>
-        <td><input type="number" value={1}/></td>
-        <td>NGN 3000</td>
+        <td><input type="number" value={parseInt(data['quantity'])} onChange={(e) => setItemProp(data['id'], 'quantity', e.target.value)} /></td>
+        <td>NGN {data['subtotal']}</td>
     </tr>
   )
 }

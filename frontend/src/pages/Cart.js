@@ -1,25 +1,33 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import Layout from '../components/Layout/Layout'
 import CartLayout from '../components/CartComponents/CartLayout'
 import { productAxiosInstance } from '../axios/axios'
+import { AppContext } from '../App'
 
+// export const CartContext = React.createContext()
 const Cart = () => {
-  const [state, setState] = useState({
-    cartItems: [],
-  })
+  const {cartItems, changeCartItems} = useContext(AppContext);
 
   useEffect(() => {
-    const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
-    if (cart_items !== null && cart_items.length !== 0) {
-      const ids = []
-      cart_items.forEach(item => ids.push(item.id))
+    (async () => {
+      if (cartItems !== null && cartItems.length !== 0) {
+        const ids = []
+        cartItems.forEach(item => ids.push(item.id))
 
-      productAxiosInstance.post('/cart-items', ids)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err))
-      setState(state => ({...state, cartItems: cart_items}))
-    }
-  }, [])
+        const res = await productAxiosInstance.post('/cart-items', ids)
+        const data = res.data
+        cartItems.forEach((item, index) => {
+          item['img_names'] = data[index]['img_names']
+          item['name'] = data[index]['name']
+          item['price'] = data[index]['price']
+          item['sizes'] = data[index]['sizes']
+          item['subtotal'] = item['price'] * item['quantity']
+        })
+
+        changeCartItems(cartItems)
+      }
+    })()
+  }, [cartItems])
   
   return (
     <Layout>
