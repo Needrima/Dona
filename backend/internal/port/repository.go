@@ -1,10 +1,14 @@
 package ports
 
-import "Dona/backend/internal/core/domain/entity"
+import (
+	"Dona/backend/internal/core/domain/entity"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Repository interface {
 	CreateProduct(product entity.Product) (interface{}, error)
 	GetProduct(amount int) (interface{}, error)
 	SubscribeToNewsLetter(body entity.Subscriber) error
 	GetProductByRef(ref string) (interface{}, error)
+	GetCartItems(ids []primitive.ObjectID) (interface{}, error)
 }

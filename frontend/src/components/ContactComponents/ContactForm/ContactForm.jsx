@@ -9,6 +9,8 @@ const ContactForm = () => {
     message: '',
   })
 
+  const {name, email, message} =  state;
+
   const handleFormChange = (e) => {
     setState(state => ({
       ...state,
@@ -16,13 +18,26 @@ const ContactForm = () => {
     }))
   }
 
-  const sendMessage = () => {
-    console.log(state)
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
+  const sendMessage = () => {
+    setBtnDisabled(true);
     customerAxiosInstance.post('/send-contact-mail', state)
-    .then(res => {if (res.status === 200) alert('message sent')})
+    .then(res => {
+      if (res.status === 200) {
+        alert('message sent')
+      }
+      setBtnDisabled(false)
+    })
     .catch(err => {
       alert(err.response.data['error'])
+      setBtnDisabled(false)
+    })
+
+    setState({
+      name: '',
+      email: '',
+      message: '',
     })
   }
 
@@ -30,10 +45,10 @@ const ContactForm = () => {
     <section id="form-details" className='section-p1'>
         <div className='form'>
             <span>Leave us a message</span>
-            <input type="text" name="name" id="" placeholder='Your Name' onChange={handleFormChange} />
-            <input type="email" name="email" id="" placeholder='E-mail' onChange={handleFormChange} />
-            <textarea name="message" id="" cols="30" rows="10" placeholder='Your Message' onChange={handleFormChange}></textarea>
-            <button onClick={sendMessage}>Send Message</button>
+            <input type="text" name="name" value={name} placeholder='Your Name' onChange={handleFormChange} />
+            <input type="email" name="email" value={email} placeholder='E-mail' onChange={handleFormChange} />
+            <textarea name="message" value={message} cols="30" rows="10" placeholder='Your Message' onChange={handleFormChange}></textarea>
+            <button onClick={sendMessage} disabled={btnDisabled}>Send Message</button>
         </div>
     </section>
   )

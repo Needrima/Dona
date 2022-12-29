@@ -8,8 +8,8 @@ import (
 	"text/template"
 )
 
-// SendMail sends notification name from "from" to "to" using google smtp API
-func SendMail(tempName string, data entity.EmailData) error {
+// SendMail sends mail
+func SendMail(tempName string, data entity.ContactMessage) error {
 
 	smtpHost := Config.SMTPHost
 	smtpPort := Config.SMTPPort
@@ -53,7 +53,7 @@ func SendMail(tempName string, data entity.EmailData) error {
 	return nil
 }
 
-func getMailBody(templateName string, data entity.EmailData) (string, error) {
+func getMailBody(templateName string, data entity.ContactMessage) (string, error) {
 	tpl := template.Must(template.ParseFiles("C:/Users/SAMSUNG/Documents/goworkspace/src/Dona/backend/internal/core/helper/email-templates/" + templateName))
 
 	buf := &bytes.Buffer{}

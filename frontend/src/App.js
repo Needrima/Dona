@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {Routes, Route} from 'react-router'
+import {Routes, Route, useNavigate} from 'react-router'
 import About from "./pages/About";
-// import Blog from "./pages/Blog";
 import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -22,11 +21,40 @@ function App() {
 
   const {cartItems} = state;
 
+  // setCartItems adds a new item to cart. the item data is an object containing item id, quantity and size
   const setCartItems = (data) => {
     setState(state => ({
         ...state,
         cartItems: [...state.cartItems, data]
     }))
+  }
+
+  // changeCartItems changes the value of cartItems after 
+  //other data like item price, sizes, image names and other data
+  // has been added to each cart item
+  const changeCartItems = (data) => {
+    setState(state => ({
+        ...state,
+        cartItems: data
+    }))
+  }
+
+  // sets the prop (quantity or size) of item with id 'id' to value 'value'
+  const setItemProp = (id, prop, value) => {
+    cartItems.forEach(item => {
+      if (item.id === id) {
+        switch (prop) {
+          case 'quantity':
+            value > 0 ? item['quantity'] = value : item['quantity'] = 1;
+            item['subtotal'] = item['price'] * item['quantity'];
+            break;
+          case 'size':
+            item['size'] = value;
+        }
+      }
+    })
+
+    changeCartItems(cartItems)
   }
 
   const AddToCart = (id, quantity, size) => {
@@ -53,10 +81,13 @@ function App() {
     }
   }
 
-  const RemoveFromCart = (reference) => {
-    const remainingItems = cartItems.filter( item => item.id !== reference)
+  const navigate = useNavigate();
+
+  const RemoveFromCart = (id) => {
+    const remainingItems = cartItems.filter( item => item.id !== id)
     window.localStorage.setItem('dona-cart-items', JSON.stringify(remainingItems))
-    setCartItems(remainingItems)
+    changeCartItems(remainingItems)
+    navigate('/cart')
   }
 
   return (
@@ -64,6 +95,8 @@ function App() {
       cartItems,
       AddToCart,
       RemoveFromCart,
+      changeCartItems,
+      setItemProp,
     }}>
       <Routes>
         <Route path='/' exact element={<Home />} />
