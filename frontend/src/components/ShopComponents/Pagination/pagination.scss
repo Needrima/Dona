@@ -14,4 +14,10 @@
             font-weight: 600;
         }
     }
+
+    span:hover {
+        background-color: transparent;
+        color: #000;
+        border: 1px solid #000;
+    }
 }

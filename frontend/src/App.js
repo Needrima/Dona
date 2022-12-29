@@ -12,6 +12,7 @@ export const AppContext = React.createContext();
 function App() {
   const [state, setState] = useState({
     cartItems: [],
+    cartSubtotal: 0,
   })
 
   useEffect(() => {
@@ -19,7 +20,7 @@ function App() {
     if (cart_items !== null) setState(state => ({...state, cartItems: cart_items}))
   }, [])
 
-  const {cartItems} = state;
+  const {cartItems, cartSubtotal} = state;
 
   // setCartItems adds a new item to cart. the item data is an object containing item id, quantity and size
   const setCartItems = (data) => {
@@ -47,6 +48,7 @@ function App() {
           case 'quantity':
             value > 0 ? item['quantity'] = value : item['quantity'] = 1;
             item['subtotal'] = item['price'] * item['quantity'];
+            setCartSubtotal()
             break;
           case 'size':
             item['size'] = value;
@@ -85,11 +87,25 @@ function App() {
 
   const navigate = useNavigate();
 
+  // RemoveFromCart removes item with id 'id' from cart
   const RemoveFromCart = (id) => {
     const remainingItems = cartItems.filter( item => item.id !== id)
     window.localStorage.setItem('dona-cart-items', JSON.stringify(remainingItems))
     changeCartItems(remainingItems)
+    setCartSubtotal()
     navigate('/cart')
+  }
+
+  const setCartSubtotal = () => {
+    let subtotal = 0;
+    cartItems.forEach(item => {
+      subtotal += item['price'] * item['quantity']
+    })
+
+    setState(state => ({
+      ...state,
+      cartSubtotal: subtotal
+    }))
   }
 
   return (
@@ -99,6 +115,8 @@ function App() {
       RemoveFromCart,
       changeCartItems,
       setItemProp,
+      cartSubtotal,
+      setCartSubtotal,
     }}>
       <Routes>
         <Route path='/' exact element={<Home />} />
