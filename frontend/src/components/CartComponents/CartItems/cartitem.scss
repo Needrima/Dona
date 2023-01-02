@@ -27,14 +27,19 @@
         td:nth-child(4),
         td:nth-child(5),
         td:nth-child(6),
-        td:nth-child(7) {
+        td:nth-child(7),
+        td:nth-child(8) {
             width: 150px;
             text-align: center;
         }
 
-        td:nth-child(6) input,
-        td:nth-child(5) select {
+        td:nth-child(5) select,
+        td:nth-child(7) input {
             width: 70px;
+            padding: 10px 5px 10px 15px;
+        }
+
+        td:nth-child(6) select {
             padding: 10px 5px 10px 15px;
         }
 

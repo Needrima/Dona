@@ -16,7 +16,8 @@ const CartItems = () => {
                 <td>Image</td>
                 <td>Name</td>
                 <td>Price</td>
-                <td>Size</td>
+                <td>Size</td> 
+                <td>Colour</td>
                 <td>Quantity</td>
                 <td>Subtotal</td>
             </tr>

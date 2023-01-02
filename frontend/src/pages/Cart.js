@@ -19,15 +19,16 @@ const Cart = () => {
           item['img_names'] = data[index]['img_names']
           item['name'] = data[index]['name']
           item['price'] = data[index]['price']
+          item['colours'] = data[index]['colours']
           item['sizes'] = data[index]['sizes']
           item['subtotal'] = item['price'] * item['quantity']
         })
 
         changeCartItems(cartItems);
-        setCartSubtotal();
+        setCartSubtotal(cartItems);
       }
     })()
-  }, [cartItems, changeCartItems, setCartSubtotal])
+  }, [])
   
   return (
     <Layout>

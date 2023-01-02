@@ -1,10 +1,12 @@
 import React from 'react'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router'
 import { AppContext } from '../../../App'
 import './cartadd.scss'
 
 const CartAdd = () => {
   const {cartSubtotal} = useContext(AppContext);
+  const navigate = useNavigate();
   return (
     <section id='cart-add' className='section-p1'>
         <div id="coupon">
@@ -34,7 +36,7 @@ const CartAdd = () => {
             </tr>
 
           </table>
-          <button>Proceed to checkout</button>
+          <button onClick={() => navigate('/checkout')}>Proceed to checkout</button>
         </div>
     </section>
   )

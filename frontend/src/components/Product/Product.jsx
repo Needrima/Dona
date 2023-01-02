@@ -28,7 +28,7 @@ const Product = ({data}) => {
         <div className="des">
             <span>{data.brand}</span>
             <h5 onClick={() => navigate(`/single/${data.id}`)}>{data.name}</h5>
-            <h5 className='colour'>{data.category}</h5>
+            <h5 className='category'>{data.category}</h5>
             {/* <div className="star">
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
@@ -40,7 +40,7 @@ const Product = ({data}) => {
             <h4>NGN {data.price}</h4>
         </div>
 
-        <span onClick={() => AddToCart(data.id, 1, "M")}><i className="fal fa-shopping-cart cart"></i></span>
+        <span onClick={() => AddToCart(data.id, 1, "M", data.colours[0])}><i className="fal fa-shopping-cart cart"></i></span>
     </div> : "loading"}
     </>
   )
