@@ -13,12 +13,12 @@ const CartItem = ({data}) => {
         <td>NGN {data['price']}</td>
         <td>
             <select value={data['size']} onChange={(e) => setItemProp(data['id'], 'size', e.target.value)}>
-                {data['sizes'] && data['sizes'].map(size => <option value={size}>{size}</option>)}
+                {data['sizes'] && data['sizes'].map((size, index) => <option key={index} value={size}>{size}</option>)}
             </select>
         </td>
         <td>
             <select value={data['colour']} onChange={(e) => setItemProp(data['id'], 'colour', e.target.value)}>
-                {data['colours'] && data['colours'].map(colour => <option value={colour}>{colour}</option>)}
+                {data['colours'] && data['colours'].map((colour, index) => <option key={index} value={colour}>{colour}</option>)}
             </select>
         </td>
         <td><input type="number" value={parseInt(data['quantity'])} onChange={(e) => setItemProp(data['id'], 'quantity', e.target.value)} /></td>

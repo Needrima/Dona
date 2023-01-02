@@ -4,6 +4,7 @@ import (
 	"Dona/backend/internal/core/domain/entity"
 	"Dona/backend/internal/core/helper"
 	"errors"
+	"fmt"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -116,4 +117,17 @@ func (hdl *HTTPHandler) GetCartItems(c *gin.Context) {
 	}
 
 	c.JSON(200, products)
+}
+
+func (hdl *HTTPHandler) CreateOrder(c *gin.Context) {
+	var order entity.Order
+
+	if err := c.BindJSON(&order); err != nil {
+		helper.LogEvent("ERROR", "binding order error: "+err.Error())
+		c.JSON(400, gin.H{"error": "invalid payload body"})
+		return
+	}
+
+	fmt.Println(order)
+	c.JSON(200, gin.H{"success": "order placed"})
 }

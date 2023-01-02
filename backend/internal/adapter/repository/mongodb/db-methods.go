@@ -129,15 +129,10 @@ func (r *DatabaseInfra) GetCartItems(ids []primitive.ObjectID) (interface{}, err
 		},
 	}
 
-	// unwindStage := bson.M{
-	// 	"$unwind": "$img_names",
-	// }
-
 	projectStage := bson.M{
 		"$project": bson.M{
 			"brand":      0,
 			"category":   0,
-			"colours":    0,
 			"created_at": 0,
 			"desc":       0,
 			"rating":     0,
@@ -159,4 +154,8 @@ func (r *DatabaseInfra) GetCartItems(ids []primitive.ObjectID) (interface{}, err
 	}
 
 	return products, nil
+}
+
+func (r *DatabaseInfra) CreateOrder(order entity.Order) (interface{}, error) {
+	return nil, nil
 }

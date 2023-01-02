@@ -9,4 +9,5 @@ type Service interface {
 	GetProductByRef(ref string) (interface{}, error)
 	SendContactMail(body entity.ContactMessage) error
 	GetCartItems(ids []string) (interface{}, error)
+	CreateOrder(order entity.Order) (interface{}, error)
 }

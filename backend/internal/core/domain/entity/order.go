@@ -1,11 +1,20 @@
 package entity
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
-
 type Order struct {
-	OrderID              primitive.ObjectID `json:"id" bson:"_id"`
-	CartItems            []CartItem         `json:"cart_items" bson:"cart_items" binding:"required"`
-	RecipientPhoneNumber string             `json:"rec_phone_number" bson:"rec_phone_number" binding:"required"`
-	RecipientEmail       string             `json:"rec_email" bson:"rec_email" binding:"required"`
-	RecipientAddress     string             `json:"rec_addr" bson:"rec_addr" binding:"required"`
+	CartItems []struct {
+		ID       string  `json:"id" bson:"id" binding:"required"`
+		Colour   string  `json:"colour" bson:"colour" binding:"required"`
+		Price    float64 `json:"price" bson:"price" binding:"required"`
+		Quantity float64 `json:"quantity" bson:"quantity" binding:"required"`
+		Size     float64 `json:"size" bson:"size" binding:"required"`
+		Subtotal float64 `json:"subtotal" bson:"subtotal" binding:"required"`
+	} `json:"cartItems" bson:"cartItems" binding:"required"`
+	CartSubtotal float64 `json:"cartSubtotal" bson:"cartSubtotal" binding:"required"`
+	DeliveryInfo struct {
+		RecipientName        string `json:"name" bson:"name" binding:"required"`
+		RecipientEmail       string `json:"email" bson:"email" binding:"required"`
+		RecipientPhoneNumber string `json:"phone" bson:"phone" binding:"required"`
+		RecipientAddress     string `json:"address" bson:"address" binding:"required"`
+		OptionalMsg          string `json:"message" bson:"message"`
+	}
 }
