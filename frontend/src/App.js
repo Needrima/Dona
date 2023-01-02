@@ -56,6 +56,7 @@ function App() {
             break;
           case 'size':
             item['size'] = value;
+            break
           case 'colour':
             item['colour'] = value;
         }

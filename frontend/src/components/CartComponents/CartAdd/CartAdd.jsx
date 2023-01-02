@@ -20,20 +20,23 @@ const CartAdd = () => {
         <div id="subtotal">
           <h3>Cart Totals</h3>
           <table>
-            <tr>
-              <td>Cart Subtotal</td>
-              <td>NGN {cartSubtotal}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>Cart Subtotal</td>
+                <td>NGN {cartSubtotal}</td>
+              </tr>
 
-            <tr>
-              <td>Shipping</td>
-              <td>NGN1500</td>
-            </tr>
+              <tr>
+                <td>Shipping</td>
+                <td>NGN1500</td>
+              </tr>
 
-            <tr>
-              <td><strong>Total</strong></td>
-              <td><strong>NGN {cartSubtotal + 1500}</strong></td>
-            </tr>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>NGN {cartSubtotal + 1500}</strong></td>
+              </tr>
+            </tbody>
+            
 
           </table>
           <button onClick={() => navigate('/checkout')}>Proceed to checkout</button>

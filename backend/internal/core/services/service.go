@@ -19,27 +19,27 @@ func NewService(repository ports.Repository) *backendService {
 	}
 }
 
-func (r *backendService) GetProduct(amount int) (interface{}, error) {
-	return r.Repository.GetProduct(amount)
+func (s *backendService) GetProduct(amount int) (interface{}, error) {
+	return s.Repository.GetProduct(amount)
 }
 
-func (r *backendService) CreateProduct(product entity.Product) (interface{}, error) {
+func (s *backendService) CreateProduct(product entity.Product) (interface{}, error) {
 	product.ProductID = primitive.NewObjectID()
 	product.CreatedAt = helper.ParseTimeToString(time.Now())
 
-	return r.Repository.CreateProduct(product)
+	return s.Repository.CreateProduct(product)
 }
 
-func (r *backendService) SubscribeToNewsLetter(body entity.Subscriber) error {
+func (s *backendService) SubscribeToNewsLetter(body entity.Subscriber) error {
 	body.ID = primitive.NewObjectID()
-	return r.Repository.SubscribeToNewsLetter(body)
+	return s.Repository.SubscribeToNewsLetter(body)
 }
 
-func (r *backendService) GetProductByRef(ref string) (interface{}, error) {
-	return r.Repository.GetProductByRef(ref)
+func (s *backendService) GetProductByRef(ref string) (interface{}, error) {
+	return s.Repository.GetProductByRef(ref)
 }
 
-func (r *backendService) SendContactMail(body entity.ContactMessage) error {
+func (s *backendService) SendContactMail(body entity.ContactMessage) error {
 	body.To = helper.Config.SMTPUsername
 	body.From = body.Email
 	if err := helper.SendMail("contactmail.html", body); err != nil {
@@ -50,7 +50,7 @@ func (r *backendService) SendContactMail(body entity.ContactMessage) error {
 	return nil
 }
 
-func (r *backendService) GetCartItems(ids []string) (interface{}, error) {
+func (s *backendService) GetCartItems(ids []string) (interface{}, error) {
 	idHexes := []primitive.ObjectID{}
 
 	for _, id := range ids {
@@ -58,5 +58,9 @@ func (r *backendService) GetCartItems(ids []string) (interface{}, error) {
 		idHexes = append(idHexes, idHex)
 	}
 
-	return r.Repository.GetCartItems(idHexes)
+	return s.Repository.GetCartItems(idHexes)
+}
+
+func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
+	return s.Repository.CreateOrder(order)
 }

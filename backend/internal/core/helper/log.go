@@ -22,7 +22,7 @@ func InitializeLog() {
 	log.SetOutput(f)
 }
 
-//level can be INFO or ERROR
+// level can be INFO or ERROR
 func LogEvent(level string, message interface{}) {
 
 	data, err := json.Marshal(struct {
