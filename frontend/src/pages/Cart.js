@@ -5,7 +5,7 @@ import { productAxiosInstance } from '../axios/axios'
 import { AppContext } from '../App'
 
 const Cart = () => {
-  const {cartItems, changeCartItems} = useContext(AppContext);
+  const {cartItems, changeCartItems, setCartSubtotal} = useContext(AppContext);
 
   useEffect(() => {
     (async () => {
@@ -19,14 +19,16 @@ const Cart = () => {
           item['img_names'] = data[index]['img_names']
           item['name'] = data[index]['name']
           item['price'] = data[index]['price']
+          item['colours'] = data[index]['colours']
           item['sizes'] = data[index]['sizes']
           item['subtotal'] = item['price'] * item['quantity']
         })
 
-        changeCartItems(cartItems)
+        changeCartItems(cartItems);
+        setCartSubtotal(cartItems);
       }
     })()
-  }, [cartItems])
+  }, [])
   
   return (
     <Layout>

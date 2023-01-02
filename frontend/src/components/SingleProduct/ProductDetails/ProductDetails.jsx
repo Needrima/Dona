@@ -5,6 +5,7 @@ import './productdetails.scss'
 
 const ProductDetails = () => {
     const {singleProduct} = useContext(SingleProductContext)
+    console.log(singleProduct)
     const {AddToCart} = useContext(AppContext);
 
     const mainImgRef = useRef();
@@ -14,9 +15,10 @@ const ProductDetails = () => {
 
     const [state, setState] = useState({
         qty: 1,
-        size: 'S'
+        size: 'S',
+        colour: singleProduct && singleProduct['colours'][0] 
     })
-    const {qty, size} = state;
+    const {qty, size, colour} = state;
 
   return (
     <>
@@ -64,11 +66,19 @@ const ProductDetails = () => {
                     {singleProduct.sizes.map((size, index) => <option key={index} value={size}>{size}</option>)}
                 </select>
 
+                <span>Select Colour:</span>
+                <select value={colour} onChange={(e) => setState(state => ({
+                    ...state,
+                    colour: e.target.value 
+                }))}>
+                    {singleProduct.colours.map((colour, index) => <option key={index} value={colour}>{colour}</option>)}
+                </select>
+
                 <input type="number" value={qty} onChange={(e) => setState(state => ({
                     ...state,
                     qty: e.target.value > 0 ? parseInt(e.target.value) : 1
                 }))} />
-                <button onClick={() => AddToCart(singleProduct.id, qty, size)}>Add To Cart</button>
+                <button onClick={() => AddToCart(singleProduct.id, qty, size, colour)}>Add To Cart</button>
                 <h4>Product Details</h4>
                 <span>{singleProduct.desc}</span>
             </div>

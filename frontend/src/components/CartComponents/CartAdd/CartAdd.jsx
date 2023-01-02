@@ -1,7 +1,12 @@
 import React from 'react'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router'
+import { AppContext } from '../../../App'
 import './cartadd.scss'
 
 const CartAdd = () => {
+  const {cartSubtotal} = useContext(AppContext);
+  const navigate = useNavigate();
   return (
     <section id='cart-add' className='section-p1'>
         <div id="coupon">
@@ -17,7 +22,7 @@ const CartAdd = () => {
           <table>
             <tr>
               <td>Cart Subtotal</td>
-              <td>NGN 12000</td>
+              <td>NGN {cartSubtotal}</td>
             </tr>
 
             <tr>
@@ -27,11 +32,11 @@ const CartAdd = () => {
 
             <tr>
               <td><strong>Total</strong></td>
-              <td><strong>NGN 13500</strong></td>
+              <td><strong>NGN {cartSubtotal + 1500}</strong></td>
             </tr>
 
           </table>
-          <button>Proceed to checkout</button>
+          <button onClick={() => navigate('/checkout')}>Proceed to checkout</button>
         </div>
     </section>
   )

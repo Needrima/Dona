@@ -16,6 +16,11 @@ const CartItem = ({data}) => {
                 {data['sizes'] && data['sizes'].map(size => <option value={size}>{size}</option>)}
             </select>
         </td>
+        <td>
+            <select value={data['colour']} onChange={(e) => setItemProp(data['id'], 'colour', e.target.value)}>
+                {data['colours'] && data['colours'].map(colour => <option value={colour}>{colour}</option>)}
+            </select>
+        </td>
         <td><input type="number" value={parseInt(data['quantity'])} onChange={(e) => setItemProp(data['id'], 'quantity', e.target.value)} /></td>
         <td>NGN {data['subtotal']}</td>
     </tr>
