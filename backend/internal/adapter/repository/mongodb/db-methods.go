@@ -174,7 +174,7 @@ func (r *DatabaseInfra) DeleteOrder(id string) (interface{}, error) {
 	idHex, _ := primitive.ObjectIDFromHex(id)
 	_, err := r.OrderCollection.DeleteOne(context.TODO(), bson.M{"_id": idHex})
 	if err != nil {
-		helper.LogEvent("ERROR", fmt.Sprintf("deleting order with id{%v} since payment was not successful: %v",id, err.Error()))
+		helper.LogEvent("ERROR", fmt.Sprintf("deleting order with id{%v} since payment was not successful: %v", id, err.Error()))
 		return nil, errors.New("something went wrong")
 	}
 

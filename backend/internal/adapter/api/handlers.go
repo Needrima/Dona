@@ -149,5 +149,5 @@ func (hdl *HTTPHandler) DeleteOrder(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, gin.H{"message": "deleted order with id: "+id})
+	c.JSON(200, gin.H{"message": "deleted order with id: " + id})
 }

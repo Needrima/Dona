@@ -30,7 +30,7 @@ type Order struct {
 }
 
 func (o *Order) Validate() error {
-	var cartSubtotal float64 = 1500 // initialize cart subtotal with delivery fee
+	var cartSubtotal float64 // initialize cart subtotal with delivery fee
 
 	for _, item := range o.CartItems {
 		s := item.Price * float64(item.Quantity)

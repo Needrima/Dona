@@ -63,10 +63,12 @@ func (s *backendService) GetCartItems(ids []string) (interface{}, error) {
 
 func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 	order.ID = primitive.NewObjectID()
-	
+
 	if err := order.Validate(); err != nil {
 		return nil, err
 	}
+
+	order.CartSubtotal += 1500 // add 1500 for delivery fee
 
 	return s.Repository.CreateOrder(order)
 }

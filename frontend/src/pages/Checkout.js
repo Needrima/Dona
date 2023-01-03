@@ -12,24 +12,26 @@ const Checkout = () => {
   }
 
   const placeOrder = (deliveryInfo) => {
-    let orderDetails = {cartItems, cartSubtotal, deliveryInfo}
-    productAxiosInstance.post('/order', orderDetails)
-    .then(res => {
-      if (res.status === 200){ 
-        console.log(res.data)
-
+    let orderDetails = {cartItems, cartSubtotal, deliveryInfo};
+    
+    (async () => {
+      try {
+        const res = await productAxiosInstance.post('/order', orderDetails)
+        console.log(res.data);
+        console.log('proceeding to payment');
         // go to payment
         let handler = window.PaystackPop.setup({
           key: 'pk_test_0e5f4cfe0f60cbc0b25995c05a75a448b88c1896', // Replace with your public key
-          //email: email,
+          email: deliveryInfo.email,
           amount: (cartSubtotal + 1500) * 100, // subtotal + delivery fee multiplied by 100 to convert to base currency (kobo)
           ref: ''+res.data.id, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-          label: "Optional string that replaces customer email",
+          // label: "Optional string that replaces customer email",
           onClose: function(){
             alert('payment unsuccessful, try later');
             productAxiosInstance.delete(`/order/${res.data.id}`)
             .then(res => console.log(res.data))
             .catch(err => console.info(err))
+            window.location.href = '/cart'
           },
           callback: function(response){
             let message = 'Payment complete! Reference: '+response.reference;
@@ -40,9 +42,11 @@ const Checkout = () => {
           }
         });
         handler.openIframe();
+
+      }catch(err) {
+        console.log(err)
       }
-    })
-    .catch(err => console.info(err.response))
+    })()
   }
   
   return (

@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
-import { AppContext } from '../../App'
 import { CheckoutContext } from '../../pages/Checkout'
 import './style.scss'
 
 const CheckoutLayout = () => {
     const {placeOrder} = useContext(CheckoutContext);
-    const {cartSubtotal} = useContext(AppContext);
 
-    const [state, setState] = useState({
+    const [delInfo, setDelInfo] = useState({
         name: '',
         phone: '',
         email: '',
@@ -16,10 +14,10 @@ const CheckoutLayout = () => {
         message: '',
       })
     
-      const {name, phone, address, email, message} =  state;
+      const {name, phone, address, email, message} =  delInfo;
     
       const handleFormChange = (e) => {
-        setState(state => ({
+        setDelInfo(state => ({
           ...state,
           [e.target.name]: e.target.value,
         }))
@@ -28,14 +26,14 @@ const CheckoutLayout = () => {
       const [btnDisabled, setBtnDisabled] = useState(false);
     
       const proceedToPayment = () => {
+        console.log('clicked')
         setBtnDisabled(true);
-
         // place order
-        placeOrder(state)
+        placeOrder(delInfo)
 
         setBtnDisabled(false);
     
-        setState({
+        setDelInfo({
           name: '',
           phone: '',
           email: '',
