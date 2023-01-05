@@ -10,5 +10,5 @@ type Service interface {
 	SendContactMail(body entity.ContactMessage) error
 	GetCartItems(ids []string) (interface{}, error)
 	CreateOrder(order entity.Order) (interface{}, error)
-	DeleteOrder(id string) (interface{}, error)
+	UpdateOrderPayment(id string) (interface{}, error)
 }

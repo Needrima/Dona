@@ -1,26 +1,43 @@
-ERROR invalid cart subtotal: expected{13500.000000} got {12000.000000}
-{"@timestamp":"2023-01-03T19:16:06+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-03T19:16:06+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-03T19:16:06+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-03T19:16:06+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-03T19:16:07+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-03T19:16:07+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-03T19:16:07+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-03T19:16:07+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
-ERROR invalid cart subtotal: expected{13500.000000} got {12000.000000}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-03T19:21:18+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-03T19:28:58+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2023-01-05T10:58:29+01:00","level":"ERROR","app_name":"dona-backend","message":"binding order error: json: cannot unmarshal string into Go struct field .cartItems.quantity of type int"}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-05T11:03:26+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-05T11:47:33+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-05T11:52:36+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2023-01-05T11:53:50+01:00","level":"ERROR","app_name":"dona-backend","message":"updating order payment with id{63b6ac0936a3025c0d7bec5f} not successful: update document must contain key beginning with '$'"}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-05T11:55:27+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}
+{"@timestamp":"2023-01-05T11:56:00+01:00","level":"ERROR","app_name":"dona-backend","message":"updating order payment with id{63b6acabc6db8054a1d72b69} not successful: write exception: write errors: [Unknown modifier: $paymentStatus. Expected a valid update modifier or pipeline-style update specified as an array]"}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-05T11:58:50+01:00","level":"INFO","app_name":"dona-backend","message":"server started"}

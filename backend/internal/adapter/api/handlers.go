@@ -140,10 +140,10 @@ func (hdl *HTTPHandler) CreateOrder(c *gin.Context) {
 	c.JSON(200, gin.H{"id": id})
 }
 
-func (hdl *HTTPHandler) DeleteOrder(c *gin.Context) {
+func (hdl *HTTPHandler) UpdateOrderPayment(c *gin.Context) {
 	id := c.Param("id")
 
-	_, err := hdl.Service.DeleteOrder(id)
+	_, err := hdl.Service.UpdateOrderPayment(id)
 	if err != nil {
 		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
 		return

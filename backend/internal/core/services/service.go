@@ -73,6 +73,6 @@ func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 	return s.Repository.CreateOrder(order)
 }
 
-func (s *backendService) DeleteOrder(id string) (interface{}, error) {
-	return s.Repository.DeleteOrder(id)
+func (s *backendService) UpdateOrderPayment(id string) (interface{}, error) {
+	return s.Repository.UpdateOrderPayment(id)
 }

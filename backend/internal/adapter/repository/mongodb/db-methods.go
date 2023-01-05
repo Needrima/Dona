@@ -170,11 +170,11 @@ func (r *DatabaseInfra) CreateOrder(order entity.Order) (interface{}, error) {
 	return order.ID.Hex(), nil
 }
 
-func (r *DatabaseInfra) DeleteOrder(id string) (interface{}, error) {
+func (r *DatabaseInfra) UpdateOrderPayment(id string) (interface{}, error) {
 	idHex, _ := primitive.ObjectIDFromHex(id)
-	_, err := r.OrderCollection.DeleteOne(context.TODO(), bson.M{"_id": idHex})
+	_, err := r.OrderCollection.UpdateOne(context.TODO(), bson.M{"_id": idHex}, bson.M{"$set": bson.M{"paymentStatus": "PAID"}})
 	if err != nil {
-		helper.LogEvent("ERROR", fmt.Sprintf("deleting order with id{%v} since payment was not successful: %v", id, err.Error()))
+		helper.LogEvent("ERROR", fmt.Sprintf("updating order payment with id{%v} not successful: %v", id, err.Error()))
 		return nil, errors.New("something went wrong")
 	}
 

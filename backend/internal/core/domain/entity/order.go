@@ -20,6 +20,8 @@ type Order struct {
 		Subtotal float64 `json:"subtotal" bson:"subtotal" binding:"required"`
 	} `json:"cartItems" bson:"cartItems" binding:"required"`
 	CartSubtotal float64 `json:"cartSubtotal" bson:"cartSubtotal" binding:"required"`
+	DeliverStatus string `json:"deliveryStatus" bson:"deliveryStatus" binding:"required,eq=DELIVERED|eq=UNDELIVERED"` 
+	PaymentStatus string `json:"paymentStatus" bson:"paymentStatus" binding:"required,eq=PAID|eq=UNPAID"`
 	DeliveryInfo struct {
 		RecipientName        string `json:"name" bson:"name" binding:"required"`
 		RecipientEmail       string `json:"email" bson:"email" binding:"email"`

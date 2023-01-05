@@ -12,7 +12,7 @@ const Checkout = () => {
   }
 
   const placeOrder = (deliveryInfo) => {
-    let orderDetails = {cartItems, cartSubtotal, deliveryInfo};
+    let orderDetails = {cartItems, cartSubtotal, deliveryInfo, deliveryStatus: "UNDELIVERED", paymentStatus: "UNPAID"};
     
     (async () => {
       try {
@@ -28,14 +28,15 @@ const Checkout = () => {
           // label: "Optional string that replaces customer email",
           onClose: function(){
             alert('payment unsuccessful, try later');
-            productAxiosInstance.delete(`/order/${res.data.id}`)
-            .then(res => console.log(res.data))
-            .catch(err => console.info(err))
-            window.location.href = '/cart'
           },
           callback: function(response){
             let message = 'Payment complete! Reference: '+response.reference;
             alert(message);
+            
+            productAxiosInstance.put(`/order/update-payment/${res.data.id}`)
+            .then(res => console.log(res.data))
+            .catch(err => console.info(err))
+            
             window.localStorage.setItem('dona-cart-items', JSON.stringify([]))
             changeCartItems([])
             window.location.href = '/'

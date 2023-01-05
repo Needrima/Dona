@@ -12,5 +12,5 @@ type Repository interface {
 	GetProductByRef(id string) (interface{}, error)
 	GetCartItems(ids []primitive.ObjectID) (interface{}, error)
 	CreateOrder(order entity.Order) (interface{}, error)
-	DeleteOrder(id string) (interface{}, error)
+	UpdateOrderPayment(id string) (interface{}, error)
 }
