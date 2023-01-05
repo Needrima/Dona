@@ -30,10 +30,12 @@ func main() {
 
 func startMongo() mongoRepository.MongoRepositories {
 	helper.LogEvent("INFO", "Initializing Mongo!")
-	mongoRepo, err := mongoRepository.ConnectToMongo(helper.Config.DbType, helper.Config.MongoDbUserName,
-		helper.Config.MongoDbPassword, helper.Config.MongoDbHost,
-		helper.Config.MongoDbPort, helper.Config.MongoDbAuthDb,
-		helper.Config.MongoDbName)
+	mongoRepo, err := mongoRepository.ConnectToMongo(
+		helper.Config.MongoDbUserName,
+		helper.Config.MongoDbPassword,
+		helper.Config.MongoDbName,
+		helper.Config.MongoDbPort,
+	)
 	if err != nil {
 		fmt.Println(err)
 		helper.LogEvent("ERROR", "MongoDB database Connection Error: "+err.Error())
