@@ -3,6 +3,8 @@ package repository
 import (
 	"Dona/backend/internal/core/domain/entity"
 	"Dona/backend/internal/core/helper"
+	"fmt"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	// ports "Dona/backend/internal/port"
@@ -17,12 +19,14 @@ import (
 type DatabaseInfra struct {
 	ProductCollection    *mongo.Collection
 	NewsletterCollection *mongo.Collection
+	OrderCollection      *mongo.Collection
 }
 
-func NewInfra(ProductCollection, NewsletterCollection *mongo.Collection) *DatabaseInfra {
+func NewInfra(ProductCollection, NewsletterCollection, OrderCollection *mongo.Collection) *DatabaseInfra {
 	return &DatabaseInfra{
 		ProductCollection:    ProductCollection,
 		NewsletterCollection: NewsletterCollection,
+		OrderCollection:      OrderCollection,
 	}
 }
 
@@ -157,5 +161,22 @@ func (r *DatabaseInfra) GetCartItems(ids []primitive.ObjectID) (interface{}, err
 }
 
 func (r *DatabaseInfra) CreateOrder(order entity.Order) (interface{}, error) {
-	return nil, nil
+	_, err := r.OrderCollection.InsertOne(context.TODO(), order)
+	if err != nil {
+		helper.LogEvent("ERROR", "creating new order: "+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+
+	return order.ID.Hex(), nil
+}
+
+func (r *DatabaseInfra) UpdateOrderPayment(id string) (interface{}, error) {
+	idHex, _ := primitive.ObjectIDFromHex(id)
+	_, err := r.OrderCollection.UpdateOne(context.TODO(), bson.M{"_id": idHex}, bson.M{"$set": bson.M{"paymentStatus": "PAID"}})
+	if err != nil {
+		helper.LogEvent("ERROR", fmt.Sprintf("updating order payment with id{%v} not successful: %v", id, err.Error()))
+		return nil, errors.New("something went wrong")
+	}
+
+	return id, nil
 }

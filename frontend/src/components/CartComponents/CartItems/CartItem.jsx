@@ -21,7 +21,7 @@ const CartItem = ({data}) => {
                 {data['colours'] && data['colours'].map((colour, index) => <option key={index} value={colour}>{colour}</option>)}
             </select>
         </td>
-        <td><input type="number" value={parseInt(data['quantity'])} onChange={(e) => setItemProp(data['id'], 'quantity', e.target.value)} /></td>
+        <td><input type="number" value={parseInt(data['quantity'], 10)} onChange={(e) => setItemProp(data['id'], 'quantity', parseInt(e.target.value, 10))} /></td>
         <td>NGN {data['subtotal']}</td>
     </tr>
   )

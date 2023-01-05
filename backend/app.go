@@ -3,7 +3,6 @@ package main
 import (
 	mongoRepository "Dona/backend/internal/adapter/repository/mongodb"
 	"Dona/backend/internal/adapter/routes"
-
 	"Dona/backend/internal/core/helper"
 	"fmt"
 	"log"
@@ -21,6 +20,7 @@ func main() {
 	//Set up routes
 	router := routes.SetupRouter(mongoRepo.Repository)
 	//Print custom message for server start
+
 
 	helper.LogEvent("INFO", "server started")
 	//start server

@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
-import { AppContext } from '../../App'
 import { CheckoutContext } from '../../pages/Checkout'
 import './style.scss'
 
 const CheckoutLayout = () => {
     const {placeOrder} = useContext(CheckoutContext);
-    const {cartSubtotal} = useContext(AppContext);
 
-    const [state, setState] = useState({
+    const [delInfo, setDelInfo] = useState({
         name: '',
         phone: '',
         email: '',
@@ -16,10 +14,10 @@ const CheckoutLayout = () => {
         message: '',
       })
     
-      const {name, phone, address, email, message} =  state;
+      const {name, phone, address, email, message} =  delInfo;
     
       const handleFormChange = (e) => {
-        setState(state => ({
+        setDelInfo(state => ({
           ...state,
           [e.target.name]: e.target.value,
         }))
@@ -28,33 +26,14 @@ const CheckoutLayout = () => {
       const [btnDisabled, setBtnDisabled] = useState(false);
     
       const proceedToPayment = () => {
-        // setBtnDisabled(true);
-
-        // go to payment
-        
-        let handler = window.PaystackPop.setup({
-          key: 'pk_test_0e5f4cfe0f60cbc0b25995c05a75a448b88c1896', // Replace with your public key
-          email: email,
-          amount: (cartSubtotal + 1500) * 100, // subtotal + delivery fee multiplied by 100 to convert to base currency (kobo)
-          ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-          // label: "Optional string that replaces customer email"
-          onClose: function(){
-            alert('payment unsuccessful, window closed. try later');
-            setBtnDisabled(false);
-          },
-          callback: function(response){
-            let message = 'Payment complete! Reference: ' + response.reference;
-            alert(message);
-            placeOrder(state)
-            setBtnDisabled(false);
-          }
-        });
-  
-        handler.openIframe();
+        console.log('clicked')
+        setBtnDisabled(true);
+        // place order
+        placeOrder(delInfo)
 
         setBtnDisabled(false);
     
-        setState({
+        setDelInfo({
           name: '',
           phone: '',
           email: '',

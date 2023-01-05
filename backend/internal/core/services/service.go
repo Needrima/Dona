@@ -62,5 +62,31 @@ func (s *backendService) GetCartItems(ids []string) (interface{}, error) {
 }
 
 func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
-	return s.Repository.CreateOrder(order)
+	order.ID = primitive.NewObjectID()
+
+	if err := order.Validate(); err != nil {
+		return nil, err
+	}
+
+	order.CartSubtotal += 1500 // add 1500 for delivery fee
+
+	id, err := s.Repository.CreateOrder(order)
+	if err != nil {
+		return nil, err
+	}
+
+	err = helper.SendMail("ordermail.html", entity.ContactMessage{
+		To: order.DeliveryInfo.RecipientEmail,
+		Message: id.(string),
+	})
+
+	if err != nil {
+		helper.LogEvent("ERROR", "sending mail to client on successful order: "+ err.Error())
+	}
+
+	return id, nil
+}
+
+func (s *backendService) UpdateOrderPayment(id string) (interface{}, error) {
+	return s.Repository.UpdateOrderPayment(id)
 }

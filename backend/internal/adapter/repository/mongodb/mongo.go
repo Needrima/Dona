@@ -52,9 +52,10 @@ func ConnectToMongo(dbType string, dbUsername string, dbPassword string, dbHost 
 
 	productCollection := conn.Collection("products")
 	newsletterCollection := conn.Collection("newsletter")
+	orderCollection := conn.Collection("orders")
 
 	repo := MongoRepositories{
-		Repository: NewInfra(productCollection, newsletterCollection),
+		Repository: NewInfra(productCollection, newsletterCollection, orderCollection),
 	}
 	return repo, nil
 }

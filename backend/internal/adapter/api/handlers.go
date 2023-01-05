@@ -4,7 +4,6 @@ import (
 	"Dona/backend/internal/core/domain/entity"
 	"Dona/backend/internal/core/helper"
 	"errors"
-	"fmt"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +12,7 @@ import (
 func (hdl *HTTPHandler) GetProduct(c *gin.Context) {
 	amount, err := strconv.Atoi(c.Param("amount"))
 	if err != nil {
-		c.JSON(400, gin.H{
+		c.AbortWithStatusJSON(400, gin.H{
 			"error": "invalid amount in request URL",
 		})
 		return
@@ -36,8 +35,8 @@ func (hdl *HTTPHandler) CreateProduct(c *gin.Context) {
 
 	if err := c.BindJSON(&product); err != nil {
 		helper.LogEvent("ERROR", err.Error())
-		c.JSON(400, gin.H{
-			"error": "invalid payload body",
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": helper.INVALID_PAYLOAD.Error(),
 		})
 
 		return
@@ -46,7 +45,7 @@ func (hdl *HTTPHandler) CreateProduct(c *gin.Context) {
 	productId, err := hdl.Service.CreateProduct(product)
 
 	if err != nil {
-		c.JSON(500, gin.H{"error": err})
+		c.AbortWithStatusJSON(500, gin.H{"error": err})
 		return
 	}
 
@@ -79,7 +78,7 @@ func (hdl *HTTPHandler) GetProductByRef(c *gin.Context) {
 
 	product, err := hdl.Service.GetProductByRef(ref)
 	if err != nil {
-		c.JSON(404, gin.H{"error": err.Error()})
+		c.AbortWithStatusJSON(404, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -106,7 +105,7 @@ func (hdl *HTTPHandler) GetCartItems(c *gin.Context) {
 	ids := []string{}
 
 	if err := c.BindJSON(&ids); err != nil {
-		c.AbortWithStatusJSON(400, gin.H{"error": "invalid payload body"})
+		c.AbortWithStatusJSON(400, gin.H{"error": helper.INVALID_PAYLOAD.Error()})
 		return
 	}
 
@@ -124,10 +123,31 @@ func (hdl *HTTPHandler) CreateOrder(c *gin.Context) {
 
 	if err := c.BindJSON(&order); err != nil {
 		helper.LogEvent("ERROR", "binding order error: "+err.Error())
-		c.JSON(400, gin.H{"error": "invalid payload body"})
+		c.AbortWithStatusJSON(400, gin.H{"error": "invalid payload body"})
 		return
 	}
 
-	fmt.Println(order)
-	c.JSON(200, gin.H{"success": "order placed"})
+	id, err := hdl.Service.CreateOrder(order)
+	if err != nil {
+		if err == helper.INVALID_PAYLOAD {
+			c.AbortWithStatusJSON(400, gin.H{"error": err.Error()})
+			return
+		}
+		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(200, gin.H{"id": id})
+}
+
+func (hdl *HTTPHandler) UpdateOrderPayment(c *gin.Context) {
+	id := c.Param("id")
+
+	_, err := hdl.Service.UpdateOrderPayment(id)
+	if err != nil {
+		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(200, gin.H{"message": "deleted order with id: " + id})
 }
