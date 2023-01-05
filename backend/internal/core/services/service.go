@@ -70,7 +70,21 @@ func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 
 	order.CartSubtotal += 1500 // add 1500 for delivery fee
 
-	return s.Repository.CreateOrder(order)
+	id, err := s.Repository.CreateOrder(order)
+	if err != nil {
+		return nil, err
+	}
+
+	err = helper.SendMail("ordermail.html", entity.ContactMessage{
+		To: order.DeliveryInfo.RecipientEmail,
+		Message: id.(string),
+	})
+
+	if err != nil {
+		helper.LogEvent("ERROR", "sending mail to client on successful order: "+ err.Error())
+	}
+
+	return id, nil
 }
 
 func (s *backendService) UpdateOrderPayment(id string) (interface{}, error) {

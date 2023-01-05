@@ -3,10 +3,14 @@ package helper
 import (
 	"Dona/backend/internal/core/domain/entity"
 	"bytes"
+	"embed"
 	"fmt"
 	"net/smtp"
 	"text/template"
 )
+
+//go:embed email-templates/*
+var templatesDir embed.FS
 
 // SendMail sends mail
 func SendMail(tempName string, data entity.ContactMessage) error {
@@ -31,10 +35,6 @@ func SendMail(tempName string, data entity.ContactMessage) error {
 		headerMessage += fmt.Sprintf("%s: %s\r\n", header, value)
 	}
 
-	// if msg == "" {
-	// 	msg = "welcome to DONA, we sell plain t-shirts of all colours for campaigns, company merch, e.t.c"
-	// }
-
 	msg, err := getMailBody(tempName, data)
 	if err != nil {
 		LogEvent("get mail body:", err.Error())
@@ -54,7 +54,11 @@ func SendMail(tempName string, data entity.ContactMessage) error {
 }
 
 func getMailBody(templateName string, data entity.ContactMessage) (string, error) {
-	tpl := template.Must(template.ParseFiles("C:/Users/SAMSUNG/Documents/goworkspace/src/Dona/backend/internal/core/helper/email-templates/" + templateName))
+	tpl, err := template.ParseFS(templatesDir, "email-templates"+"/"+templateName)
+	if err != nil {
+		fmt.Println("error parsefs:", err)
+		return "", err
+	}
 
 	buf := &bytes.Buffer{}
 
