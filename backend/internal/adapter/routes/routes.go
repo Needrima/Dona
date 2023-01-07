@@ -7,7 +7,6 @@ import (
 	"Dona/backend/internal/core/services"
 	ports "Dona/backend/internal/port"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func SetupRouter(repository ports.Repository) *gin.Engine {
@@ -36,9 +35,6 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 		router.POST("/customer/subscribe", handler.SubscribeToNewLetter)
 		router.POST("/customer/send-contact-mail", handler.SendContactMail)
 	}
-
-	router.Static("/build", "../../../build")
-	router.StaticFS("/static", http.Dir("../../../build/static"))
 
 	router.NoRoute(func(ctx *gin.Context) {
 		ctx.JSON(404, gin.H{"error": "matching no route error"})
