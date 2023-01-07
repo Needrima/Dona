@@ -1,9 +1,9 @@
 package main
 
 import (
-	mongoRepository "Dona/backend/internal/adapter/repository/mongodb"
-	"Dona/backend/internal/adapter/routes"
-	"Dona/backend/internal/core/helper"
+	mongoRepository "jamo/backend/internal/adapter/repository/mongodb"
+	"jamo/backend/internal/adapter/routes"
+	"jamo/backend/internal/core/helper"
 	"fmt"
 	"log"
 )

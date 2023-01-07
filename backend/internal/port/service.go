@@ -1,6 +1,6 @@
 package ports
 
-import "Dona/backend/internal/core/domain/entity"
+import "jamo/backend/internal/core/domain/entity"
 
 type Service interface {
 	CreateProduct(product entity.Product) (interface{}, error)

@@ -1,13 +1,13 @@
 package repository
 
 import (
-	"Dona/backend/internal/core/domain/entity"
-	"Dona/backend/internal/core/helper"
+	"jamo/backend/internal/core/domain/entity"
+	"jamo/backend/internal/core/helper"
 	"fmt"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	// ports "Dona/backend/internal/port"
+	// ports "jamo/backend/internal/port"
 	"context"
 	"errors"
 	"log"

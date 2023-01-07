@@ -1,4 +1,4 @@
-module Dona/backend
+module jamo/backend
 
 go 1.18
 

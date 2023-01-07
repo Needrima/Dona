@@ -8,6 +8,8 @@ import ProductDetails from './ProductDetails/ProductDetails'
 
 const SingleProductLayout = () => {
       const {products, getProducts} = useContext(SingleProductContext)
+      document.body.scrollTop = 50; // FOR SAFARI
+      document.documentElement.scrollTop = 50; // FOR CHROME, FIREFOZ, IE, OPERA
     
       useEffect(() => {
         getProducts('4')

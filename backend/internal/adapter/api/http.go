@@ -1,7 +1,7 @@
 package api
 
 import (
-	ports "Dona/backend/internal/port"
+	ports "jamo/backend/internal/port"
 )
 
 type HTTPHandler struct {

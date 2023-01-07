@@ -1,7 +1,7 @@
 package helper
 
 import (
-	"Dona/backend/internal/core/domain/entity"
+	"jamo/backend/internal/core/domain/entity"
 	"bytes"
 	"embed"
 	"fmt"

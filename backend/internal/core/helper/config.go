@@ -32,7 +32,7 @@ type ConfigStruct struct {
 
 func LoadEnv(path string) (config ConfigStruct, err error) {
 	viper.AddConfigPath(path)
-	viper.SetConfigName("dona-backend")
+	viper.SetConfigName("jamo-backend")
 	viper.SetConfigType("env")
 
 	viper.AutomaticEnv()

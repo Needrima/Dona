@@ -1,8 +1,8 @@
 package api
 
 import (
-	"Dona/backend/internal/core/domain/entity"
-	"Dona/backend/internal/core/helper"
+	"jamo/backend/internal/core/domain/entity"
+	"jamo/backend/internal/core/helper"
 	"errors"
 	"strconv"
 
