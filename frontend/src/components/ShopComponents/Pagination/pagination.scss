@@ -1,7 +1,7 @@
 #pagination {
     text-align: center;
 
-    span {
+    button {
         background-color: #000;
         color: #fff;
         padding: 15px 20px;
@@ -15,7 +15,7 @@
         }
     }
 
-    span:hover {
+    button:hover {
         background-color: transparent;
         color: #000;
         border: 1px solid #000;

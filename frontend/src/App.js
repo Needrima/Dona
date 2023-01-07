@@ -19,14 +19,14 @@ function App() {
   useEffect(() => {
     const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
     if (cart_items !== null) {
-      setState(state => ({...state, cartItems: cart_items}))
+      changeCartItems(cart_items)
       setCartSubtotal(cart_items)
     }
   }, [])
 
   const {cartItems, cartSubtotal} = state;
 
-  // setCartItems adds a new item to cart. the item data is an object containing item id, quantity and size
+  // setCartItems adds a new item to cart. the item data is an object containing item id, quantity, size, colour
   const setCartItems = (data) => {
     setState(state => ({
         ...state,
@@ -59,6 +59,8 @@ function App() {
             break
           case 'colour':
             item['colour'] = value;
+            break
+          default:
         }
       }
     })
@@ -67,7 +69,7 @@ function App() {
     window.localStorage.setItem('dona-cart-items', JSON.stringify(cartItems))
   }
 
-  // adds a new item(item id, quantity and size) to cart items
+  // adds a new item(item id, quantity, size and colour) to cart items
   const AddToCart = (id, quantity, size, colour) => {
     const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
 
