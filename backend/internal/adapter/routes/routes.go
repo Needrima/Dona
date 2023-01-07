@@ -1,11 +1,11 @@
 package routes
 
 import (
-	"Dona/backend/internal/adapter/api"
-	"Dona/backend/internal/core/helper"
-	"Dona/backend/internal/core/middleware"
-	"Dona/backend/internal/core/services"
-	ports "Dona/backend/internal/port"
+	"jamo/backend/internal/adapter/api"
+	"jamo/backend/internal/core/helper"
+	"jamo/backend/internal/core/middleware"
+	"jamo/backend/internal/core/services"
+	ports "jamo/backend/internal/port"
 	"github.com/gin-gonic/gin"
 )
 

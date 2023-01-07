@@ -1,7 +1,7 @@
 package ports
 
 import (
-	"Dona/backend/internal/core/domain/entity"
+	"jamo/backend/internal/core/domain/entity"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 

@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"Dona/backend/internal/core/helper"
-	ports "Dona/backend/internal/port"
+	"jamo/backend/internal/core/helper"
+	ports "jamo/backend/internal/port"
 	"context"
 	"errors"
 	"strconv"
