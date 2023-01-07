@@ -6,7 +6,7 @@ import (
 	"embed"
 	"fmt"
 	"net/smtp"
-	"text/template"
+	"html/template"
 )
 
 //go:embed email-templates/*

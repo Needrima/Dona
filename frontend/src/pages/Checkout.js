@@ -36,7 +36,7 @@ const Checkout = () => {
             productAxiosInstance.put(`/order/update-payment/${res.data.id}`)
             .then(res => console.log(res.data))
             .catch(err => console.info(err))
-            
+
             window.localStorage.setItem('dona-cart-items', JSON.stringify([]))
             changeCartItems([])
             window.location.href = '/'
@@ -45,7 +45,8 @@ const Checkout = () => {
         handler.openIframe();
 
       }catch(err) {
-        console.log(err)
+        console.info(err)
+        alert('something went wrong try later')
       }
     })()
   }
