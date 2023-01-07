@@ -37,9 +37,9 @@ const Footer = () => {
   return (
     <footer className='section-p1'>
         <div className="col">
-            <Link to='#' className='logo'>Dona</Link>
+            <Link to='#' className='logo'>Jamo</Link>
             <h4>Contact</h4>
-            <p><strong>Email:</strong> customerservice@dona.com</p>
+            <p><strong>Email:</strong> customerservice@jamo.com</p>
             <p><strong>Phone:</strong> +234 81 056 582 03</p>
             <p><strong>Hours:</strong> 9:00 - 19:00 MON - SAT</p>
 
@@ -79,7 +79,7 @@ const Footer = () => {
         </div>
 
         <div className="copyright">
-            <p>&copy; {getYear()} Dona. All rights reserved</p>
+            <p>&copy; {getYear()} Jamo. All rights reserved</p>
         </div>
 
         {showDelInfo && <DeliveryInfo setDelInfo={setDelInfo} />}

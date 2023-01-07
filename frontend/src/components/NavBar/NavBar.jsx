@@ -18,7 +18,7 @@ const NavBar = () => {
   
   return (
     <section id='header'>
-      <Link to='/' className='logo'>Dona</Link>
+      <Link to='/' className='logo'>Jamo</Link>
 
       <div>
         <ul id="navbar">
