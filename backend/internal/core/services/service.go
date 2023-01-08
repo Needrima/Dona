@@ -63,6 +63,7 @@ func (s *backendService) GetCartItems(ids []string) (interface{}, error) {
 
 func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 	order.ID = primitive.NewObjectID()
+	order.CreatedAt = helper.ParseTimeToString(time.Now())
 
 	if err := order.Validate(); err != nil {
 		return nil, err

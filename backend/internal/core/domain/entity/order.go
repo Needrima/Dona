@@ -29,6 +29,7 @@ type Order struct {
 		RecipientAddress     string `json:"address" bson:"address" binding:"required"`
 		OptionalMsg          string `json:"message" bson:"message"`
 	}
+	CreatedAt   string             `json:"created_at,omitempty" bson:"created_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
 }
 
 func (o *Order) Validate() error {

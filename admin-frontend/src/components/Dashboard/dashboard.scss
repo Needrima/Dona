@@ -1,0 +1,40 @@
+.i-name {
+    padding: 30px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.values {
+    padding: 30px 30px 0 30px;
+
+    .val-box {
+        background: #fff;
+        width: 235px;
+        padding: 16px 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        i {
+            font-size: 25px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            background: #000;
+            margin-right: 15px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        span {
+            font-size: 15px;
+        }
+    }
+}
