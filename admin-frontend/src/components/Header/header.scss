@@ -1,0 +1,50 @@
+#interface {
+    width: calc(100% - 300px);
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        padding: 15px 30px;
+        border-bottom: 3px solid #000;
+
+        .search {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 14px;
+            border: 1px solid #d7dbe6;
+            border-radius: 4px;
+
+            i {
+                margin-right: 14px;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                font-size: 14px;
+            }
+        }
+
+        .profile {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            i {
+                margin-right: 20px;
+                font-size: 19px;
+                font-weight: 400;
+            }
+
+            img {
+                width: 30px;
+                height: 30px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+    }
+}
