@@ -1,8 +1,8 @@
 import React from 'react'
-import './header.scss'
+import './body.scss'
 import adminUser from '../../assets/images/admin-user.jpeg'
 
-const Header = () => {
+const Header = ({children}) => {
   return (
     <section id='interface'>
         <div className='navigation'>
@@ -18,6 +18,8 @@ const Header = () => {
                 <img src={adminUser} alt=""/>
             </div>
         </div>
+
+        {children}
     </section>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Menubar from '../Menubar/Menubar'
+import Body from '../Body/Body'
 import './layout.scss'
 
 const Layout = ({children}) => {
@@ -7,7 +8,9 @@ const Layout = ({children}) => {
     <div className='layout'>
       <Menubar />
 
-      {children}
+      <Body>
+        {children}
+      </Body>
     </div>
   )
 }

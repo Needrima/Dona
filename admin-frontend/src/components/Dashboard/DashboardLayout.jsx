@@ -1,11 +1,18 @@
 import React from 'react'
 import './dashboard.scss'
-import Header from '../Header/Header'
 
 const DashboardLayout = () => {
   return (
     <>
-        <Header />
+        <h3 className='i-name'>
+          Dashboard
+        </h3>
+
+        <div className='values'>
+          <div className='value-box'>
+            
+          </div>
+        </div>
     </>
   )
 }
