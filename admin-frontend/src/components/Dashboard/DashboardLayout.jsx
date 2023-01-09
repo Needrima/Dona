@@ -1,5 +1,6 @@
 import React from 'react'
 import './dashboard.scss'
+import Table from './Table/Table'
 
 const DashboardLayout = () => {
   return (
@@ -50,9 +51,7 @@ const DashboardLayout = () => {
           </div>
         </div>
 
-        <div className="board">
-          
-        </div>
+        <Table />
     </>
   )
 }

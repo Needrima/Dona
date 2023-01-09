@@ -9,12 +9,12 @@ const Header = ({children}) => {
             <div className='nl'>
                 <div className='search'>
                     <i className='far fa-search'></i>
-                    <input type='text' placeholder='Enter Product ID' />
+                    <input type='text' placeholder='Enter Order ID' />
                 </div>
             </div>
 
             <div className='profile'>
-                <i className='far fa-bell'></i>
+                <i className='far fa-bell'><sup>2</sup></i>
                 <img src={adminUser} alt=""/>
             </div>
         </div>
