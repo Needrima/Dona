@@ -56,9 +56,6 @@ func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort 
 }
 
 func GetPage(page string) (*options.FindOptions, error) {
-	if page == "all" {
-		return nil, nil
-	}
 	var limit, e = strconv.ParseInt(helper.Config.PageLimit, 10, 64)
 	var pageSize, ee = strconv.ParseInt(page, 10, 64)
 	if e != nil || ee != nil {

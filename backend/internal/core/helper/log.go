@@ -30,7 +30,8 @@ func LogEvent(level string, message interface{}) {
 		Level     string      `json:"level"`
 		AppName   string      `json:"app_name"`
 		Message   interface{} `json:"message"`
-	}{TimeStamp: time.Now().Format(time.RFC3339),
+	}{
+		TimeStamp: time.Now().Format(time.RFC3339),
 		AppName: Config.ServiceName,
 		Message: message,
 		Level:   level,
