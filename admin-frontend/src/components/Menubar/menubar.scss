@@ -2,6 +2,9 @@
     background: #000;
     width: 300px;
     height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 
     .logo {
         display: flex;
@@ -48,5 +51,16 @@
         li:nth-child(1) {
             border-left: 4px solid #fff;
         }
+    }
+}
+
+@media(max-width: 830px) {
+    #menu {
+        width: 270px;
+        left: -270px;
+    }
+
+    #menu.shown {
+        left: 0px;
     }
 }

@@ -1,9 +1,9 @@
 .board {
     margin: 30px;
-    overflow-x: scroll;
+    overflow: auto;
     background: #fff;
     border-radius: 8px;
-    width: 100%;
+    width: 94%;
 
     table {
         width: 1250px;
@@ -46,6 +46,16 @@
                     border-radius: 40px;
                 }
             }
+        }
+    }
+}
+
+
+@media(max-width: 830px) {
+    .board {
+        padding: 0;
+        table {
+            border-collapse: collapse;
         }
     }
 }
