@@ -63,3 +63,13 @@
         }
     }
 }
+
+@media(max-width: 477px) {
+    .values {
+        flex-direction: column;
+
+        .val-box {
+            width: 100%;
+        }
+    }
+}

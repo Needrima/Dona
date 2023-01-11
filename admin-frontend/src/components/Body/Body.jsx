@@ -1,5 +1,6 @@
 import React from 'react'
 import './body.scss'
+import Menubar from '../Menubar/Menubar'
 import adminUser from '../../assets/images/admin-user.jpeg'
 
 const Header = ({children}) => {
@@ -9,7 +10,10 @@ const Header = ({children}) => {
     }
     
   return (
-    <section id='interface'>
+    <>
+        <Menubar />
+
+        <section id='interface'>
         <div className='navigation'>
             <div className='n1'>
                 <div><i className="fas fa-bars" id="menu-btn" onClick={showMenu}></i></div>
@@ -26,7 +30,9 @@ const Header = ({children}) => {
         </div>
 
         {children}
-    </section>
+        </section>
+    </>
+    
   )
 }
 

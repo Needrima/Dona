@@ -1,3 +1,61 @@
+// Menu bar
+#menu {
+    background: #000;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        padding: 30px 0 0 30px;
+    }
+
+    .items {
+        margin-top: 40px;
+
+        li {
+            list-style: none;
+            padding: 15px 0;
+
+            i {
+                color: rgb(134, 141, 151);
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                font-size: 14px;
+                margin: 0 10px 0 25px;
+                transition: 0.3s ease;
+            }
+
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: 300px;
+                transition: 0.3s ease;
+            }
+        }
+
+        li:hover {
+            background: #fff;
+            cursor: pointer;
+
+            i, a {
+                color: #000;
+            }
+        }
+
+        li:nth-child(1) {
+            border-left: 4px solid #fff;
+        }
+    }
+}
+
+// dashboard body
 #interface {
     width: calc(100% - 300px);
     margin-left: 300px;
@@ -73,10 +131,23 @@
 }
 
 @media(max-width: 830px) {
+    //Menu bar
+    #menu {
+        width: 270px;
+        left: -270px;
+        transition: 0.3s ease;
+    }
+
+    #menu.shown {
+        left: 0px;
+    }
+
+    // Dashboard body
     #interface {
         width: 100%;
         margin-left: 0px;
         display: inline-block;
+        transition: 0.3s ease;
 
         .navigation {
             width: 100%;
@@ -85,5 +156,11 @@
 
     #menu-btn {
         display: initial;
+    }
+
+    #menu.shown~#interface {
+        width: calc(100% - 270px);
+        margin-left: 270px;
+        transition: 0.3s ease;
     }
 }
