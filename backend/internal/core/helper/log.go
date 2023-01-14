@@ -1,9 +1,7 @@
 package helper
 
 import (
-	// "bytes"
 	"encoding/json"
-	// "github.com/gin-gonic/gin"
 	"log"
 	"os"
 	"time"
@@ -30,15 +28,15 @@ func LogEvent(level string, message interface{}) {
 		Level     string      `json:"level"`
 		AppName   string      `json:"app_name"`
 		Message   interface{} `json:"message"`
-	}{TimeStamp: time.Now().Format(time.RFC3339),
+	}{
+		TimeStamp: time.Now().Format(time.RFC3339),
 		AppName: Config.ServiceName,
 		Message: message,
 		Level:   level,
 	})
 
 	if err != nil {
-		LogEvent("ERROR", "Logevent helper"+err.Error())
-		log.Fatal(err)
+		log.Fatal("Logevent helper: "+err.Error())
 	}
 	log.Printf("%s\n", data)
 
