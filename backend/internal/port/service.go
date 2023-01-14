@@ -11,4 +11,5 @@ type Service interface {
 	GetCartItems(ids []string) (interface{}, error)
 	CreateOrder(order entity.Order) (interface{}, error)
 	UpdateOrderPayment(id string) (interface{}, error)
+	GetOrders(page string) (interface{}, error)
 }

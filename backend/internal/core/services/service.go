@@ -91,3 +91,7 @@ func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 func (s *backendService) UpdateOrderPayment(id string) (interface{}, error) {
 	return s.Repository.UpdateOrderPayment(id)
 }
+
+func (s *backendService) GetOrders(page string) (interface{}, error) {
+	return s.Repository.GetOrders(page)
+}

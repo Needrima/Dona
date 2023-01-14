@@ -1,8 +1,10 @@
 import React from 'react'
 import './dashboard.scss'
+import Pagination from './Pagination/Pagination'
 import Table from './Table/Table'
 
 const DashboardLayout = () => {
+
   return (
     <>
         <h3 className='i-name'>
@@ -46,12 +48,13 @@ const DashboardLayout = () => {
             <i className='fas fa-dollar-sign'></i>
             <div>
               <h3>NGN 500,000</h3>
-              <span>This Month</span>
+              <span>Net Profit</span>
             </div>
           </div>
         </div>
 
         <Table />
+        <Pagination />
     </>
   )
 }

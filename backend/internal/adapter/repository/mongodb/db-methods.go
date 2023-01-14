@@ -180,3 +180,32 @@ func (r *DatabaseInfra) UpdateOrderPayment(id string) (interface{}, error) {
 
 	return id, nil
 }
+
+func (r *DatabaseInfra) GetOrders(page string)(interface{}, error) {
+	findOptions, err := GetPage(page)
+	if err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"find options": err.Error()})
+		return nil, errors.New("invalid page number")
+	}
+
+	findOptions = findOptions.SetSort(bson.M{"cartSubtotal": -1}).SetProjection(bson.M{
+		"cartItems": 0,
+		"created_at": 0,
+	})
+
+	cursor, err := r.OrderCollection.Find(context.TODO(), bson.M{"deliveryStatus": "UNDELIVERED"}, findOptions)
+	if err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"find": err.Error()})
+		return nil, errors.New("something went wrong")
+	}
+	defer cursor.Close(context.TODO())
+
+	var orders []entity.Order
+
+	if err := cursor.All(context.TODO(), &orders); err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"cursor.all": err.Error()})
+		return nil, errors.New("something went wrong")
+	}
+
+	return orders, nil
+}

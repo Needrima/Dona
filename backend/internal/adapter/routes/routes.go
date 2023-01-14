@@ -36,6 +36,11 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 		router.POST("/customer/send-contact-mail", handler.SendContactMail)
 	}
 
+	router.Group("/order")
+	{
+		router.GET("/order/page/:page", handler.GetOrders)
+	}
+
 	router.NoRoute(func(ctx *gin.Context) {
 		ctx.JSON(404, gin.H{"error": "matching no route error"})
 	})

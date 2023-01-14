@@ -13,4 +13,5 @@ type Repository interface {
 	GetCartItems(ids []primitive.ObjectID) (interface{}, error)
 	CreateOrder(order entity.Order) (interface{}, error)
 	UpdateOrderPayment(id string) (interface{}, error)
+	GetOrders(page string) (interface{}, error)
 }
