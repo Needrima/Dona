@@ -11,17 +11,31 @@ const Pagination = () => {
     prev: false,
   })
   const {next, prev} = btnDisabled;
+
+  const changeOrders = (action) => {
+    setBtnDisabled({
+      next: true,
+      prev: true,
+    })
+
+    getOrders(action)
+
+    setBtnDisabled({
+      next: false,
+      prev: false,
+    })
+  }
   
   return (
     <section id='pagination' className='section-p1'>
         {currentPage > 1 && <button 
           disabled={prev}
-          onClick={() => getOrders('prev')}
+          onClick={() => changeOrders('prev')}
         ><i className="fal fa-long-arrow-alt-left"></i></button>}
 
         <button 
           disabled={next}
-          onClick={() => getOrders('next')}
+          onClick={() => changeOrders('next')}
         ><i className="fal fa-long-arrow-alt-right"></i></button>
     </section>
   )
