@@ -31,7 +31,16 @@ const Table = () => {
                         <td className={order['paymentStatus'] === 'PAID' ? 'paid' : 'unpaid'}><span>{order['paymentStatus']} </span></td>
                         <td><a href={`/view/${order['id']}`}>View order</a></td>
                     </tr>
-                )) : <div>loading orders ......</div>
+                )) : (
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>No more orders</td>
+                        <td>No more orders</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                )
             }
         </tbody>
         </table>

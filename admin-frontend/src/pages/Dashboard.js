@@ -8,7 +8,7 @@ export const dashboardContext = React.createContext();
 const Dashboard = () => {
   const [state, setState] = useState({
     recentOrders: [],
-    currentPage: 1,
+    currentPage: 0,
     totalOrders: 0,
     completedOrders: 0,
     pendingOrders: 0,
@@ -25,37 +25,23 @@ const Dashboard = () => {
     }))
   }
 
-  const handleCurrentPageChange = (action) => {
-    switch (action) {
-      case 'next':
-        console.log('incrementing current page')
-        setState(state => ({
-          ...state,
-          currentPage: state.currentPage + 1,
-        }))
-      break;
-
-      case 'prev':
-        console.log('decrementing current page')
-        setState(state => ({
-          ...state,
-          currentPage: state.currentPage > 1 && state.currentPage - 1,
-        }))
-        break;
-
-      default:
-    }
+  const handleCurrentPageChange = (page) => {
+    setState(state => ({
+      ...state,
+      currentPage: page > 0 ? page : 1,
+    }))
   } 
 
   const getOrders = async (action) => {
-    console.log(currentPage);
     try {
-      const res  = await ordersAxiosInstance.get(`/page/${currentPage}`)
+      let nextPage = action === "next" ? currentPage + 1 : currentPage - 1;
+      const res  = await ordersAxiosInstance.get(`/page/${nextPage}`);
       handleOrdersChange(res.data)
-      handleCurrentPageChange(action)
+      handleCurrentPageChange(nextPage)
     }catch(error){
       console.log(error)
-      alert('cannot load recent orders')
+      console.log('no more orders')
+      alert('no more orders')
     }
   }
 
