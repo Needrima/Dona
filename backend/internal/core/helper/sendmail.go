@@ -1,12 +1,12 @@
 package helper
 
 import (
-	"jamo/backend/internal/core/domain/entity"
 	"bytes"
 	"embed"
 	"fmt"
-	"net/smtp"
 	"html/template"
+	"jamo/backend/internal/core/domain/entity"
+	"net/smtp"
 )
 
 //go:embed email-templates/*

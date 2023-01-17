@@ -1,12 +1,12 @@
 package routes
 
 import (
+	"github.com/gin-gonic/gin"
 	"jamo/backend/internal/adapter/api"
 	"jamo/backend/internal/core/helper"
 	"jamo/backend/internal/core/middleware"
 	"jamo/backend/internal/core/services"
 	ports "jamo/backend/internal/port"
-	"github.com/gin-gonic/gin"
 )
 
 func SetupRouter(repository ports.Repository) *gin.Engine {
@@ -33,7 +33,13 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 	router.Group("/customer")
 	{
 		router.POST("/customer/subscribe", handler.SubscribeToNewLetter)
-		router.POST("/customer/send-contact-mail", handler.SendContactMail)
+		router.POST("/customer/send-contact-mail", handler.ContactAdmin)
+	}
+
+	router.Group("/admin")
+	{
+		router.GET("/admin/order/page/:page", handler.GetOrders)
+		router.GET("/admin/order/get_dashboard_values", handler.GetDashBoardValues)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {

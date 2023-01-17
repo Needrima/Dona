@@ -5,6 +5,7 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 type Subscriber struct {
 	ID    primitive.ObjectID `json:"id" bson:"_id"`
 	Email string             `json:"email" bson:"email" binding:"email"`
+	SubscribedAt string `json:"subscribed_at,omitempty" bson:"subscribed_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
 }
 
 type ContactMessage struct {
@@ -13,4 +14,5 @@ type ContactMessage struct {
 	Message string `json:"message" binding:"required"`
 	To      string // Receiver's email address
 	From    string // Sender's email address
+	SentAt string `json:"sent_at,omitempty" bson:"sent_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
 }

@@ -1,9 +1,9 @@
 package repository
 
 import (
+	"fmt"
 	"jamo/backend/internal/core/domain/entity"
 	"jamo/backend/internal/core/helper"
-	"fmt"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
@@ -20,13 +20,15 @@ type DatabaseInfra struct {
 	ProductCollection    *mongo.Collection
 	NewsletterCollection *mongo.Collection
 	OrderCollection      *mongo.Collection
+	MessagesCollection   *mongo.Collection
 }
 
-func NewInfra(ProductCollection, NewsletterCollection, OrderCollection *mongo.Collection) *DatabaseInfra {
+func NewInfra(ProductCollection, NewsletterCollection, OrderCollection, MessagesCollection *mongo.Collection) *DatabaseInfra {
 	return &DatabaseInfra{
 		ProductCollection:    ProductCollection,
 		NewsletterCollection: NewsletterCollection,
 		OrderCollection:      OrderCollection,
+		MessagesCollection: MessagesCollection,
 	}
 }
 
@@ -179,4 +181,83 @@ func (r *DatabaseInfra) UpdateOrderPayment(id string) (interface{}, error) {
 	}
 
 	return id, nil
+}
+
+func (r *DatabaseInfra) CreateContactMessage(body entity.ContactMessage) error {
+	_, err := r.MessagesCollection.InsertOne(context.TODO(), body)
+	if err != nil {
+		helper.LogEvent("ERROR", "adding message to database: "+err.Error())
+		return errors.New("something went wrong")
+	}
+
+	return nil
+}
+
+func (r *DatabaseInfra) GetOrders(page string) (interface{}, error) {
+	findOptions, err := GetPage(page)
+	if err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"find options": err.Error()})
+		return nil, errors.New("invalid page number")
+	}
+
+	findOptions = findOptions.SetSort(bson.M{"cartSubtotal": -1}).SetProjection(bson.M{
+		"cartItems":  0,
+		"created_at": 0,
+	})
+
+	cursor, err := r.OrderCollection.Find(context.TODO(), bson.M{"deliveryStatus": "UNDELIVERED"}, findOptions)
+	if err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"find": err.Error()})
+		return nil, errors.New("something went wrong")
+	}
+	defer cursor.Close(context.TODO())
+
+	var orders []entity.Order
+
+	if err := cursor.All(context.TODO(), &orders); err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"cursor.all": err.Error()})
+		return nil, errors.New("something went wrong")
+	}
+
+	return orders, nil
+}
+
+func (r *DatabaseInfra) GetDashBoardValues() (interface{}, error) {
+	values := entity.DashboardValues{}
+	totalOrders, err := r.OrderCollection.CountDocuments(context.TODO(), bson.M{})
+	if err != nil {
+		helper.LogEvent("ERROR", "could not retrieve total orders count from database: "+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	values.TotalOrders = int(totalOrders)
+
+	pendingOrders, err := r.OrderCollection.CountDocuments(context.TODO(), bson.M{"deliveryStatus": "UNDELIVERED"})
+	if err != nil {
+		helper.LogEvent("ERROR", "could not retrieve pending orders count from database: "+ err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	values.PendingOrders = int(pendingOrders)
+
+	values.CompletedOrders = int(totalOrders) - int(pendingOrders)
+
+	matchStage := bson.M{"$match": bson.M{"paymentStatus": "PAID"}}
+	groupStage := bson.M{"$group": bson.M{"_id": "", "total": bson.M{"$sum": "$cartSubtotal"}}}
+	projectStage := bson.M{"$project": bson.M{"_id": 0, "total": "$total"}}
+	cursor, err := r.OrderCollection.Aggregate(context.TODO(), []bson.M{matchStage, groupStage, projectStage})
+	if err != nil {
+		helper.LogEvent("ERROR", "could not retrieve total revenue for pending orders from database:"+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	defer cursor.Close(context.TODO())
+
+	var data []primitive.M
+	if err := cursor.All(context.TODO(), &data); err != nil {
+		helper.LogEvent("ERROR", "cursor all:"+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	values.TotalRevenue = data[0]["total"].(float64)
+
+	values.NetProfit = values.TotalRevenue - helper.Config.TotalExpense
+
+	return values, nil
 }

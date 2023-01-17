@@ -1,9 +1,9 @@
 package api
 
 import (
+	"errors"
 	"jamo/backend/internal/core/domain/entity"
 	"jamo/backend/internal/core/helper"
-	"errors"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -85,7 +85,7 @@ func (hdl *HTTPHandler) GetProductByRef(c *gin.Context) {
 	c.JSON(200, product)
 }
 
-func (hdl *HTTPHandler) SendContactMail(c *gin.Context) {
+func (hdl *HTTPHandler) ContactAdmin(c *gin.Context) {
 	body := entity.ContactMessage{}
 
 	if err := c.BindJSON(&body); err != nil {
@@ -93,7 +93,7 @@ func (hdl *HTTPHandler) SendContactMail(c *gin.Context) {
 		return
 	}
 
-	if err := hdl.Service.SendContactMail(body); err != nil {
+	if err := hdl.Service.ContactAdmin(body); err != nil {
 		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
 		return
 	}
@@ -150,4 +150,29 @@ func (hdl *HTTPHandler) UpdateOrderPayment(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{"message": "deleted order with id: " + id})
+}
+
+func (hdl *HTTPHandler) GetOrders(c *gin.Context) {
+	page := c.Param("page")
+
+	order, err := hdl.Service.GetOrders(page)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(200, order)
+}
+
+func (hdl *HTTPHandler) GetDashBoardValues(c *gin.Context) {
+	values, err := hdl.Service.GetDashBoardValues()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": err.Error(),
+		})
+	}
+
+	c.JSON(200, values)
 }

@@ -12,24 +12,24 @@ import (
 type Order struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	CartItems []struct {
-		ID       string  `json:"id" bson:"id" binding:"required"`
-		Colour   string  `json:"colour" bson:"colour" binding:"required"`
-		Price    float64 `json:"price" bson:"price" binding:"required"`
-		Quantity int     `json:"quantity" bson:"quantity" binding:"required"`
-		Size     string  `json:"size" bson:"size" binding:"required"`
-		Subtotal float64 `json:"subtotal" bson:"subtotal" binding:"required"`
-	} `json:"cartItems" bson:"cartItems" binding:"required"`
-	CartSubtotal float64 `json:"cartSubtotal" bson:"cartSubtotal" binding:"required"`
-	DeliverStatus string `json:"deliveryStatus" bson:"deliveryStatus" binding:"required,eq=DELIVERED|eq=UNDELIVERED"` 
-	PaymentStatus string `json:"paymentStatus" bson:"paymentStatus" binding:"required,eq=PAID|eq=UNPAID"`
-	DeliveryInfo struct {
-		RecipientName        string `json:"name" bson:"name" binding:"required"`
-		RecipientEmail       string `json:"email" bson:"email" binding:"email"`
-		RecipientPhoneNumber string `json:"phone" bson:"phone" binding:"required"`
-		RecipientAddress     string `json:"address" bson:"address" binding:"required"`
-		OptionalMsg          string `json:"message" bson:"message"`
-	}
-	CreatedAt   string             `json:"created_at,omitempty" bson:"created_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
+		ID       string  `json:"id" bson:"id,omitempty" binding:"required"`
+		Colour   string  `json:"colour" bson:"colour,omitempty" binding:"required"`
+		Price    float64 `json:"price" bson:"price,omitempty" binding:"required"`
+		Quantity int     `json:"quantity" bson:"quantity,omitempty" binding:"required"`
+		Size     string  `json:"size" bson:"size,omitempty" binding:"required"`
+		Subtotal float64 `json:"subtotal" bson:"subtotal,omitempty" binding:"required"`
+	} `json:"cartItems" bson:"cartItems,omitempty" binding:"required"`
+	CartSubtotal  float64 `json:"cartSubtotal" bson:"cartSubtotal,omitempty" binding:"required"`
+	DeliverStatus string  `json:"deliveryStatus" bson:"deliveryStatus,omitempty" binding:"required,eq=DELIVERED|eq=UNDELIVERED"`
+	PaymentStatus string  `json:"paymentStatus" bson:"paymentStatus,omitempty" binding:"required,eq=PAID|eq=UNPAID"`
+	DeliveryInfo  struct {
+		RecipientName        string `json:"name" bson:"name,omitempty" binding:"required"`
+		RecipientEmail       string `json:"email" bson:"email,omitempty" binding:"email"`
+		RecipientPhoneNumber string `json:"phone" bson:"phone,omitempty" binding:"required"`
+		RecipientAddress     string `json:"address" bson:"address,omitempty" binding:"required"`
+		OptionalMsg          string `json:"message" bson:"message,omitempty"`
+	} `json:"deliveryInfo" bson:"deliveryinfo,omitempty"`
+	CreatedAt string `json:"created_at,omitempty" bson:"created_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
 }
 
 func (o *Order) Validate() error {

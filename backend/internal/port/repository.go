@@ -1,8 +1,8 @@
 package ports
 
 import (
-	"jamo/backend/internal/core/domain/entity"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"jamo/backend/internal/core/domain/entity"
 )
 
 type Repository interface {
@@ -13,4 +13,7 @@ type Repository interface {
 	GetCartItems(ids []primitive.ObjectID) (interface{}, error)
 	CreateOrder(order entity.Order) (interface{}, error)
 	UpdateOrderPayment(id string) (interface{}, error)
+	GetOrders(page string) (interface{}, error)
+	GetDashBoardValues() (interface{}, error)
+	CreateContactMessage(body entity.ContactMessage) error
 }

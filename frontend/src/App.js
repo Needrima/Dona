@@ -44,7 +44,7 @@ function App() {
     }))
   }
 
-  // sets the prop (quantity or size) of item with id 'id' to value 'value'
+  // sets the prop (quantity, size or colour) of item with id 'id' to value 'value'
   const setItemProp = (id, prop, value) => {
     cartItems.forEach(item => {
       if (item.id === id) {

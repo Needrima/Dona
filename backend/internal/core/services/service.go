@@ -32,6 +32,7 @@ func (s *backendService) CreateProduct(product entity.Product) (interface{}, err
 
 func (s *backendService) SubscribeToNewsLetter(body entity.Subscriber) error {
 	body.ID = primitive.NewObjectID()
+	body.SubscribedAt = helper.ParseTimeToString(time.Now())
 	return s.Repository.SubscribeToNewsLetter(body)
 }
 
@@ -39,15 +40,15 @@ func (s *backendService) GetProductByRef(ref string) (interface{}, error) {
 	return s.Repository.GetProductByRef(ref)
 }
 
-func (s *backendService) SendContactMail(body entity.ContactMessage) error {
+func (s *backendService) ContactAdmin(body entity.ContactMessage) error {
 	body.To = helper.Config.SMTPUsername
 	body.From = body.Email
+	body.SentAt = helper.ParseTimeToString(time.Now())
 	if err := helper.SendMail("contactmail.html", body); err != nil {
 		helper.LogEvent("ERROR", err.Error())
-		return helper.CONTACT_MAIL_ERROR
 	}
 
-	return nil
+	return s.Repository.CreateContactMessage(body)
 }
 
 func (s *backendService) GetCartItems(ids []string) (interface{}, error) {
@@ -77,12 +78,12 @@ func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 	}
 
 	err = helper.SendMail("ordermail.html", entity.ContactMessage{
-		To: order.DeliveryInfo.RecipientEmail,
+		To:      order.DeliveryInfo.RecipientEmail,
 		Message: id.(string),
 	})
 
 	if err != nil {
-		helper.LogEvent("ERROR", "sending mail to client on successful order: "+ err.Error())
+		helper.LogEvent("ERROR", "sending mail to client on successful order: "+err.Error())
 	}
 
 	return id, nil
@@ -90,4 +91,12 @@ func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 
 func (s *backendService) UpdateOrderPayment(id string) (interface{}, error) {
 	return s.Repository.UpdateOrderPayment(id)
+}
+
+func (s *backendService) GetOrders(page string) (interface{}, error) {
+	return s.Repository.GetOrders(page)
+}
+
+func (s *backendService) GetDashBoardValues() (interface{}, error) {
+	return s.Repository.GetDashBoardValues()
 }

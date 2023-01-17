@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	mongoRepository "jamo/backend/internal/adapter/repository/mongodb"
 	"jamo/backend/internal/adapter/routes"
 	"jamo/backend/internal/core/helper"
-	"fmt"
 	"log"
 )
 
@@ -20,7 +20,6 @@ func main() {
 	//Set up routes
 	router := routes.SetupRouter(mongoRepo.Repository)
 	//Print custom message for server start
-
 
 	helper.LogEvent("INFO", "server started")
 	//start server

@@ -1,10 +1,10 @@
 package repository
 
 import (
-	"jamo/backend/internal/core/helper"
-	ports "jamo/backend/internal/port"
 	"context"
 	"errors"
+	"jamo/backend/internal/core/helper"
+	ports "jamo/backend/internal/port"
 	"strconv"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -22,7 +22,7 @@ func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort 
 		Username: dbUsername,
 		Password: dbPassword,
 	}
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:"+dbPort).SetAuth(credentials)// Connect to mongodb with credentials
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:" + dbPort).SetAuth(credentials) // Connect to mongodb with credentials
 	// clientOptions := options.Client().ApplyURI("mongodb://localhost:"+dbPort)// Connect to mongodb without credentials
 	helper.LogEvent("INFO", "Connecting to MongoDB...")
 	db, err := mongo.Connect(context.TODO(), clientOptions)
@@ -48,9 +48,10 @@ func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort 
 	productCollection := conn.Collection("products")
 	newsletterCollection := conn.Collection("newsletter")
 	orderCollection := conn.Collection("orders")
+	messagesCollection := conn.Collection("messages")
 
 	repo := MongoRepositories{
-		Repository: NewInfra(productCollection, newsletterCollection, orderCollection),
+		Repository: NewInfra(productCollection, newsletterCollection, orderCollection, messagesCollection),
 	}
 	return repo, nil
 }
