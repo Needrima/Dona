@@ -77,12 +77,12 @@ func (s *backendService) CreateOrder(order entity.Order) (interface{}, error) {
 	}
 
 	err = helper.SendMail("ordermail.html", entity.ContactMessage{
-		To: order.DeliveryInfo.RecipientEmail,
+		To:      order.DeliveryInfo.RecipientEmail,
 		Message: id.(string),
 	})
 
 	if err != nil {
-		helper.LogEvent("ERROR", "sending mail to client on successful order: "+ err.Error())
+		helper.LogEvent("ERROR", "sending mail to client on successful order: "+err.Error())
 	}
 
 	return id, nil
@@ -94,4 +94,8 @@ func (s *backendService) UpdateOrderPayment(id string) (interface{}, error) {
 
 func (s *backendService) GetOrders(page string) (interface{}, error) {
 	return s.Repository.GetOrders(page)
+}
+
+func (s *backendService) GetDashBoardValues() (interface{}, error) {
+	return s.Repository.GetDashBoardValues()
 }

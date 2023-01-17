@@ -1,9 +1,9 @@
 package repository
 
 import (
+	"fmt"
 	"jamo/backend/internal/core/domain/entity"
 	"jamo/backend/internal/core/helper"
-	"fmt"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
@@ -181,7 +181,7 @@ func (r *DatabaseInfra) UpdateOrderPayment(id string) (interface{}, error) {
 	return id, nil
 }
 
-func (r *DatabaseInfra) GetOrders(page string)(interface{}, error) {
+func (r *DatabaseInfra) GetOrders(page string) (interface{}, error) {
 	findOptions, err := GetPage(page)
 	if err != nil {
 		helper.LogEvent("ERROR", map[string]interface{}{"find options": err.Error()})
@@ -189,7 +189,7 @@ func (r *DatabaseInfra) GetOrders(page string)(interface{}, error) {
 	}
 
 	findOptions = findOptions.SetSort(bson.M{"cartSubtotal": -1}).SetProjection(bson.M{
-		"cartItems": 0,
+		"cartItems":  0,
 		"created_at": 0,
 	})
 
@@ -208,4 +208,44 @@ func (r *DatabaseInfra) GetOrders(page string)(interface{}, error) {
 	}
 
 	return orders, nil
+}
+
+func (r *DatabaseInfra) GetDashBoardValues() (interface{}, error) {
+	values := entity.DashboardValues{}
+	totalOrders, err := r.OrderCollection.CountDocuments(context.TODO(), bson.M{})
+	if err != nil {
+		helper.LogEvent("ERROR", "could not retrieve total orders count from database: "+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	values.TotalOrders = int(totalOrders)
+
+	pendingOrders, err := r.OrderCollection.CountDocuments(context.TODO(), bson.M{"deliveryStatus": "UNDELIVERED"})
+	if err != nil {
+		helper.LogEvent("ERROR", "could not retrieve pending orders count from database: "+ err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	values.PendingOrders = int(pendingOrders)
+
+	values.CompletedOrders = int(totalOrders) - int(pendingOrders)
+
+	matchStage := bson.M{"$match": bson.M{"paymentStatus": "PAID"}}
+	groupStage := bson.M{"$group": bson.M{"_id": "", "total": bson.M{"$sum": "$cartSubtotal"}}}
+	projectStage := bson.M{"$project": bson.M{"_id": 0, "total": "$total"}}
+	cursor, err := r.OrderCollection.Aggregate(context.TODO(), []bson.M{matchStage, groupStage, projectStage})
+	if err != nil {
+		helper.LogEvent("ERROR", "could not retrieve total revenue for pending orders from database:"+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	defer cursor.Close(context.TODO())
+
+	var data []primitive.M
+	if err := cursor.All(context.TODO(), &data); err != nil {
+		helper.LogEvent("ERROR", "cursor all:"+err.Error())
+		return nil, errors.New("something went wrong")
+	}
+	values.TotalRevenue = data[0]["total"].(float64)
+
+	values.NetProfit = values.TotalRevenue - helper.Config.TotalExpense
+
+	return values, nil
 }

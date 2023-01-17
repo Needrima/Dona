@@ -1,9 +1,9 @@
 package api
 
 import (
+	"errors"
 	"jamo/backend/internal/core/domain/entity"
 	"jamo/backend/internal/core/helper"
-	"errors"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -164,4 +164,15 @@ func (hdl *HTTPHandler) GetOrders(c *gin.Context) {
 	}
 
 	c.JSON(200, order)
+}
+
+func (hdl *HTTPHandler) GetDashBoardValues(c *gin.Context) {
+	values, err := hdl.Service.GetDashBoardValues()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": err.Error(),
+		})
+	}
+
+	c.JSON(200, values)
 }

@@ -30,13 +30,13 @@ func LogEvent(level string, message interface{}) {
 		Message   interface{} `json:"message"`
 	}{
 		TimeStamp: time.Now().Format(time.RFC3339),
-		AppName: Config.ServiceName,
-		Message: message,
-		Level:   level,
+		AppName:   Config.ServiceName,
+		Message:   message,
+		Level:     level,
 	})
 
 	if err != nil {
-		log.Fatal("Logevent helper: "+err.Error())
+		log.Fatal("Logevent helper: " + err.Error())
 	}
 	log.Printf("%s\n", data)
 

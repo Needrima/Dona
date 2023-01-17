@@ -12,4 +12,5 @@ type Service interface {
 	CreateOrder(order entity.Order) (interface{}, error)
 	UpdateOrderPayment(id string) (interface{}, error)
 	GetOrders(page string) (interface{}, error)
+	GetDashBoardValues() (interface{}, error)
 }

@@ -19,17 +19,17 @@ type Order struct {
 		Size     string  `json:"size" bson:"size,omitempty" binding:"required"`
 		Subtotal float64 `json:"subtotal" bson:"subtotal,omitempty" binding:"required"`
 	} `json:"cartItems" bson:"cartItems,omitempty" binding:"required"`
-	CartSubtotal float64 `json:"cartSubtotal" bson:"cartSubtotal,omitempty" binding:"required"`
-	DeliverStatus string `json:"deliveryStatus" bson:"deliveryStatus,omitempty" binding:"required,eq=DELIVERED|eq=UNDELIVERED"` 
-	PaymentStatus string `json:"paymentStatus" bson:"paymentStatus,omitempty" binding:"required,eq=PAID|eq=UNPAID"`
-	DeliveryInfo struct {
+	CartSubtotal  float64 `json:"cartSubtotal" bson:"cartSubtotal,omitempty" binding:"required"`
+	DeliverStatus string  `json:"deliveryStatus" bson:"deliveryStatus,omitempty" binding:"required,eq=DELIVERED|eq=UNDELIVERED"`
+	PaymentStatus string  `json:"paymentStatus" bson:"paymentStatus,omitempty" binding:"required,eq=PAID|eq=UNPAID"`
+	DeliveryInfo  struct {
 		RecipientName        string `json:"name" bson:"name,omitempty" binding:"required"`
 		RecipientEmail       string `json:"email" bson:"email,omitempty" binding:"email"`
 		RecipientPhoneNumber string `json:"phone" bson:"phone,omitempty" binding:"required"`
 		RecipientAddress     string `json:"address" bson:"address,omitempty" binding:"required"`
 		OptionalMsg          string `json:"message" bson:"message,omitempty"`
 	} `json:"deliveryInfo" bson:"deliveryinfo,omitempty"`
-	CreatedAt   string             `json:"created_at,omitempty" bson:"created_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
+	CreatedAt string `json:"created_at,omitempty" bson:"created_at"` // comes in RFC3339 format E.G 2022-11-02T23:47:00
 }
 
 func (o *Order) Validate() error {
