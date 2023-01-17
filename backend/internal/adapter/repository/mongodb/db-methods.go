@@ -20,13 +20,15 @@ type DatabaseInfra struct {
 	ProductCollection    *mongo.Collection
 	NewsletterCollection *mongo.Collection
 	OrderCollection      *mongo.Collection
+	MessagesCollection   *mongo.Collection
 }
 
-func NewInfra(ProductCollection, NewsletterCollection, OrderCollection *mongo.Collection) *DatabaseInfra {
+func NewInfra(ProductCollection, NewsletterCollection, OrderCollection, MessagesCollection *mongo.Collection) *DatabaseInfra {
 	return &DatabaseInfra{
 		ProductCollection:    ProductCollection,
 		NewsletterCollection: NewsletterCollection,
 		OrderCollection:      OrderCollection,
+		MessagesCollection: MessagesCollection,
 	}
 }
 
@@ -179,6 +181,16 @@ func (r *DatabaseInfra) UpdateOrderPayment(id string) (interface{}, error) {
 	}
 
 	return id, nil
+}
+
+func (r *DatabaseInfra) CreateContactMessage(body entity.ContactMessage) error {
+	_, err := r.MessagesCollection.InsertOne(context.TODO(), body)
+	if err != nil {
+		helper.LogEvent("ERROR", "adding message to database: "+err.Error())
+		return errors.New("something went wrong")
+	}
+
+	return nil
 }
 
 func (r *DatabaseInfra) GetOrders(page string) (interface{}, error) {

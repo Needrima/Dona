@@ -32,6 +32,7 @@ func (s *backendService) CreateProduct(product entity.Product) (interface{}, err
 
 func (s *backendService) SubscribeToNewsLetter(body entity.Subscriber) error {
 	body.ID = primitive.NewObjectID()
+	body.SubscribedAt = helper.ParseTimeToString(time.Now())
 	return s.Repository.SubscribeToNewsLetter(body)
 }
 
@@ -39,15 +40,15 @@ func (s *backendService) GetProductByRef(ref string) (interface{}, error) {
 	return s.Repository.GetProductByRef(ref)
 }
 
-func (s *backendService) SendContactMail(body entity.ContactMessage) error {
+func (s *backendService) ContactAdmin(body entity.ContactMessage) error {
 	body.To = helper.Config.SMTPUsername
 	body.From = body.Email
+	body.SentAt = helper.ParseTimeToString(time.Now())
 	if err := helper.SendMail("contactmail.html", body); err != nil {
 		helper.LogEvent("ERROR", err.Error())
-		return helper.CONTACT_MAIL_ERROR
 	}
 
-	return nil
+	return s.Repository.CreateContactMessage(body)
 }
 
 func (s *backendService) GetCartItems(ids []string) (interface{}, error) {

@@ -33,7 +33,7 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 	router.Group("/customer")
 	{
 		router.POST("/customer/subscribe", handler.SubscribeToNewLetter)
-		router.POST("/customer/send-contact-mail", handler.SendContactMail)
+		router.POST("/customer/send-contact-mail", handler.ContactAdmin)
 	}
 
 	router.Group("/admin")

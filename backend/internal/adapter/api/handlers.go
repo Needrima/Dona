@@ -85,7 +85,7 @@ func (hdl *HTTPHandler) GetProductByRef(c *gin.Context) {
 	c.JSON(200, product)
 }
 
-func (hdl *HTTPHandler) SendContactMail(c *gin.Context) {
+func (hdl *HTTPHandler) ContactAdmin(c *gin.Context) {
 	body := entity.ContactMessage{}
 
 	if err := c.BindJSON(&body); err != nil {
@@ -93,7 +93,7 @@ func (hdl *HTTPHandler) SendContactMail(c *gin.Context) {
 		return
 	}
 
-	if err := hdl.Service.SendContactMail(body); err != nil {
+	if err := hdl.Service.ContactAdmin(body); err != nil {
 		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})
 		return
 	}
