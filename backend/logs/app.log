@@ -1,64 +1,64 @@
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T14:25:41+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T14:27:46+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T14:32:35+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T14:42:29+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T15:07:03+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T15:20:33+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T15:28:26+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
-{"@timestamp":"2023-01-17T15:30:53+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T15:52:13+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T15:53:14+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T15:56:00+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T15:59:15+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T16:00:18+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T16:01:43+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T16:04:28+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T16:04:28+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T16:04:28+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T16:04:28+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T16:04:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T16:04:29+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T16:04:29+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T16:04:29+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Initializing Mongo!"}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing mongoDB connection with given credentials..."}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Connecting to MongoDB..."}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Confirming MongoDB Connection..."}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Establishing Database collections and indexes..."}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"MongoDB Initialized!"}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"Configuring Routes!"}
+{"@timestamp":"2023-01-17T16:05:00+01:00","level":"INFO","app_name":"jamo-backend","message":"server started"}

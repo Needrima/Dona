@@ -100,3 +100,7 @@ func (s *backendService) GetOrders(page string) (interface{}, error) {
 func (s *backendService) GetDashBoardValues() (interface{}, error) {
 	return s.Repository.GetDashBoardValues()
 }
+
+func (s *backendService) GetAdminMsgs(page string) (interface{}, error) {
+	return s.Repository.GetAdminMsgs(page)
+}
