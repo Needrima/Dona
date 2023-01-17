@@ -40,6 +40,7 @@ func SetupRouter(repository ports.Repository) *gin.Engine {
 	{
 		router.GET("/admin/order/page/:page", handler.GetOrders)
 		router.GET("/admin/order/get_dashboard_values", handler.GetDashBoardValues)
+		router.GET("/admin/messages/page/:page", handler.GetAdminMsgs)
 	}
 
 	router.NoRoute(func(ctx *gin.Context) {

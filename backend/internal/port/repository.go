@@ -16,4 +16,5 @@ type Repository interface {
 	GetOrders(page string) (interface{}, error)
 	GetDashBoardValues() (interface{}, error)
 	CreateContactMessage(body entity.ContactMessage) error
+	GetAdminMsgs(page string) (interface{}, error)
 }

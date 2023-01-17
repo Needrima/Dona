@@ -176,3 +176,17 @@ func (hdl *HTTPHandler) GetDashBoardValues(c *gin.Context) {
 
 	c.JSON(200, values)
 }
+
+func (hdl *HTTPHandler) GetAdminMsgs(c *gin.Context) {
+	page := c.Param("page")
+
+	msgs, err := hdl.Service.GetAdminMsgs(page)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(200, msgs)
+}

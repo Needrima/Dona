@@ -28,7 +28,7 @@ func NewInfra(ProductCollection, NewsletterCollection, OrderCollection, Messages
 		ProductCollection:    ProductCollection,
 		NewsletterCollection: NewsletterCollection,
 		OrderCollection:      OrderCollection,
-		MessagesCollection: MessagesCollection,
+		MessagesCollection:   MessagesCollection,
 	}
 }
 
@@ -233,7 +233,7 @@ func (r *DatabaseInfra) GetDashBoardValues() (interface{}, error) {
 
 	pendingOrders, err := r.OrderCollection.CountDocuments(context.TODO(), bson.M{"deliveryStatus": "UNDELIVERED"})
 	if err != nil {
-		helper.LogEvent("ERROR", "could not retrieve pending orders count from database: "+ err.Error())
+		helper.LogEvent("ERROR", "could not retrieve pending orders count from database: "+err.Error())
 		return nil, errors.New("something went wrong")
 	}
 	values.PendingOrders = int(pendingOrders)
@@ -260,4 +260,33 @@ func (r *DatabaseInfra) GetDashBoardValues() (interface{}, error) {
 	values.NetProfit = values.TotalRevenue - helper.Config.TotalExpense
 
 	return values, nil
+}
+
+func (r *DatabaseInfra) GetAdminMsgs(page string) (interface{}, error) {
+	findOptions, err := GetPage(page)
+	if err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"find options": err.Error()})
+		return nil, errors.New("invalid page number")
+	}
+
+	findOptions = findOptions.SetSort(bson.M{"sent_at": 1}).SetProjection(bson.M{
+		"to":  0,
+		"from": 0,
+	})
+
+	cursor, err := r.MessagesCollection.Find(context.TODO(), bson.M{}, findOptions)
+	if err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"find": err.Error()})
+		return nil, errors.New("something went wrong")
+	}
+	defer cursor.Close(context.TODO())
+
+	var messages []entity.ContactMessage
+
+	if err := cursor.All(context.TODO(), &messages); err != nil {
+		helper.LogEvent("ERROR", map[string]interface{}{"cursor.all": err.Error()})
+		return nil, errors.New("something went wrong")
+	}
+
+	return messages, nil
 }

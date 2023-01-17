@@ -13,4 +13,5 @@ type Service interface {
 	UpdateOrderPayment(id string) (interface{}, error)
 	GetOrders(page string) (interface{}, error)
 	GetDashBoardValues() (interface{}, error)
+	GetAdminMsgs(page string) (interface{}, error)
 }
