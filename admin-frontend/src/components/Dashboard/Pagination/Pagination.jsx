@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react'
-import { dashboardContext } from '../../../pages/Dashboard'
+import { AppContext } from '../../../App';
 import './pagination.scss'
 
 const Pagination = () => {
 
-  const {getOrders, currentPage} = useContext(dashboardContext);
+  const {getOrders, currentPage} = useContext(AppContext);
 
   const [btnDisabled, setBtnDisabled] = useState({
     next: false,

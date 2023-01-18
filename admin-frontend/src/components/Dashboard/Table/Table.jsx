@@ -1,10 +1,10 @@
 import React from 'react'
 import './table.scss'
 import { useContext } from 'react'
-import { dashboardContext } from '../../../pages/Dashboard'
+import { AppContext } from '../../../App'
 
 const Table = () => {
-  const {recentOrders} = useContext(dashboardContext);
+  const {recentOrders} = useContext(AppContext);
 
   return (
     <div className="board">
