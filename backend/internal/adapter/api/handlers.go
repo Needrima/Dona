@@ -190,3 +190,14 @@ func (hdl *HTTPHandler) GetAdminMsgs(c *gin.Context) {
 
 	c.JSON(200, msgs)
 }
+
+func (hdl *HTTPHandler) GetOrderById(c *gin.Context) {
+	id := c.Param("id")
+	order, err := hdl.Service.GetOrderById(id)
+	if err != nil {
+		c.JSON(500, gin.H{"error": "something went wrong"})
+		return
+	}
+
+	c.JSON(200, order)
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
-import { dashboardContext } from '../../pages/Dashboard'
+import { AppContext } from '../../App'
+// import { dashboardContext } from '../../pages/Dashboard'
 import './dashboard.scss'
 import Pagination from './Pagination/Pagination'
 import Table from './Table/Table'
@@ -12,7 +13,7 @@ const DashboardLayout = () => {
     completedOrders,
     totalRevenue,
     netProfit
-  } = useContext(dashboardContext);
+  } = useContext(AppContext);
 
   return (
     <>

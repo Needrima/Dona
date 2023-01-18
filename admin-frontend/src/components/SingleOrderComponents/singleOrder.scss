@@ -1,0 +1,75 @@
+.i-name {
+    padding: 30px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 70px;
+}
+
+.values {
+    padding: 30px 30px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .val-box {
+        background: #fff;
+        width: 260px;
+        padding: 16px 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 10px;
+
+        i {
+            font-size: 25px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;  
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        span {
+            font-size: 15px;
+        }
+    }
+
+    .val-box:nth-child(1) i,
+    .val-box:nth-child(2) i, 
+    .val-box:nth-child(3) i {
+        background: #5c8af0;
+    }
+
+    .val-box:nth-child(4) i, 
+    .val-box:nth-child(5) i {
+        background: #74daec;
+    }
+}
+
+@media(max-width: 830px) {
+    .values {
+        .val-box {
+            width: 48%;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media(max-width: 477px) {
+    .values {
+        flex-direction: column;
+
+        .val-box {
+            width: 100%;
+        }
+    }
+}

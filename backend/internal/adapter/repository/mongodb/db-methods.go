@@ -290,3 +290,20 @@ func (r *DatabaseInfra) GetAdminMsgs(page string) (interface{}, error) {
 
 	return messages, nil
 }
+
+func (r *DatabaseInfra) GetOrderById(id string) (interface{}, error) {
+	idHex, _ := primitive.ObjectIDFromHex(id)
+	singleRes := r.OrderCollection.FindOne(context.TODO(), bson.M{"_id": idHex})
+	if singleRes.Err() != nil {
+		helper.LogEvent("ERROR", "could not get order with specified hex: "+singleRes.Err().Error())
+		return nil, errors.New("something went wrong")
+	}
+
+	var order entity.Order
+	if err := singleRes.Decode(&order); err != nil {
+		helper.LogEvent("ERROR", "decoding from single order: "+singleRes.Err().Error())
+		return nil, errors.New("something went wrong")
+	}
+
+	return order, nil
+}

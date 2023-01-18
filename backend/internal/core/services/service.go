@@ -104,3 +104,7 @@ func (s *backendService) GetDashBoardValues() (interface{}, error) {
 func (s *backendService) GetAdminMsgs(page string) (interface{}, error) {
 	return s.Repository.GetAdminMsgs(page)
 }
+
+func (s *backendService) GetOrderById(id string) (interface{}, error) {
+	return s.Repository.GetOrderById(id)
+}
