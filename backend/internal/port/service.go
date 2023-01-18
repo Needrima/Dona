@@ -10,6 +10,7 @@ type Service interface {
 	ContactAdmin(body entity.ContactMessage) error
 	GetCartItems(ids []string) (interface{}, error)
 	CreateOrder(order entity.Order) (interface{}, error)
+	GetOrderById(id string) (interface{}, error)
 	UpdateOrderPayment(id string) (interface{}, error)
 	GetOrders(page string) (interface{}, error)
 	GetDashBoardValues() (interface{}, error)

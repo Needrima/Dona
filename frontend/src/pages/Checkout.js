@@ -8,8 +8,10 @@ export const CheckoutContext = React.createContext();
 const Checkout = () => {
   const {cartItems, cartSubtotal, changeCartItems} = useContext(AppContext);
   if (!cartItems || cartItems.length === 0) {
-    window.location.href = '/cart'
+    window.location.href = '/'
   }
+
+  console.log('cart items:', cartItems)
 
   const placeOrder = (deliveryInfo) => {
     let orderDetails = {cartItems, cartSubtotal, deliveryInfo, deliveryStatus: "UNDELIVERED", paymentStatus: "UNPAID"};

@@ -29,7 +29,7 @@ const Table = () => {
                         <td>{order['deliveryInfo']['phone']}</td>
                         <td className={order['deliveryStatus'] === 'DELIVERED' ? 'del' : 'undel'}><span>{order['deliveryStatus']}</span></td>
                         <td className={order['paymentStatus'] === 'PAID' ? 'paid' : 'unpaid'}><span>{order['paymentStatus']} </span></td>
-                        <td><a href={`/view/${order['id']}`}>View order</a></td>
+                        <td><a href={`/order/view/${order['id']}`}>View order</a></td>
                     </tr>
                 )) : (
                     <tr>

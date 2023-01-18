@@ -11,11 +11,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type MongoRepositories struct {
-	Repository ports.Repository
-}
 
-func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort string) (MongoRepositories, error) {
+func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort string) (ports.Repository, error) {
 	helper.LogEvent("INFO", "Establishing mongoDB connection with given credentials...")
 
 	credentials := options.Credential{
@@ -28,7 +25,7 @@ func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort 
 	db, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		helper.LogEvent("ERROR", "connecting to mongodb")
-		return MongoRepositories{}, err
+		return nil, err
 	}
 
 	// Check the connection
@@ -38,7 +35,7 @@ func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort 
 		//log.Println(err)
 		//log.Fatal(err)
 		helper.LogEvent("ERROR", "pinging mongodb")
-		return MongoRepositories{}, err
+		return nil, err
 	}
 
 	//helper.LogEvent("Info", "Connected to MongoDB!")
@@ -50,10 +47,7 @@ func ConnectToMongo(dbUsername string, dbPassword string, dbname string, dbPort 
 	orderCollection := conn.Collection("orders")
 	messagesCollection := conn.Collection("messages")
 
-	repo := MongoRepositories{
-		Repository: NewInfra(productCollection, newsletterCollection, orderCollection, messagesCollection),
-	}
-	return repo, nil
+	return NewInfra(productCollection, newsletterCollection, orderCollection, messagesCollection), nil
 }
 
 func GetPage(page string) (*options.FindOptions, error) {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
-import { ordersAxiosInstance } from './axios/axios'
+import { adminAxiosInstance } from './axios/axios'
+import SingleOrder from './pages/SingleOrder';
 
 export const AppContext = React.createContext();
 const App = () => {
@@ -46,7 +47,7 @@ const App = () => {
   const getOrders = async (action) => {
     try {
       let nextPage = action === "next" ? currentPage + 1 : currentPage - 1;
-      const res  = await ordersAxiosInstance.get(`/order/page/${nextPage}`);
+      const res  = await adminAxiosInstance.get(`/orders/page/${nextPage}`);
       handleOrdersChange(res.data)
       handleCurrentPageChange(nextPage)
     }catch(error){
@@ -57,7 +58,7 @@ const App = () => {
 
   const getDashboardValues = async () => {
     try {
-      const res  = await ordersAxiosInstance.get(`/order/get_dashboard_values`);
+      const res  = await adminAxiosInstance.get(`/order/get_dashboard_values`);
       setDashvalues(res.data);
     }catch(error){
       console.log(error.response)
@@ -84,6 +85,7 @@ const App = () => {
     }}>
       <Routes>
         <Route path='/' exact element={<Dashboard/>} />
+        <Route path='/order/view/:id' exact element={<SingleOrder />} />
       </Routes>
     </AppContext.Provider>
   )

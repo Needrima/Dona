@@ -5,6 +5,7 @@ import (
 	mongoRepository "jamo/backend/internal/adapter/repository/mongodb"
 	"jamo/backend/internal/adapter/routes"
 	"jamo/backend/internal/core/helper"
+	ports "jamo/backend/internal/port"
 	"log"
 )
 
@@ -18,7 +19,7 @@ func main() {
 	// helper.LogEvent("INFO", "Redis Initialized!")
 
 	//Set up routes
-	router := routes.SetupRouter(mongoRepo.Repository)
+	router := routes.SetupRouter(mongoRepo)
 	//Print custom message for server start
 
 	helper.LogEvent("INFO", "server started")
@@ -27,7 +28,7 @@ func main() {
 	//api.SetConfiguration
 }
 
-func startMongo() mongoRepository.MongoRepositories {
+func startMongo() ports.Repository {
 	helper.LogEvent("INFO", "Initializing Mongo!")
 	mongoRepo, err := mongoRepository.ConnectToMongo(
 		helper.Config.MongoDbUserName,
@@ -35,6 +36,7 @@ func startMongo() mongoRepository.MongoRepositories {
 		helper.Config.MongoDbName,
 		helper.Config.MongoDbPort,
 	)
+	
 	if err != nil {
 		fmt.Println(err)
 		helper.LogEvent("ERROR", "MongoDB database Connection Error: "+err.Error())
