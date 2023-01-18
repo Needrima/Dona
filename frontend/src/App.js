@@ -17,7 +17,7 @@ function App() {
   })
 
   useEffect(() => {
-    const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
+    const cart_items = JSON.parse(window.localStorage.getItem('Jamo-cart-items'))
     if (cart_items !== null) {
       changeCartItems(cart_items)
       setCartSubtotal(cart_items)
@@ -66,15 +66,15 @@ function App() {
     })
 
     changeCartItems(cartItems)
-    window.localStorage.setItem('dona-cart-items', JSON.stringify(cartItems))
+    window.localStorage.setItem('Jamo-cart-items', JSON.stringify(cartItems))
   }
 
   // adds a new item(item id, quantity, size and colour) to cart items
   const AddToCart = (id, quantity, size, colour) => {
-    const cart_items = JSON.parse(window.localStorage.getItem('dona-cart-items'))
+    const cart_items = JSON.parse(window.localStorage.getItem('Jamo-cart-items'))
 
-    if (cart_items === null || cart_items.length === 0) { // dona-cart-items has not been set in local storage or has been set with no data
-      window.localStorage.setItem('dona-cart-items', JSON.stringify([{id, quantity, size, colour}]))
+    if (cart_items === null || cart_items.length === 0) { // Jamo-cart-items has not been set in local storage or has been set with no data
+      window.localStorage.setItem('Jamo-cart-items', JSON.stringify([{id, quantity, size, colour}]))
       setCartItems({id, quantity, size, colour})
     }else {
       let exist = false;
@@ -88,7 +88,7 @@ function App() {
 
       if (!exist) {
         cart_items.push({id, quantity, size})
-        window.localStorage.setItem('dona-cart-items', JSON.stringify(cart_items))
+        window.localStorage.setItem('Jamo-cart-items', JSON.stringify(cart_items))
         setCartItems({id, quantity, size, colour})
       }      
     }
@@ -99,7 +99,7 @@ function App() {
   // RemoveFromCart removes item with id 'id' from cart
   const RemoveFromCart = (id) => {
     const remainingItems = cartItems.filter( item => item.id !== id)
-    window.localStorage.setItem('dona-cart-items', JSON.stringify(remainingItems))
+    window.localStorage.setItem('Jamo-cart-items', JSON.stringify(remainingItems))
     changeCartItems(remainingItems)
     setCartSubtotal(remainingItems)
     navigate('/cart')

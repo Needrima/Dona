@@ -39,7 +39,7 @@ const Checkout = () => {
             .then(res => console.log(res.data))
             .catch(err => console.info(err))
 
-            window.localStorage.setItem('dona-cart-items', JSON.stringify([]))
+            window.localStorage.setItem('Jamo-cart-items', JSON.stringify([]))
             changeCartItems([])
             window.location.href = '/'
           }
