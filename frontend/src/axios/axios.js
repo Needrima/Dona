@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 const productAxiosInstance = axios.create({
-    baseURL: 'http://localhost:2022/product',
+    baseURL: 'https://jamo-backend-production.up.railway.app/product',
     headers: {
       Accept: 'application/json'
     }
 })
 
 const customerAxiosInstance = axios.create({
-  baseURL: 'http://localhost:2022/customer',
+  baseURL: 'https://jamo-backend-production.up.railway.app/customer',
   headers: {
     Accept: 'application/json'
   }
