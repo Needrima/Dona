@@ -12,7 +12,7 @@ const ContactSection = () => {
         <div>
           <li>
             <i className="fal fa-envelope"></i>
-            <p>customerservice@dona.com</p>
+            <p>customerservice@jamo.com</p>
           </li>
 
           <li>
