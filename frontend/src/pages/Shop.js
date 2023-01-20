@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Layout from '../components/Layout/Layout'
 import ShopLayout from '../components/ShopComponents/ShopLayout'
 import {productAxiosInstance} from '../axios/axios'
 
 export const ShopContext = React.createContext();
 const Shop = () => {
+  useEffect(() => {
+    document.title = "Jamo | Shop"
+  })
+
   const [state, setState] = useState({
     products: []
   });

@@ -5,7 +5,15 @@ import { productAxiosInstance } from '../axios/axios'
 import { AppContext } from '../App'
 
 const Cart = () => {
+  useEffect(() => {
+    document.title = "Jamo | Cart"
+  })
+
   const {cartItems, changeCartItems, setCartSubtotal} = useContext(AppContext);
+
+  if (cartItems === null || cartItems.length === 0) {
+    window.location.href = '/shop'
+  }
 
   useEffect(() => {
     (async () => {

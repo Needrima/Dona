@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../App';
 import { productAxiosInstance } from '../axios/axios';
 import CheckoutLayout from '../components/CheckoutComponents/CheckoutLayout';
@@ -11,7 +11,9 @@ const Checkout = () => {
     window.location.href = '/'
   }
 
-  console.log('cart items:', cartItems)
+  useEffect(() => {
+    document.title = "Jamo | Checkout"
+  })
 
   const placeOrder = (deliveryInfo) => {
     let orderDetails = {cartItems, cartSubtotal, deliveryInfo, deliveryStatus: "UNDELIVERED", paymentStatus: "UNPAID"};
