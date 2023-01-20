@@ -16,38 +16,9 @@ const NavBar = () => {
 
   const {cartItems} = useContext(AppContext);
 
-  const [searchText, setSearchtext] = useState('');
-
-  const displaySearchBox = () => {
-    switch (window.location.pathname) {
-      case "/" :
-        return (
-          <div className="search">
-            <input type="text" placeholder="Enter anime name" value={searchText} onChange={(e)=> setSearchtext(e.target.value)} />
-            <button onClick={search}>search</button>
-          </div>
-        )
-      case "/shop":
-        return (
-          <div className="search">
-            <input type="text" placeholder="Enter anime name" value={searchText} onChange={(e)=> setSearchtext(e.target.value)} />
-            <button onClick={search}>search</button>
-          </div>
-        )
-      default:
-        return null
-    }
-  }
-
-  const search = () => {
-    alert(searchText)
-  }
-  
   return (
     <section id='header'>
       <Link to='/' className='logo'>Jamo</Link>
-      
-      {displaySearchBox()}
 
       <div>
         <ul id="navbar">

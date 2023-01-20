@@ -59,11 +59,19 @@ body {
     margin-bottom: 10px;
 }
 
+#hero input {
+    padding: 20px 30px;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    outline: none;
+}
+
 #hero button {
     background-color: transparent;
-    padding: 20px 30px;
+    padding: 20px 15px;
     color: #fff;
-    border-radius: 10px;               
+    border-radius: 0px 10px 10px 0px;               
     border: 1px solid #fff;
     font-size: 13px;
     font-weight: 700;
@@ -71,7 +79,7 @@ body {
     transition: 0.2s ease;
 }
 
-#hero  button:hover {        
+#hero button:hover {        
     background-color: #fff;        
     border: 1px solid #fff;
     color: #000;
