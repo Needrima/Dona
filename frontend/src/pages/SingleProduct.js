@@ -6,6 +6,9 @@ import { useParams } from 'react-router';
 
 export const SingleProductContext = React.createContext();
 const SingleProduct = () => { 
+    useEffect(() => {
+      document.title = "Jamo | Shop"
+    })
 
     const [state, setState] = useState({
         products: [],
