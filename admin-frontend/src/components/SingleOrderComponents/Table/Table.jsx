@@ -1,10 +1,23 @@
 import React from 'react'
 import { useContext } from 'react'
+import { productAxiosInstance } from '../../../axios/axios'
 import { singleOrderContext } from '../../../pages/SingleOrder'
 import './table.scss'
 
 const Table = ({cartItems}) => {
-    console.log("cartItems:", cartItems);
+
+ const getProductByID = (id) => {
+    (
+        async () => {
+            try {
+                const res = await productAxiosInstance.get(`/ref/${id}`)
+                console.log(res.data)
+            }catch(err) {
+                console.log(err)
+            }
+        }
+    )();
+ }
 
   return (
     <div className="board">
@@ -30,7 +43,7 @@ const Table = ({cartItems}) => {
                     <td>{item['price']}</td>
                     <td>{item['quantity']}</td>
                     <td>{item['subtotal']}</td>
-                    <td><span className='view-product'>View Product</span></td>
+                    <td><span className='view-product' onClick={() => getProductByID(item['id'])}>View Product</span></td>
                 </tr>
             ))
             }

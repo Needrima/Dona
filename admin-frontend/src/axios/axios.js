@@ -7,4 +7,11 @@ const adminAxiosInstance = axios.create({
     }
 })
 
-export {adminAxiosInstance}
+const productAxiosInstance = axios.create({
+  baseURL: 'https://jamo-backend-production.up.railway.app/product',
+  headers: {
+    Accept: 'application/json'
+  }
+})
+
+export {adminAxiosInstance, productAxiosInstance}
