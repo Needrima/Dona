@@ -18,7 +18,7 @@ const SingleOrder = () => {
       async () => {
         try {
           const res = await adminAxiosInstance.get(`/order/${id}`)
-          console.log(res.data)
+          console.log("data", res.data)
 
           setState(state => ({
             ...state,

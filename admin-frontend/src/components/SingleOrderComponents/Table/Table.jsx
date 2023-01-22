@@ -3,9 +3,8 @@ import { useContext } from 'react'
 import { singleOrderContext } from '../../../pages/SingleOrder'
 import './table.scss'
 
-const Table = () => {
-
-    const {order} = useContext(singleOrderContext);
+const Table = ({cartItems}) => {
+    console.log("cartItems:", cartItems);
 
   return (
     <div className="board">
@@ -23,17 +22,20 @@ const Table = () => {
         </thead>
 
         <tbody>
-            <tr>
-                <td>Product ID 1</td>
-                <td>Colour 1</td>
-                <td>Size 1</td>
-                <td>Price 1</td>
-                <td>Quantity 1</td>
-                <td>Subtotal 1</td>
-                <td><a href='#'>View Product</a></td>
-            </tr>
+            {cartItems.map(item =>  (
+                <tr key={item['id']}>
+                    <td>{item['id']}</td>
+                    <td>{item['colour']}</td>
+                    <td>{item['size']}</td>
+                    <td>{item['price']}</td>
+                    <td>{item['quantity']}</td>
+                    <td>{item['subtotal']}</td>
+                    <td><span className='view-product'>View Product</span></td>
+                </tr>
+            ))
+            }
 
-            <tr>
+            {/* <tr>
                 <td>Product ID 2</td>
                 <td>Colour 2</td>
                 <td>Size 2</td>
@@ -41,27 +43,7 @@ const Table = () => {
                 <td>Quantity 2</td>
                 <td>Subtotal 2</td>
                 <td><a href='#'>View Product</a></td>
-            </tr>
-
-            <tr>
-                <td>Product ID 3</td>
-                <td>Colour 3</td>
-                <td>Size 3</td>
-                <td>Price 3</td>
-                <td>Quantity 3</td>
-                <td>Subtotal 3</td>
-                <td><a href='#'>View Product</a></td>
-            </tr>
-
-            <tr>
-                <td>Product ID 4</td>
-                <td>Colour 4</td>
-                <td>Size 4</td>
-                <td>Price 4</td>
-                <td>Quantity 4</td>
-                <td>Subtotal 4</td>
-                <td><a href='#'>View Product</a></td>
-            </tr>
+            </tr> */}
         </tbody>
         </table>
     </div>
