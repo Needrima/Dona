@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const adminAxiosInstance = axios.create({
-    baseURL: 'http://localhost:2022/admin',
+    baseURL: 'https://jamo-backend-production.up.railway.app/admin',
     headers: {
       Accept: 'application/json'
     }
