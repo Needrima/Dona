@@ -32,6 +32,11 @@
                     a {
                         text-decoration: none;
                     }
+
+                    .update-del {
+                        color: rgb(0, 0, 255);
+                        cursor: pointer;
+                    }
                 }
 
                 .del span, .paid span {

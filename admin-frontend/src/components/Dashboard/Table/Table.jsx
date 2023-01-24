@@ -2,9 +2,19 @@ import React from 'react'
 import './table.scss'
 import { useContext } from 'react'
 import { AppContext } from '../../../App'
+import { adminAxiosInstance } from '../../../axios/axios'
 
 const Table = () => {
   const {recentOrders} = useContext(AppContext);
+
+  const updateDeliveryStatus = async (id) => {
+    try {
+        const res = await adminAxiosInstance.put(`/order/update-delivery/${id}`)
+        console.log(res)
+    }catch(err) {
+        console.log(err)
+    }
+  }
 
   return (
     <div className="board">
@@ -30,6 +40,7 @@ const Table = () => {
                         <td className={order['deliveryStatus'] === 'DELIVERED' ? 'del' : 'undel'}><span>{order['deliveryStatus']}</span></td>
                         <td className={order['paymentStatus'] === 'PAID' ? 'paid' : 'unpaid'}><span>{order['paymentStatus']} </span></td>
                         <td><a href={`/order/view/${order['id']}`}>View order</a></td>
+                        <td><span className='update-del' onClick={() => updateDeliveryStatus(order['id'])}>Update Status</span></td>
                     </tr>
                 )) : (
                     <tr>
