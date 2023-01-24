@@ -8,9 +8,13 @@ const Table = () => {
   const {recentOrders} = useContext(AppContext);
 
   const updateDeliveryStatus = async (id) => {
+    if (!window.confirm("update delivery?")) {
+        return
+    }
+
     try {
         const res = await adminAxiosInstance.put(`/order/update-delivery/${id}`)
-        console.log(res)
+        res.status === 200 ? alert(`successfully updated order, id: ${id}`) : alert("something went wrong try again")
     }catch(err) {
         console.log(err)
     }
