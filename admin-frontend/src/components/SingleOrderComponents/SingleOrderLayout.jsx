@@ -1,11 +1,33 @@
 import React from 'react'
+import { useState } from 'react'
 import { useContext } from 'react'
 import { singleOrderContext } from '../../pages/SingleOrder'
 import './singleOrder.scss'
 import Table from './Table/Table'
+import ViewProduct from './ViewProduct/ViewProduct'
 
 const SingleOrderLayout = () => {
   const {order} = useContext(singleOrderContext);
+  const [state, setState] = useState({
+    productModalShown: false,
+    product: null,
+  })
+
+  const {productModalShown, product} = state;
+
+  const showProductModal = (val) => {
+    setState(state =>({
+      ...state,
+      productModalShown: val,
+    }))
+  }
+
+  const setProduct = (product) => {
+    setState(state =>({
+      ...state,
+      product: product,
+    }))
+  }
 
   return (
     <>
@@ -73,9 +95,10 @@ const SingleOrderLayout = () => {
             </div>
           </div>
 
-          <Table cartItems={order["cartItems"]}/>
+          <Table cartItems={order["cartItems"]} showProductModal={showProductModal} setProduct={setProduct} />
         </>
         }
+        {productModalShown && <ViewProduct showProductModal={showProductModal}  product={product} />}
     </>
   )
 }

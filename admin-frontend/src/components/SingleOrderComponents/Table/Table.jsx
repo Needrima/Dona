@@ -1,17 +1,15 @@
 import React from 'react'
-import { useContext } from 'react'
 import { productAxiosInstance } from '../../../axios/axios'
-import { singleOrderContext } from '../../../pages/SingleOrder'
 import './table.scss'
 
-const Table = ({cartItems}) => {
+const Table = ({cartItems, showProductModal, setProduct}) => {
 
  const getProductByID = (id) => {
     (
         async () => {
             try {
-                const res = await productAxiosInstance.get(`/ref/${id}`)
-                console.log(res.data)
+                const res = await productAxiosInstance.get(`/ref/${id}`);
+                setProduct(res.data);
             }catch(err) {
                 console.log(err)
             }
@@ -43,7 +41,12 @@ const Table = ({cartItems}) => {
                     <td>{item['price']}</td>
                     <td>{item['quantity']}</td>
                     <td>{item['subtotal']}</td>
-                    <td><span className='view-product' onClick={() => getProductByID(item['id'])}>View Product</span></td>
+                    <td><span className='view-product'
+                     onClick={() =>{
+                        getProductByID(item['id']);
+                        showProductModal(true);
+                    }}
+                     >View Product</span></td>
                 </tr>
             ))
             }
