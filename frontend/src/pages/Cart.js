@@ -3,19 +3,30 @@ import Layout from '../components/Layout/Layout'
 import CartLayout from '../components/CartComponents/CartLayout'
 import { productAxiosInstance } from '../axios/axios'
 import { AppContext } from '../App'
+import { useNavigate } from 'react-router'
 
 const Cart = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Jamo | Cart"
   })
 
   const {cartItems, changeCartItems, setCartSubtotal} = useContext(AppContext);
 
-  if (cartItems === null || cartItems.length === 0) {
-    window.location.href = '/shop'
-  }
+  // if (cartItems === null || cartItems.length === 0) {
+  //   console.log('no cart item');
+  //   // window.location.href = '/shop'
+  //   navigate('/shop')
+  // }
 
   useEffect(() => {
+    if (cartItems === null || cartItems.length === 0) {
+      console.log('no cart item');
+      // window.location.href = '/shop'
+      navigate('/shop')
+      return
+    }
+
     (async () => {
       if (cartItems !== null && cartItems.length !== 0) {
         const ids = []
