@@ -5,10 +5,10 @@ const Hero = () => {
     <section id='hero'>
         <h2>#SHOP</h2>
         <h4>Browse through our collection</h4>
-        <form>
+        {/* <form>
           <input type="text" placeholder='Enter anime name' />
           <button type='submit'>Search</button>
-        </form>
+        </form> */}
     </section>
   )
 }
