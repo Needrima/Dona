@@ -1,19 +1,19 @@
 import React, {useState} from 'react'
 import HomeLayout from '../components/HomeComponents/HomeLayout'
 import Layout from '../components/Layout/Layout'
-import {productAxiosInstance} from '../axios/axios'
+import axiosInstance from '../axios/axios'
 
 export const HomeContext = React.createContext();
 const Home = () => {
   const [state, setState] = useState({
-    products: []
+    products: null
   });
 
   const {products} = state;
 
   const getProducts = (number) => {
-    productAxiosInstance.get(`/amount/${number}`)
-    .then((res)=> res.status === 200 ? setState(state => ({...state, products: res.data})) : [])
+    axiosInstance.get(`product/amount/${number}`)
+    .then((res)=> res.status === 200 && setState(state => ({...state, products: res?.data || null})))
     .catch((error)=> console.log(error))
   }
 

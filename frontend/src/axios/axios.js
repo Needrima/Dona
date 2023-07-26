@@ -1,17 +1,11 @@
 import axios from 'axios'
 
-const productAxiosInstance = axios.create({
-    baseURL: 'https://jamo-backend-production.up.railway.app/product',
+const axiosInstance = axios.create({
+    // baseURL: 'https://jamo-backend-production.up.railway.app',
+    baseURL: 'http://localhost:2022',
     headers: {
       Accept: 'application/json'
     }
 })
 
-const customerAxiosInstance = axios.create({
-  baseURL: 'https://jamo-backend-production.up.railway.app/customer',
-  headers: {
-    Accept: 'application/json'
-  }
-})
-
-export {productAxiosInstance, customerAxiosInstance}
+export default axiosInstance;

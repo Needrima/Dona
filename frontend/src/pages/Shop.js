@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Layout from '../components/Layout/Layout'
 import ShopLayout from '../components/ShopComponents/ShopLayout'
-import {productAxiosInstance} from '../axios/axios'
+import axiosInstance from '../axios/axios'
 
 export const ShopContext = React.createContext();
 const Shop = () => {
@@ -10,14 +10,14 @@ const Shop = () => {
   })
 
   const [state, setState] = useState({
-    products: []
+    products: null
   });
 
   const {products} = state;
 
   const getProducts = (number) => {
-    productAxiosInstance.get(`/amount/${number}`)
-    .then((res)=> res.status === 200 ? setState(state => ({...state, products: res.data})) : [])
+    axiosInstance.get(`product/amount/${number}`)
+    .then((res)=> res.status === 200 && setState(state => ({...state, products: res?.data || null})))
     .catch((error)=> console.log(error))
   }
 

@@ -5,7 +5,7 @@ import AboutImg from '../../../assets/images/static/about.jpg'
 const AboutSection = () => {
   return (
     <section className="section-p1" id="about-head">
-        <img src={AboutImg} alt="about image" />
+        <img src={AboutImg} alt="about" />
 
         <div>
             <h2>Who We Are?</h2>

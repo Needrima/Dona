@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../App';
-import { productAxiosInstance } from '../axios/axios';
+import axiosInstance from '../axios/axios';
 import CheckoutLayout from '../components/CheckoutComponents/CheckoutLayout';
 import Layout from '../components/Layout/Layout';
 
@@ -20,7 +20,7 @@ const Checkout = () => {
     
     (async () => {
       try {
-        const res = await productAxiosInstance.post('/order', orderDetails)
+        const res = await axiosInstance.post('product/order', orderDetails)
         console.log(res.data);
         console.log('proceeding to payment');
         // go to payment
@@ -37,7 +37,7 @@ const Checkout = () => {
             let message = 'Payment complete! Reference: '+response.reference;
             alert(message);
             
-            productAxiosInstance.put(`/order/update-payment/${res.data.id}`)
+            axiosInstance.put(`product/order/update-payment/${res.data.id}`)
             .then(res => console.log(res.data))
             .catch(err => console.info(err))
 

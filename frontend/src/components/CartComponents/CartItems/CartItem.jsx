@@ -8,7 +8,7 @@ const CartItem = ({data}) => {
   return (
     <tr>
         <td onClick={() => RemoveFromCart(data['id'])}><span><i className="fa fa-times-circle" aria-hidden="true"></i></span></td>
-        <td>{data['img_names'] && <img src={require(`../../../assets/images/products/${data['img_names'][0]}`)} alt="product image" />}</td>
+        <td>{data['img_names'] && <img src={require(`../../../assets/images/products/${data['img_names'][0]}`)} alt="product" />}</td>
         <td>{data['name']}</td>
         <td>NGN {data['price']}</td>
         <td>

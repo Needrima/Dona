@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './style.scss'
-import { customerAxiosInstance } from '../../../axios/axios'
+import axiosInstance from '../../../axios/axios'
 
 const ContactForm = () => {
   const [state, setState] = useState({
@@ -22,7 +22,7 @@ const ContactForm = () => {
 
   const sendMessage = () => {
     setBtnDisabled(true);
-    customerAxiosInstance.post('/send-contact-mail', state)
+    axiosInstance.post('customer/send-contact-mail', state)
     .then(res => {
       if (res.status === 200) {
         alert('message sent')

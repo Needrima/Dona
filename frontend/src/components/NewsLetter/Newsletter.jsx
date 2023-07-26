@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {customerAxiosInstance} from '../../axios/axios'
+import axiosInstance from '../../axios/axios'
 import './newsletter.scss'
 
 const Newsletter = () => {
@@ -12,7 +12,7 @@ const Newsletter = () => {
 
   const subscribe = () => {
     setBtnDisabled(true);
-    customerAxiosInstance.post('/subscribe', emailAddr)
+    axiosInstance.post('customer/subscribe', emailAddr)
     .then(res => {
       if (res.status === 200) {
         alert('subscription successful')
