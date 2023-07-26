@@ -11,7 +11,7 @@ const Product = ({data}) => {
   const getRating = (rating) => {
     const stars = []
     for (let i = 0; i < rating; i++) {
-      const star = React.createElement('i', {className: 'fas fa-star'})
+      const star = React.createElement('i', {className: 'fas fa-star', key: i})
       stars.push(star);
     };
     return React.createElement('div', {className:'star'}, stars);

@@ -24,7 +24,20 @@ const CartItems = () => {
         </thead>
 
         <tbody>
-            {cartItems.length !== 0 ? cartItems.map((item, index) => <CartItem key={index} data={item} />) : null}
+            {cartItems.length !== 0 ? 
+            cartItems.map((item, index) => <CartItem key={index} data={item} />) 
+            : 
+            <tr>
+              <td></td>
+              <td></td>
+              <td style={{fontWeight:'bolder'}}>No</td>
+              <td style={{fontWeight:'bolder'}}>Item</td>
+              <td style={{fontWeight:'bolder'}}>In</td>
+              <td style={{fontWeight:'bolder'}}>Cart</td>
+              <td></td>
+              <td></td>
+            </tr>
+            }
         </tbody>
      </table>
     </section>

@@ -11,30 +11,22 @@ const Cart = () => {
     document.title = "Jamo | Cart"
   })
 
-  const {cartItems, changeCartItems, setCartSubtotal} = useContext(AppContext);
-
-  // if (cartItems === null || cartItems.length === 0) {
-  //   console.log('no cart item');
-  //   // window.location.href = '/shop'
-  //   navigate('/shop')
-  // }
+  const {changeCartItems, setCartSubtotal} = useContext(AppContext);
+  const cart_items = JSON.parse(window.localStorage.getItem('Jamo-cart-items'))
 
   useEffect(() => {
-    if (!cartItems  || cartItems?.length === 0) {
-      console.log('no cart item');
-      // window.location.href = '/shop'
-      navigate('/shop')
+    if (!cart_items || cart_items?.length === 0) {
       return
     }
 
     (async () => {
-      if (cartItems !== null && cartItems.length !== 0) {
-        const ids = []
-        cartItems.forEach(item => ids.push(item.id))
+      const ids = []
+      cart_items.forEach(item => ids.push(item.id))
 
-        const res = await axiosInstance.post('cart-items', ids)
-        const data = res.data
-        cartItems.forEach((item, index) => {
+      try {
+        const res = await axiosInstance.post('product/cart-items', ids)
+        const {data} = res;
+        cart_items.forEach((item, index) => {
           item['img_names'] = data[index]['img_names']
           item['name'] = data[index]['name']
           item['price'] = data[index]['price']
@@ -43,8 +35,10 @@ const Cart = () => {
           item['subtotal'] = item['price'] * item['quantity']
         })
 
-        changeCartItems(cartItems);
-        setCartSubtotal(cartItems);
+        changeCartItems(cart_items);
+        setCartSubtotal(cart_items);
+      }catch(error) {
+        console.log('getting items in cart:', error)
       }
     })()
   }, [])

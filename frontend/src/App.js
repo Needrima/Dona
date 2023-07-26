@@ -73,7 +73,7 @@ function App() {
   const AddToCart = (id, quantity, size, colour) => {
     const cart_items = JSON.parse(window.localStorage.getItem('Jamo-cart-items'))
 
-    if (cart_items === null || cart_items.length === 0) { // Jamo-cart-items has not been set in local storage or has been set with no data
+    if (!cart_items || cart_items?.length === 0) { // Jamo-cart-items has not been set in local storage or has been set with no data
       window.localStorage.setItem('Jamo-cart-items', JSON.stringify([{id, quantity, size, colour}]))
       setCartItems({id, quantity, size, colour})
     }else {
